@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\pixelled\2020 LedEdit\2020 LedEdit\2020 lededit.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{647203AA-7441-425A-8C3B-979B5B59921A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>LedEdit</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AviFile">
+      <HintPath>lib\AviFile.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.ShockwaveFlashObjects">
+      <HintPath>lib\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.17.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.17\lib\net35\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX">
+      <HintPath>lib\Microsoft.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.AudioVideoPlayback">
+      <HintPath>lib\Microsoft.DirectX.AudioVideoPlayback.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectDraw">
+      <HintPath>lib\Microsoft.DirectX.DirectDraw.dll</HintPath>
+    </Reference>
+    <Reference Include="SwfDotNet.IO">
+      <HintPath>lib\SwfDotNet.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\AFSLogger.cs" />
+    <Compile Include="_003CModule_003E.cs" />
+    <Compile Include="DotfuscatorAttribute.cs" />
+    <Compile Include="s.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class0.cs" />
+    <Compile Include="GClass0.cs" />
+    <Compile Include="GClass1.cs" />
+    <Compile Include="c.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="y.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="b.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="r.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="t.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="ae.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="q.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="a.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GClass2.cs" />
+    <Compile Include="z.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="j.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GEnum0.cs" />
+    <Compile Include="ab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="x.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="k.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ah.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="n.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GForm0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class3.cs" />
+    <Compile Include="u.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="w.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="v.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="i.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GStruct0.cs" />
+    <Compile Include="GClass3.cs" />
+    <Compile Include="ag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="g.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class4.cs" />
+    <Compile Include="ai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="e.cs" />
+    <Compile Include="GClass4.cs" />
+    <Compile Include="ad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="af.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="f.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GClass5.cs" />
+    <Compile Include="GClass6.cs" />
+    <Compile Include="Class5.cs" />
+    <Compile Include="h.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GEnum1.cs" />
+    <Compile Include="d.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GClass7.cs" />
+    <Compile Include="GClass8.cs" />
+    <Compile Include="p.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class6.cs" />
+    <Compile Include="Struct5.cs" />
+    <Compile Include="Struct6.cs" />
+    <Compile Include="Struct7.cs" />
+    <Compile Include="Struct8.cs" />
+    <Compile Include="Struct9.cs" />
+    <Compile Include="Struct10.cs" />
+    <Compile Include="Class7.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="a.resx" />
+    <EmbeddedResource Include="MessageDialog.resx" />
+    <EmbeddedResource Include="ab.resx" />
+    <EmbeddedResource Include="ac.resx" />
+    <EmbeddedResource Include="ad.resx" />
+    <EmbeddedResource Include="ae.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="af.resx" />
+    <EmbeddedResource Include="ag.resx" />
+    <EmbeddedResource Include="ah.resx" />
+    <EmbeddedResource Include="ai.resx" />
+    <EmbeddedResource Include="b.resx" />
+    <EmbeddedResource Include="c.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="d.resx" />
+    <EmbeddedResource Include="e.resx" />
+    <EmbeddedResource Include="f.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="g.resx" />
+    <EmbeddedResource Include="GForm0.resx" />
+    <EmbeddedResource Include="GForm1.resx" />
+    <EmbeddedResource Include="h.resx" />
+    <EmbeddedResource Include="i.resx" />
+    <EmbeddedResource Include="j.resx" />
+    <EmbeddedResource Include="k.resx" />
+    <EmbeddedResource Include="LedEdit\a2.bmp" />
+    <EmbeddedResource Include="LedEdit\Bitmap1.bmp" />
+    <EmbeddedResource Include="LedEdit\Bitmap2.bmp" />
+    <EmbeddedResource Include="m.resx" />
+    <EmbeddedResource Include="n.resx" />
+    <EmbeddedResource Include="p.resx" />
+    <EmbeddedResource Include="q.resx" />
+    <EmbeddedResource Include="r.resx" />
+    <EmbeddedResource Include="s.resx" />
+    <EmbeddedResource Include="t.resx" />
+    <EmbeddedResource Include="u.resx" />
+    <EmbeddedResource Include="v.resx" />
+    <EmbeddedResource Include="w.resx" />
+    <EmbeddedResource Include="x.resx" />
+    <EmbeddedResource Include="y.resx" />
+    <EmbeddedResource Include="z.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
