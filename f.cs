@@ -1,9 +1,12 @@
 ﻿// Decompiled with JetBrains decompiler
-// Type: f
+// Type: NewProjectForm
 // Assembly: LedEdit, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null
 // MVID: D08429D7-F24F-41DD-AFC4-7F40AB03BFB1
 // Assembly location: C:\pixelled\2020 LedEdit\2020 LedEdit\2020 lededit.exe
 
+using AFSApp.Helpers;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -13,12 +16,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
 
-public class f : Form
+// New Project Form
+public class f   : Form
 {
   private IContainer icontainer_0;
   private Label label_0;
   private Label label_1;
-  private Button button_0;
+  private Button OkButton;
   private Button button_1;
   private Label label_2;
   private Button button_2;
@@ -26,7 +30,7 @@ public class f : Form
   private Label label_3;
   private ComboBox comboBox_0;
   private Label label_4;
-  private ComboBox comboBox_1;
+  private ComboBox comboBox_RGBChannel;// RGBChannel
   private Label label_5;
   private TextBox textBox_1;
   private Label label_6;
@@ -80,14 +84,14 @@ public class f : Form
     ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof (f));
     this.label_0 = new Label();
     this.label_1 = new Label();
-    this.button_0 = new Button();
+    this.OkButton = new Button();
     this.button_1 = new Button();
     this.label_2 = new Label();
     this.button_2 = new Button();
     this.textBox_0 = new TextBox();
     this.label_3 = new Label();
     this.comboBox_0 = new ComboBox();
-    this.comboBox_1 = new ComboBox();
+    this.comboBox_RGBChannel = new ComboBox();
     this.label_4 = new Label();
     this.groupBox_2 = new GroupBox();
     this.radioButton_4 = new RadioButton();
@@ -141,22 +145,26 @@ public class f : Form
     componentResourceManager.ApplyResources((object) this.label_1, Module.a("\uD8B3ힵ\uDAB7\uDFB9킻辽", 14));
     this.label_1.Font = (Font) null;
     this.label_1.Name = Module.a("\uD8B3ힵ\uDAB7\uDFB9킻辽", 14);
-    this.button_0.AccessibleDescription = (string) null;
-    this.button_0.AccessibleName = (string) null;
-    componentResourceManager.ApplyResources((object) this.button_0, Module.a("횳쎵첷캹펻킽\uF1BF", 14));
-    this.button_0.BackgroundImage = (Image) null;
-    this.button_0.Name = Module.a("횳쎵첷캹펻킽\uF1BF", 14);
-    this.button_0.UseVisualStyleBackColor = true;
-    this.button_0.Click += new EventHandler(this.button_0_Click);
+    this.OkButton.AccessibleDescription = (string) null;
+    this.OkButton.AccessibleName = (string) null;
+    componentResourceManager.ApplyResources((object) this.OkButton, Module.a("횳쎵첷캹펻킽\uF1BF", 14));
+    this.OkButton.BackgroundImage = (Image) null;
+        this.OkButton.Name = "button1"; // Module.a("횳쎵첷캹펻킽\uF1BF", 14);
+    this.OkButton.UseVisualStyleBackColor = true;
+    this.OkButton.Click += new EventHandler(this.OkButtonClick);
+        LogData.LogInfo($"NewProjectForm OkButton.Text : {OkButton.Text}");
+        LogData.LogInfo($"NewProjectForm OkButton.Text : {JsonConvert.SerializeObject(OkButton.AccessibilityObject.Bounds, Formatting.Indented)}");
     this.button_1.AccessibleDescription = (string) null;
     this.button_1.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.button_1, Module.a("횳쎵첷캹펻킽\uF2BF", 14));
     this.button_1.BackgroundImage = (Image) null;
     this.button_1.Font = (Font) null;
-    this.button_1.Name = Module.a("횳쎵첷캹펻킽\uF2BF", 14);
+        this.button_1.Name = "button2"; // Module.a("횳쎵첷캹펻킽\uF2BF", 14);
     this.button_1.UseVisualStyleBackColor = true;
     this.button_1.Click += new EventHandler(this.button_1_Click);
-    this.label_2.AccessibleDescription = (string) null;
+        LogData.LogInfo($"NewProjectForm button_1.Text : {button_1.Text}");
+        LogData.LogInfo($"NewProjectForm button_1.Text : {JsonConvert.SerializeObject(button_1.AccessibilityObject.Bounds, Formatting.Indented)}");
+        this.label_2.AccessibleDescription = (string) null;
     this.label_2.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.label_2, Module.a("\uD8B3ힵ\uDAB7\uDFB9킻趽", 14));
     this.label_2.Font = (Font) null;
@@ -221,15 +229,22 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF5C3\uE8C5臇뻉꧋ꏍꏏ\uE0D1\uECD3", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF5C3\uE8C5臇뻉꧋ꏍꏏ\uE0D1\uEDD3", 14))
     });
-    this.comboBox_0.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF5C3", 14);
-    this.comboBox_1.AccessibleDescription = (string) null;
-    this.comboBox_1.AccessibleName = (string) null;
-    componentResourceManager.ApplyResources((object) this.comboBox_1, Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3", 14));
-    this.comboBox_1.BackgroundImage = (Image) null;
-    this.comboBox_1.DropDownStyle = ComboBoxStyle.DropDownList;
-    this.comboBox_1.Font = (Font) null;
-    this.comboBox_1.FormattingEnabled = true;
-    this.comboBox_1.Items.AddRange(new object[6]
+        foreach (var item in comboBox_0.Items)
+        {
+            LogData.LogInfo($"comboBox_0 Item {item.ToString()}");
+        }
+        
+        LogData.LogInfo($"NewProjectForm comboBox_0: {JsonConvert.SerializeObject(comboBox_0.Bounds, Formatting.Indented)} ");
+
+        this.comboBox_0.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF5C3", 14);
+    this.comboBox_RGBChannel.AccessibleDescription = (string) null;
+    this.comboBox_RGBChannel.AccessibleName = (string) null;
+    componentResourceManager.ApplyResources((object) this.comboBox_RGBChannel, Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3", 14));
+    this.comboBox_RGBChannel.BackgroundImage = (Image) null;
+    this.comboBox_RGBChannel.DropDownStyle = ComboBoxStyle.DropDownList;
+    this.comboBox_RGBChannel.Font = (Font) null;
+    this.comboBox_RGBChannel.FormattingEnabled = true;
+    this.comboBox_RGBChannel.Items.AddRange(new object[6]
     {
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3\uE8C5臇뻉꧋ꏍꏏ", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1", 14)),
@@ -238,7 +253,13 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3\uE8C5臇뻉꧋ꏍꏏ\uE6D1", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3\uE8C5臇뻉꧋ꏍꏏ\uE7D1", 14))
     });
-    this.comboBox_1.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3", 14);
+        foreach (var item in comboBox_RGBChannel.Items)
+        {
+            LogData.LogInfo($"comboBox_RGBChannel Item {item.ToString()}");
+        }
+        LogData.LogInfo($"NewProjectForm comboBox_RGBChannel: {comboBox_RGBChannel.Items[0]},{comboBox_RGBChannel.Items[1]},{comboBox_RGBChannel.Items[2]},{comboBox_RGBChannel.Items[3]} ");
+
+        this.comboBox_RGBChannel.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF6C3", 14);
     this.label_4.AccessibleDescription = (string) null;
     this.label_4.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.label_4, Module.a("\uD8B3ힵ\uDAB7\uDFB9킻讽", 14));
@@ -323,7 +344,13 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF0C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE1D3", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF0C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE2D3", 14))
     });
-    this.comboBox_2.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF0C3", 14);
+        foreach (var item in comboBox_2.Items)
+        {
+            LogData.LogInfo($"comboBox_2 Item {item.ToString()}");
+        }
+        LogData.LogInfo($"NewProjectForm comboBox_2: {comboBox_2.Items[0]},{comboBox_2.Items[1]},{comboBox_2.Items[2]},{comboBox_2.Items[3]} ");
+
+        this.comboBox_2.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF0C3", 14);
     this.comboBox_2.SelectedIndexChanged += new EventHandler(this.comboBox_2_SelectedIndexChanged);
     this.groupBox_0.AccessibleDescription = (string) null;
     this.groupBox_0.AccessibleName = (string) null;
@@ -370,7 +397,8 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF3C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE1D3", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF3C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE2D3", 14))
     });
-    this.comboBox_5.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF3C3", 14);
+        LogData.LogInfo($"NewProjectForm comboBox_5 : {comboBox_5.Items[0]},{comboBox_5.Items[1]},{comboBox_5.Items[2]},{comboBox_5.Items[3]} ");
+        this.comboBox_5.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF3C3", 14);
     this.comboBox_5.SelectedIndexChanged += new EventHandler(this.comboBox_5_SelectedIndexChanged);
     this.label_14.AccessibleDescription = (string) null;
     this.label_14.AccessibleName = (string) null;
@@ -413,7 +441,8 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF2C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE1D3", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF2C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE2D3", 14))
     });
-    this.comboBox_3.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF2C3", 14);
+        LogData.LogInfo($"NewProjectForm comboBox_3: {comboBox_3.Items[0]},{comboBox_3.Items[1]},{comboBox_3.Items[2]},{comboBox_3.Items[3]} ");
+        this.comboBox_3.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF2C3", 14);
     this.comboBox_3.SelectedIndexChanged += new EventHandler(this.comboBox_3_SelectedIndexChanged);
     this.label_10.AccessibleDescription = (string) null;
     this.label_10.AccessibleName = (string) null;
@@ -451,6 +480,7 @@ public class f : Form
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF1C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE1D3", 14)),
       (object) componentResourceManager.GetString(Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF1C3\uE8C5臇뻉꧋ꏍꏏ\uE3D1\uE2D3", 14))
     });
+        LogData.LogInfo($"NewProjectForm comboBox_4: {comboBox_4.Items[0]},{comboBox_4.Items[1]},{comboBox_4.Items[2]},{comboBox_4.Items[3]} ");
     this.comboBox_4.Name = Module.a("ힳ\uD9B5햷\uD8B9펻ﲽ꾿뫁\uF1C3", 14);
     this.comboBox_4.SelectedIndexChanged += new EventHandler(this.comboBox_4_SelectedIndexChanged);
     this.label_12.AccessibleDescription = (string) null;
@@ -496,11 +526,12 @@ public class f : Form
     this.radioButton_2.UseVisualStyleBackColor = true;
     this.radioButton_3.AccessibleDescription = (string) null;
     this.radioButton_3.AccessibleName = (string) null;
-    componentResourceManager.ApplyResources((object) this.radioButton_3, Module.a("욳ힵ\uDCB7펹펻ﲽ떿뛁냃꧅ꛇ柳", 14));
+    componentResourceManager.ApplyResources((object) this.radioButton_3, "radioButton3" /*Module.a("욳ힵ\uDCB7펹펻ﲽ떿뛁냃꧅ꛇ柳", 14)*/);
     this.radioButton_3.BackgroundImage = (Image) null;
     this.radioButton_3.Font = (Font) null;
-    this.radioButton_3.Name = Module.a("욳ힵ\uDCB7펹펻ﲽ떿뛁냃꧅ꛇ柳", 14);
+    this.radioButton_3.Name = "radioButton3"; //Module.a("욳ힵ\uDCB7펹펻ﲽ떿뛁냃꧅ꛇ柳", 14);
     this.radioButton_3.UseVisualStyleBackColor = true;
+        LogData.LogInfo($"radioButton_3 Text {radioButton_3.Text}, X; {radioButton_3.Location.X} Y: radioButton_3.Location.Y");
     this.groupBox_3.AccessibleDescription = (string) null;
     this.groupBox_3.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.groupBox_3, Module.a("펳쒵ힷ쾹첻ﲽ꾿뫁\uF3C3", 14));
@@ -570,20 +601,22 @@ public class f : Form
     this.label_18.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.label_18, Module.a("\uD8B3ힵ\uDAB7\uDFB9킻袽", 14));
     this.label_18.Font = (Font) null;
-    this.label_18.Name = Module.a("\uD8B3ힵ\uDAB7\uDFB9킻袽", 14);
+        this.label_18.Name = "label6";// Module.a("\uD8B3ힵ\uDAB7\uDFB9킻袽", 14);
     this.button_3.AccessibleDescription = (string) null;
     this.button_3.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.button_3, Module.a("횳쎵첷캹펻킽\uF4BF", 14));
     this.button_3.BackgroundImage = (Image) null;
     this.button_3.ForeColor = SystemColors.HotTrack;
-    this.button_3.Name = Module.a("횳쎵첷캹펻킽\uF4BF", 14);
+        this.button_3.Name = "button4";// Module.a("횳쎵첷캹펻킽\uF4BF", 14);
     this.button_3.UseVisualStyleBackColor = true;
+        LogData.LogInfo($"NewProjectForm: button_3.Text: {button_3.Text}");
     this.button_3.Click += new EventHandler(this.button_3_Click);
     this.label_19.AccessibleDescription = (string) null;
     this.label_19.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this.label_19, Module.a("\uD8B3ힵ\uDAB7\uDFB9킻覽", 14));
     this.label_19.Name = Module.a("\uD8B3ힵ\uDAB7\uDFB9킻覽", 14);
-    this.AccessibleDescription = (string) null;
+        LogData.LogInfo($"NewProjectForm: label_19.Text: {label_19.Text}");
+        this.AccessibleDescription = (string) null;
     this.AccessibleName = (string) null;
     componentResourceManager.ApplyResources((object) this, Module.a("邳습킷펹쾻", 14));
     this.AutoScaleMode = AutoScaleMode.Font;
@@ -603,7 +636,7 @@ public class f : Form
     this.Controls.Add((Control) this.comboBox_0);
     this.Controls.Add((Control) this.label_3);
     this.Controls.Add((Control) this.label_15);
-    this.Controls.Add((Control) this.comboBox_1);
+    this.Controls.Add((Control) this.comboBox_RGBChannel);
     this.Controls.Add((Control) this.label_17);
     this.Controls.Add((Control) this.label_4);
     this.Controls.Add((Control) this.label_16);
@@ -614,11 +647,11 @@ public class f : Form
     this.Controls.Add((Control) this.button_2);
     this.Controls.Add((Control) this.label_2);
     this.Controls.Add((Control) this.button_1);
-    this.Controls.Add((Control) this.button_0);
+    this.Controls.Add((Control) this.OkButton);
     this.Font = (Font) null;
     this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
     this.Icon = (Icon) null;
-    this.Name = Module.a("\uE7B3쾵쮷캹\uD9BB펽龿釁ꇃ닅", 14);
+    this.Name = "System_Set";//Module.a("\uE7B3쾵쮷캹\uD9BB펽龿釁ꇃ닅", 14);
     this.groupBox_2.ResumeLayout(false);
     this.groupBox_2.PerformLayout();
     this.groupBox_0.ResumeLayout(false);
@@ -639,13 +672,13 @@ public class f : Form
     // ISSUE: explicit constructor call
  //   base.\u002Ector();
     this.method_0();
-    this.textBox_0.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object) '\\' + Module.a("ﺱ톳튵覷钹첻욽ꊿ", 12);
+        this.textBox_0.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object)'\\' + "LEDAN@H2";//Module.a("ﺱ톳튵覷钹첻욽ꊿ", 12);
     this.comboBox_0.SelectedIndex = 19;
-    this.comboBox_1.SelectedIndex = 0;
+    this.comboBox_RGBChannel.SelectedIndex = 0;
     this.arrayList_0 = new ArrayList();
     this.arrayList_0.Clear();
     bool flag1 = false;
-    string path1 = Application.StartupPath + Module.a("\uEEB1\uE7B3\uF3B5\uECB7\uE6B9\uD8BBힽ꺿ꗁ뻃껅ꇇ闉꧋ꃍ뇏냑룓돕\uF6D7껙ꓛꫝ", 12);
+        string path1 = Application.StartupPath + "\\SET\\dingzhi_enable.t"; // Module.a("\uEEB1\uE7B3\uF3B5\uECB7\uE6B9\uD8BBힽ꺿ꗁ뻃껅ꇇ闉꧋ꃍ뇏냑룓돕\uF6D7껙ꓛꫝ", 12);
     if (File.Exists(path1))
     {
       using (StreamReader streamReader = new StreamReader(path1, Encoding.ASCII))
@@ -681,9 +714,10 @@ public class f : Form
 label_13:
       if (!File.Exists(path2))
       {
+                LogData.LogInfo("F: Streamwriter Start");
         using (StreamWriter streamWriter = new StreamWriter(path2, false, Encoding.Unicode))
         {
-          streamWriter.WriteLine(Module.a("薱", int_0));
+          streamWriter.WriteLine("G"/*Module.a("薱", int_0)*/);
           streamWriter.WriteLine(Module.a("花莳薵覆﮹袻﮽\uF0BF﯁\uF6C3\uF0C5劉韛ￋ\uFBCD\uE1CF铑鋓\uE0D5鷗\uE8D9鷛鯝ꇟ탡ꇣꏥ\uD9E7\uDDE9ꫫ\uDEED뗯냱싳샵췷싹쿻췽ㇿ㌁䀃㈅䴇㨉䤋䴍␏␑┓ℕ⤗堙堛Ⱍ戟昡ሣ攥ဧ温樫ḭ̯ȱ瀳眵षਹ縻紽Ŀ畁畃ͅେཉ祋్楏ၑ恓恕ᵗṙ潛橝呟偡啣╥幧⡩\u2E6B噭䥯ㅱ䑳ふ㵷㡹㹻䭽쉿쎁뒃쒅뺇붉쾋뮍ꞏꞑ킓펕ꆗ꺙겛ꦝ\uE59F\uE7A1钣鎥麧颩麫颭覯膱膳膵醴貹ﾻ誽\uF2BF胁\uF5C3\uF7C5難\uF3C9溜ￍ鏏", int_0));
           streamWriter.WriteLine(Module.a("花莳薵覆﮹袻﮽\uF0BF﯁\uF6C3\uF0C5劉韛ￋ\uFBCD\uE1CF铑鋓\uE0D5鷗\uE8D9鷛鯝ꇟ탡ꇣꏥ\uD9E7\uDDE9ꫫ\uDEED뗯뛱뗳컵뻷맹쯻믽䛿\u3101䀃䌅㬇㸉䴋伍┏儑∓刕⬗堙⤛⠝ᐟሡᴣ急椧氩漫\u192D\u082F焱Գ̵ష縹\u0A3BܽĿ݁煃ͅ灇ॉ罋罍ᕏ晑ၓ慕ᩗ᱙ṛὝ偟兡剣\u2465內⥩奫彭䕯䩱㝳乵㵷䡹㵻䡽롿뮁얃뚅첇뢉좋랍ꂏꖑ궓ꞕ\uDC97ꮙ궛\uDB9D閟\uE0A1\uE1A3\uE3A5邧鎩骫颭\uF1AF蒱膳\uF0B5ﲷ袹ﺻ讽\uF5BF\uF6C1\uF0C3蓅難ﳉ頋諍\uE4CF金雓\uEFD5髗\uE2D9飛\uEBDD탟훡퓣훥곧ꯩ껫\uDCED쏯", int_0));
           streamWriter.WriteLine(Module.a("\uF6B1足肵辷誹ﺻ貽膿蛁\uF0C3\uF7C5\uFBC7柳ￋ词鋏\uE1D1\uEDD3\uE7D5鯗\uEAD9黛\uECDDꛟ폡ꋣ퓥\uDBE7껩ꧫ\uD8ED뛯뇱쟳쿵죷쏹맻볽㓿㈁䄃䐅㰇伉伋㴍☏儑∓✕嬗嬙⸛ⴝ感ᜡᔣ朥ᴧᨩḫḭ̯猱瀳猵笷ഹ\u0D3Bؽ砿牁絃畅େ้ੋ睍敏", int_0));
@@ -691,7 +725,8 @@ label_13:
           streamWriter.WriteLine(Module.a("螱\uF1B3螵趷芹覻螽芿\uF3C1\uF2C3蟅軇韛請词\uE5CF\uE0D1\uE7D3铕\uEED7\uE9D9\uEBDB\uEADDꇟ퇡ꛣꋥꧧ\uDBE9\uDBEB귭쟯엱췳쇵뫷룹쫻짽䏿\u3101䜃㸅万䠉㨋䨍∏☑倓―嬗帙┛嬝戟愡愣ሥ洧ᬩ樫氭猯ر眳眵\u0A37簹\u0E3Bܽ爿獁݃Eେ\u0C49繋్ᑏၑ敓ᑕ浗ᥙ摛潝╟Ⅱ兣坥嵧剩⥫\u2D6D䁯㝱䵳㉵佷䡹㹻䙽롿잁뒃쎅뮇즉뾋뮍톏펑ꎓꊕ\uDE97\uDB99ꮛ꾝\uE59F醡銣钥鲧銩\uEEAB颭\uF5AF薱蒳\uF0B5膷ﾹﶻﲽ\uF7BF\uF5C1胃\uF0C5難ﳉ迋词雏铑\uE2D3\uE3D5\uEBD7\uE8D9鷛\uEFDD\uD9DFꏡ\uDDE3ꏥ\uDFE7꿩\uD8EBퟭ엯", int_0));
           streamWriter.WriteLine(Module.a("螱\uF1B3螵趷芹覻螽芿\uF3C1\uF2C3蟅軇韛請词\uE5CF\uE1D1闓\uEFD5\uEBD7黙\uE5DB\uE6DD\uD8DF헡ꋣퟥ\uDDE7ꧩ귫\uDAED뗯뛱샳듵샷룹쿻쿽㗿䐁䘃㼅䨇㸉䨋䴍☏⌑␓┕ⴗ⠙ⴛ☝\u181FᨡሣᔥᰧᤩᤫἭ猯Աĳ瀵簷ହлଽ焿穁كE硇繉硋ཌྷ楏", int_0));
           streamWriter.WriteLine(Module.a("螱\uF1B3螵趷芹覻螽芿\uF3C1\uF2C3蟅軇韛請词\uE5CF\uEBD1闓\uE1D5\uE8D7黙飛\uEFDD폟\uDBE1ꗣ\uDFE5탧꿩\uDFEB훭쇯싱췳듵뫷쫹쯻췽䏿䌁䘃㌅䴇㨉䨋㸍吏⬑┓匕⬗ⰙⴛⰝᔟሡ攣戥ᬧሩᠫ欭瘯琱瘳猵縷ହ縻\u0E3D眿穁牃瑅็硉ࡋ繍ፏ", int_0));
-          continue;
+         LogData.LogInfo("F: Streamwriter End");
+           continue;
         }
       }
       else
@@ -789,18 +824,21 @@ label_19:
     c.byte_20 = (byte) 0;
     c.bool_2 = false;
     c.byte_0 = (byte) 0;
-    if (!(this.string_0 == Module.a("\uE7B2颴辶覸论趼銾鋀胂", 13)) && !(this.string_0 == Module.a("膲螴螶覸隺袼蚾\uF4C0", int_0)) && !(this.string_0 == Module.a("ﾲ\uF0B4\uF3B6覸论誼銾럀\uFBC2\uEBC4\uF2C6", int_0)) && !(this.string_0 == Module.a("ﾲ\uF0B4\uF3B6钸\uEDBA薼醾\uF4C0", int_0)))
+    if (!(this.string_0 == "T-8000-SC" /*Module.a("\uE7B2颴辶覸论趼銾鋀胂", 13)*/) &&
+            !(this.string_0 == "2200-595" /*Module.a("膲螴螶覸隺袼蚾\uF4C0", int_0)*/) &&
+            !(this.string_0 == "LED007-v8.5" /*Module.a("ﾲ\uF0B4\uF3B6覸论誼銾럀\uFBC2\uEBC4\uF2C6", int_0) */) &&
+            !(this.string_0 == "LED-V8.5" /*Module.a("ﾲ\uF0B4\uF3B6钸\uEDBA薼醾\uF4C0", int_0)*/))
     {
-      if (this.string_0 == Module.a("\uE7B2颴蚶覸论趼銾鋀胂", int_0))
+      if (this.string_0 == "T-1000-SC"/* Module.a("\uE7B2颴蚶覸论趼銾鋀胂", int_0)*/)
         c.int_2 = 14;
-      else if (this.string_0 == Module.a("\uF7B2\uF8B4\uEFB6馸\uEDBA躼龾賀곂ꯄ\uA8C6\uAAC8ꏊ뿌ꃎ볐뛒", int_0))
+      else if (this.string_0 == "DMX V3 Monochrome" /*Module.a("\uF7B2\uF8B4\uEFB6馸\uEDBA躼龾賀곂ꯄ\uA8C6\uAAC8ꏊ뿌ꃎ볐뛒", int_0)*/)
         c.int_2 = 51;
-      else if (this.string_0 == Module.a("\uE5B2蚴骶\uF4B8鮺\uF0BC킾꿀곂ꛄ꿆믈\uA4CAꃌ\uAACE", int_0))
+      else if (this.string_0 == "V3-M Monochrome" /*Module.a("\uE5B2蚴骶\uF4B8鮺\uF0BC킾꿀곂ꛄ꿆믈\uA4CAꃌ\uAACE", int_0)*/)
       {
         c.int_2 = 55;
         c.byte_20 = (byte) 0;
       }
-      else if (this.string_0 == Module.a("\uE7B2颴蚶覸论趼銾藀軂鷄\uEAC6蓈\uA4CAꏌꃎ닐믒\uA7D4룖듘뻚", int_0))
+      else if (this.string_0 == "T-1000-DMX-Monochrome" /*Module.a("\uE7B2颴蚶覸论趼銾藀軂鷄\uEAC6蓈\uA4CAꏌꃎ닐믒\uA7D4룖듘뻚", int_0)*/)
       {
         c.int_2 = 55;
         c.byte_20 = (byte) 1;
@@ -2048,26 +2086,42 @@ label_19:
     this.textBox_0.Text = saveFileDialog.FileName;
   }
 
-  private void button_0_Click(object sender, EventArgs e)
+  private void OkButtonClick(object sender, EventArgs e)
   {
     int int_0 = 3;
     if (this.comboBox_0.SelectedIndex == -1)
       this.comboBox_0.SelectedIndex = 19;
-    if (this.comboBox_1.SelectedIndex == -1)
-      this.comboBox_1.SelectedIndex = 0;
+    if (this.comboBox_RGBChannel.SelectedIndex == -1)
+      this.comboBox_RGBChannel.SelectedIndex = 0;
     c.smethod_1(this.comboBox_0.SelectedIndex + 1);
-    c.int_81 = this.comboBox_1.SelectedIndex;
+    c.int_81 = this.comboBox_RGBChannel.SelectedIndex;
     c.byte_19 = (byte) 1;
     c.bool_14 = false;
-    if (this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uE3B6\uF4B8誺蒼", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸\uEFBA\uF0BC躾\uF8C0", int_0) || this.string_0 == Module.a("ﶨ蚪閬龮膰莲\uF7B4骶\uEDB8\uF6BA貼蚾", int_0) || this.string_0 == Module.a("ﶨ蚪馬龮膰莲颴\uE3B6\uF4B8誺蒼", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴\uE3B6\uF4B8誺蒼", int_0))
+    if (this.string_0 == "T-100K-TM19"/*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uE3B6\uF4B8誺蒼", int_0)*/ ||
+            this.string_0 == "T-100K-B-TM19" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸\uEFBA\uF0BC躾\uF8C0", int_0)*/ ||
+            this.string_0 == "T-8000B-TM19" /*Module.a("ﶨ蚪閬龮膰莲\uF7B4骶\uEDB8\uF6BA貼蚾", int_0)*/ ||
+            this.string_0 == "T-4000-TM19" /*Module.a("ﶨ蚪馬龮膰莲颴\uE3B6\uF4B8誺蒼", int_0)*/ ||
+            this.string_0 == "T-1000-TM19" /*Module.a("ﶨ蚪鲬龮膰莲颴\uE3B6\uF4B8誺蒼", int_0)*/)
       c.byte_19 = !this.radioButton_3.Checked ? (byte) 170 : (byte) 85;
-    if (this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸\uEFBA\uF0BC躾燎\uF1C2ﳄ", int_0) || this.string_0 == Module.a("ﶨ蚪閬龮膰莲\uF7B4骶\uEDB8\uF6BA貼螾\uF3C0輸", int_0) || this.string_0 == Module.a("ﶨ蚪馬龮膰莲颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0))
+    if (this.string_0 == "T-100K-TM1829" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0)*/ ||
+            this.string_0 == "T-100K-B-TM1829" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸\uEFBA\uF0BC躾燎\uF1C2ﳄ", int_0)*/ || 
+            this.string_0 == "T-8000B-TM1829" /*Module.a("ﶨ蚪閬龮膰莲\uF7B4骶\uEDB8\uF6BA貼螾\uF3C0輸", int_0)*/ || 
+            this.string_0 == "T-4000-TM1829" /*Module.a("ﶨ蚪馬龮膰莲颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0)*/ || 
+            this.string_0 == "T-1000-TM1829"/* Module.a("ﶨ蚪鲬龮膰莲颴\uE3B6\uF4B8誺薼趾\uF8C0", int_0)*/)
       c.byte_19 = !this.radioButton_3.Checked ? (byte) 170 : (byte) 85;
-    if (this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸誺薼螾\uF3C0", int_0) || this.string_0 == Module.a("ﶨ蚪閬龮膰莲\uF7B4骶袸莺薼趾", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴蚶膸莺込", int_0))
+    if (this.string_0 == "T-100K-B-1882" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸誺薼螾\uF3C0", int_0)*/ ||
+            this.string_0 == "T-8000B-1882" /*Module.a("ﶨ蚪閬龮膰莲\uF7B4骶袸莺薼趾", int_0)*/ ||
+            this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴蚶膸莺込", int_0))
       c.byte_19 = !this.radioButton_3.Checked ? (byte) 170 : (byte) 85;
-    if (this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸趺薼躾\uF3C0", int_0) || this.string_0 == Module.a("ﶨ蚪閬龮膰莲\uF7B4骶辸莺貼趾", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴膶膸誺込", int_0))
+    if (this.string_0 == "T-100K-B-6812" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸趺薼躾\uF3C0", int_0)*/ ||
+            this.string_0 == "T-8000B-6812" /*Module.a("ﶨ蚪閬龮膰莲\uF7B4骶辸莺貼趾", int_0)*/ || 
+            this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴膶膸誺込", int_0))
       c.byte_19 = !this.radioButton_3.Checked ? (byte) 170 : (byte) 85;
-    if (this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴蚶辸貺誼", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸誺讼袾\uF6C0", int_0) || this.string_0 == Module.a("ﶨ蚪閬龮膰莲\uF7B4骶袸趺誼袾", int_0) || this.string_0 == Module.a("ﶨ蚪馬龮膰莲颴蚶辸貺誼", int_0) || this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴蚶辸貺誼", int_0))
+    if (this.string_0 == "T-100K-1677" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴蚶辸貺誼", int_0)*/ ||
+            this.string_0 == "T-100K-B-1677" /*Module.a("ﶨ蚪鲬龮膰\uF8B2颴\uF5B6钸誺讼袾\uF6C0", int_0)*/ ||
+            this.string_0 == "T-8000B-1677" /*Module.a("ﶨ蚪閬龮膰莲\uF7B4骶袸趺誼袾", int_0)*/ ||
+            this.string_0 == Module.a("ﶨ蚪馬龮膰莲颴蚶辸貺誼", int_0) || 
+            this.string_0 == Module.a("ﶨ蚪鲬龮膰莲颴蚶辸貺誼", int_0))
       c.byte_19 = !this.radioButton_3.Checked ? (byte) 170 : (byte) 85;
     if (c.byte_20 == (byte) 0 || c.byte_20 == (byte) 15 || c.byte_20 > (byte) 60)
     {
@@ -2114,8 +2168,9 @@ label_19:
     }
     if (c.int_2 == 31 || c.int_2 == 50 || c.int_2 == 32 || c.int_2 == 130 || c.int_2 == 82)
       c.bool_18 = !this.radioButton_5.Checked;
-    string path = c.string_2 + Module.a("\uF5A8\uDFAA\uD9AC횮솰횲\uEAB4쒶쪸誺趼醾뗀믂뇄", int_0);
-    if (File.Exists(path))
+    string path = c.string_2 + "\\ttype_ss10.txt" /*Module.a("\uF5A8\uDFAA\uD9AC횮솰횲\uEAB4쒶쪸誺趼醾뗀믂뇄", int_0)*/;
+        LogData.LogInfo($"path : {path} string2: {c.string_2}");
+        if (File.Exists(path))
       File.Delete(path);
     using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.ASCII))
       streamWriter.WriteLine(c.string_7);

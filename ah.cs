@@ -90,21 +90,21 @@ public class ah : Form
         node1.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node2 = new TreeNode();
-    node2.Text = Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃", int_0);
+        node2.Text = "T-1000A"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃", int_0);
     this.treeView_0.Nodes.Add(node2);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃\uEBC5", int_0))
+      if (str != null && str.Substring(0, 8) == "T-1000A-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃\uEBC5", int_0)*/)
         node2.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node3 = new TreeNode();
-    node3.Text = Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃", int_0);
+        node3.Text = "T-1000B"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃", int_0);
     this.treeView_0.Nodes.Add(node3);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃\uEBC5", int_0))
+      if (str != null && str.Substring(0, 8) == "T-1000B-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃\uEBC5", int_0)*/)
         node3.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node4 = new TreeNode();
@@ -113,66 +113,66 @@ public class ah : Form
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5", int_0))
+      if (str != null && str.Substring(0, 8) == "T-1000S-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5", int_0)*/)
         node4.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node5 = new TreeNode();
-    node5.Text = Module.a("\uECB7鞹躻躽\uF0BF\uF2C1", int_0);
+        node5.Text = "T-2000"; // Module.a("\uECB7鞹躻躽\uF0BF\uF2C1", int_0);
     this.treeView_0.Nodes.Add(node5);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == Module.a("\uECB7鞹躻躽\uF0BF\uF2C1\uE9C3", int_0))
+      if (str != null && str.Substring(0, 7) == "T-2000-" /*Module.a("\uECB7鞹躻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
         node5.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node6 = new TreeNode();
-    node6.Text = Module.a("\uECB7鞹袻躽\uF0BF\uF2C1", int_0);
+        node6.Text = "T-4000"; //Module.a("\uECB7鞹袻躽\uF0BF\uF2C1", int_0);
     this.treeView_0.Nodes.Add(node6);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == Module.a("\uECB7鞹袻躽\uF0BF\uF2C1\uE9C3", int_0))
+      if (str != null && str.Substring(0, 7) == "T-4000-" /*Module.a("\uECB7鞹袻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
         node6.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node7 = new TreeNode();
-    node7.Text = Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1", int_0);
+        node7.Text = "T-8000"; // Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1", int_0);
     this.treeView_0.Nodes.Add(node7);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1\uE9C3", int_0))
+      if (str != null && str.Substring(0, 7) == "T-8000-" /*Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
         node7.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node8 = new TreeNode();
-    node8.Text = Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅", int_0);
+        node8.Text = "T-100K-B"; // Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅", int_0);
     this.treeView_0.Nodes.Add(node8);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 9) == Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅\uE5C7", int_0))
+      if (str != null && str.Substring(0, 9) == "T-100K-B-" /*Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅\uE5C7", int_0)*/)
         node8.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node9 = new TreeNode();
-    node9.Text = Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅", int_0);
+        node9.Text = "T-200K-B"; // Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅", int_0);
     this.treeView_0.Nodes.Add(node9);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 9) == Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅\uE5C7", int_0))
+      if (str != null && str.Substring(0, 9) == "T-200K-B-" /*Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅\uE5C7", int_0)*/)
         node9.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node10 = new TreeNode();
-    node10.Text = Module.a("\uECB7鞹辻躽\uF0BF见", int_0);
+        node10.Text = "T-300K"; // Module.a("\uECB7鞹辻躽\uF0BF见", int_0);
     this.treeView_0.Nodes.Add(node10);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == Module.a("\uECB7鞹辻躽\uF0BF见\uE9C3", int_0))
+      if (str != null && str.Substring(0, 7) == "T-300K-"/*Module.a("\uECB7鞹辻躽\uF0BF见\uE9C3", int_0)*/)
         node10.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     this.treeView_0.Nodes.Add(new TreeNode()
     {
-      Text = Module.a("\uECB7鞹袻躽\uF0BF见\uE4C3\uE6C5\uE8C7", int_0)
+      Text = "T-400K " //Module.a("\uECB7鞹袻躽\uF0BF见\uE4C3\uE6C5\uE8C7", int_0)
     });
     for (int index1 = 0; index1 < this.treeView_0.Nodes.Count; ++index1)
     {
@@ -180,7 +180,7 @@ public class ah : Form
       {
         for (int index2 = 0; index2 < this.treeView_0.Nodes[index1].Nodes.Count; ++index2)
         {
-          if (this.treeView_0.Nodes[index1].Nodes[index2].Text == Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5鷇觉鿋ￍ\uE9CF\uE2D1\uE7D3𥉉\uE9D7\uE3D9\uECDB\uEDDDꋟ컡헣\uDFE5\uD8E7폩샫\uDFED짯쏱웳", int_0))
+          if (this.treeView_0.Nodes[index1].Nodes[index2].Text == "T-1000S-UCS1903,1903B,1909,1912") // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5鷇觉鿋ￍ\uE9CF\uE2D1\uE7D3𥉉\uE9D7\uE3D9\uECDB\uEDDDꋟ컡헣\uDFE5\uD8E7폩샫\uDFED짯쏱웳", int_0))
           {
             this.treeView_0.SelectedNode = this.treeView_0.Nodes[0].Nodes[1];
             this.treeView_0.Focus();

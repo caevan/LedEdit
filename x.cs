@@ -98,7 +98,7 @@ public class x : Form
         this.label_1.Name = "label2"; //Module.a("용춫청햯\uDEB1蚳", 4);
     this.button_0.AccessibleDescription = (string) null;
     this.button_0.AccessibleName = (string) null;
- //   componentResourceManager.ApplyResources((object) this.button_0, Module.a("좩\uD9AB\uDAAD쒯\uDDB1\uDAB3螵", 4));
+ //   componentResourceManager.ApplyResources((object) this.OkButton, Module.a("좩\uD9AB\uDAAD쒯\uDDB1\uDAB3螵", 4));
         componentResourceManager.ApplyResources((object)this.button_0, "button1");
         this.button_0.BackgroundImage = (Image) null;
     this.button_0.Font = (Font) null;

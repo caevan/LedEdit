@@ -56,6 +56,9 @@
     <Reference Include="Microsoft.DirectX.DirectDraw">
       <HintPath>lib\Microsoft.DirectX.DirectDraw.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SwfDotNet.IO">
       <HintPath>lib\SwfDotNet.IO.dll</HintPath>
     </Reference>
@@ -203,7 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="a.resx" />
-    <EmbeddedResource Include="MessageDialog.resx" />
+    <EmbeddedResource Include="MessageDialog.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ab.resx" />
     <EmbeddedResource Include="ac.resx" />
     <EmbeddedResource Include="ad.resx" />
@@ -220,7 +225,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="d.resx" />
     <EmbeddedResource Include="e.resx" />
-    <EmbeddedResource Include="f.resx">
+    <EmbeddedResource Include="fold.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="g.resx" />
@@ -235,10 +240,15 @@
     <EmbeddedResource Include="LedEdit\Bitmap2.bmp" />
     <EmbeddedResource Include="m.resx" />
     <EmbeddedResource Include="n.resx" />
+    <EmbeddedResource Include="f.resx">
+      <DependentUpon>f.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="p.resx" />
     <EmbeddedResource Include="q.resx" />
     <EmbeddedResource Include="r.resx" />
-    <EmbeddedResource Include="s.resx" />
+    <EmbeddedResource Include="s.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="t.resx" />
     <EmbeddedResource Include="u.resx" />
     <EmbeddedResource Include="v.resx" />

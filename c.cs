@@ -737,6 +737,7 @@ public class c : Form
         this.panel_1.Location = new Point(155, 72);
     }
 
+    //  Consrtuctor
     public c()
     {
         int int_0 = 17;
@@ -968,19 +969,23 @@ public class c : Form
         }
         if (num == 0)
         {
-            c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘蟚뻜럞飠賢诤胦뛨\u9FEA駬雮臰雲ꫴ엶째쫺컼퇾甀笂焄", int_0, true);
+            c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\LedEdit_T_setting\\chyong_ttype_2013.txt";
+ //           c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘蟚뻜럞飠賢诤胦뛨\u9FEA駬雮臰雲ꫴ엶째쫺컼퇾甀笂焄", int_0, true);
             LogData.LogInfo($"In c num==0 - string_1: {string_1}");
-            c.string_2 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘", int_0);
+            c.string_2 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\LedEdit_T_setting"; //Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘", int_0);
             LogData.LogInfo($"In c num==0 - string_2: { string_2}");
+            var string3 = Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0, true);
+            LogData.LogInfo($"In c num==0 - string3: {string3}");
             if (!Directory.Exists(c.string_2))
                 Directory.CreateDirectory(c.string_2);
         }
         else
         {
-            c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0, true);
+            c.string_1 = "D:\\LedEdit_T_setting\\chyong_ttype_2013.txt"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0, true);
+ //           c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0, true);
             LogData.LogInfo($"In c num!=0 - string_1: {string_1}");
             //            c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0);
-            c.string_2 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜", int_0);
+            c.string_2 = "D:\\LedEdit_T_setting"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜", int_0);
             LogData.LogInfo($"In c num!=0 - string_2: {string_2}");
             if (!Directory.Exists(c.string_2))
                 Directory.CreateDirectory(c.string_2);
@@ -1003,7 +1008,7 @@ public class c : Form
         c.byte_14 = byte.MaxValue;
         c.byte_15 = byte.MaxValue;
         this.method_79();
-        string path2 = c.string_2 + Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
+        string path2 = c.string_2 + "\\en.txt";  //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
         if (System.IO.File.Exists(path2))
         {
             using (StreamReader streamReader = new StreamReader(path2, Encoding.ASCII))
@@ -1018,23 +1023,26 @@ public class c : Form
                 }
                 if (flag)
                 {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+ //                   Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
                     c.useEnglishLanguage = true;
                 }
                 else
                 {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0));
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
+//                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0));
                     c.useEnglishLanguage = false;
                 }
             }
         }
         else if (new h().ShowDialog() == DialogResult.OK)
         {
-            Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0)) : new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
+            Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo("zh-CN") : new CultureInfo("en-US");
+ //           Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0)) : new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
             using (StreamWriter streamWriter = new StreamWriter(path2, false, Encoding.ASCII))
                 streamWriter.WriteLine(c.useEnglishLanguage.ToString());
         }
-        string path3 = Application.StartupPath + Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
+        string path3 = Application.StartupPath + "\\en.txt"; //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
         try
         {
             if (System.IO.File.Exists(path3))
@@ -1045,11 +1053,14 @@ public class c : Form
         catch
         {
             if (c.useEnglishLanguage)
-                this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0));
+                this.ShowMessage("The software is running incorrectly, which will cause the Chinese interface and English interface to be unable to switch normally. Please uninstall the software.\r\n\r\n");
+         //       this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0));
+//            this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0));
             else
                 this.ShowMessage(Module.a("\uD839俶欵\uF134ꘫ\u2E4B\uEFC2\u1C4B솚㖓㽋\uEDCC\uE280嚵龧띃\uF7D6喌ﯚⱞ墻궕腵엤\uEAA8ᑨ袁햲\uE8BC鎓\uDFF2ɿ\uF1AA陷ප薯艱ⴀ㕳\u0B50쪗륭艑좄㽜唐쭤Ͷኖ尘썬ፈ鉏\uF4ABȢ", int_0));
         }
-        string path4 = Application.StartupPath + Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE럀ꛂ럄\uE9C6뷈돊만", int_0);
+ //       string path4 = Application.StartupPath + Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE럀ꛂ럄\uE9C6뷈돊만", int_0);
+        string path4 = Application.StartupPath + "\\SET\\ver.txt";
         if (System.IO.File.Exists(path4))
         {
             using (StreamReader streamReader = new StreamReader(path4, Encoding.ASCII))
@@ -1170,7 +1181,7 @@ public class c : Form
                 }
             }
         }
-        this.string_5 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object)'\\' + Module.a("쾶\uDBB8\uE4BA캼좾\uA7C0鳂ꛄ곆\uE7C8ꇊ뷌꣎", int_0);
+        this.string_5 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object)'\\' + "xb_swf_ck.jp";//Module.a("쾶\uDBB8\uE4BA캼좾\uA7C0鳂ꛄ곆\uE7C8ꇊ뷌꣎", int_0);
         this.color_0 = new Color[10];
         this.color_0[0] = Color.FromArgb(128, (int)byte.MaxValue, 128);
         this.color_0[1] = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, 128);
@@ -1465,7 +1476,9 @@ public class c : Form
         this.tabPage_0.SuspendLayout();
         this.tabPage_1.SuspendLayout();
         this.SuspendLayout();
-        componentResourceManager.ApplyResources((object)this.openFileDialog_0, Module.a("욨\uDBAA좬솮\uF7B0\uDAB2\uD9B4튶ﶸ튺\uDCBC펾껀꓂\uF4C4", 3));
+
+        #region Main menu 1
+        componentResourceManager.ApplyResources((object)this.openFileDialog_0, "openFileDialog1" /* Module.a("욨\uDBAA좬솮\uF7B0\uDAB2\uD9B4튶ﶸ튺\uDCBC펾껀꓂\uF4C4", 3) */);
         this.mainMenu_0.MenuItems.AddRange(new MenuItem[11]
         {
       this.menuItem_11,
@@ -1480,8 +1493,13 @@ public class c : Form
       this.menuItem_16,
       this.menuItem_24
         });
-        componentResourceManager.ApplyResources((object)this.mainMenu_0, Module.a("쒨쪪쒬솮ﲰ횲\uDBB4슶袸", 3));
-        componentResourceManager.ApplyResources((object)this.menuItem_11, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸", 3));
+        componentResourceManager.ApplyResources((object)this.mainMenu_0, "mainMenu1" /*Module.a("쒨쪪쒬솮ﲰ횲\uDBB4슶袸", 3)*/);
+        LogData.LogInfo($"menuItem_0 : {menuItem_0.Text}");
+
+        // Main Menu
+        //  File(&F)
+        componentResourceManager.ApplyResources((object)this.menuItem_11, "menuItem4" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸", 3)*/);
+        LogData.LogInfo($"menuItem_11 : {menuItem_11.Text}");
         this.menuItem_11.Index = 0;
         this.menuItem_11.MenuItems.AddRange(new MenuItem[4]
         {
@@ -1490,19 +1508,37 @@ public class c : Form
       this.menuItem_29,
       this.menuItem_0
         });
-        componentResourceManager.ApplyResources((object)this.menuItem_12, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸辺", 3));
+
+        // New Project(&N)...
+        componentResourceManager.ApplyResources((object)this.menuItem_12, "menuItem14"/*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸辺", 3)*/);
+        LogData.LogInfo($"menuItem_12 : {menuItem_12.Text}");
         this.menuItem_12.Index = 0;
         this.menuItem_12.Click += new EventHandler(this.menuItem_12_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_13, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸芺", 3));
+
+        // Open Project(&O)...
+        componentResourceManager.ApplyResources((object)this.menuItem_13, "menuItem19" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸芺", 3)*/);
+        LogData.LogInfo($"menuItem_13 : {menuItem_13.Text}");
         this.menuItem_13.Index = 1;
         this.menuItem_13.Click += new EventHandler(this.menuItem_13_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_29, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸貺", 3));
+
+        // Close Project(&C)
+        componentResourceManager.ApplyResources((object)this.menuItem_29, "menuItem37" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸貺", 3)*/);
+        LogData.LogInfo($"menuItem_29 : {menuItem_29.Text}");
         this.menuItem_29.Index = 2;
         this.menuItem_29.Click += new EventHandler(this.menuItem_29_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_0, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸", 3));
+
+        // Exit(&E)
+        componentResourceManager.ApplyResources((object)this.menuItem_0, "menuItem3" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸", 3)*/);
+        LogData.LogInfo($"menuItem_0 : {menuItem_0.Text}");
         this.menuItem_0.Index = 3;
         this.menuItem_0.Click += new EventHandler(this.menuItem_0_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_30, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸莺", 3));
+        #endregion
+
+        #region Main menu 2
+        // Main Menu - Menu 2
+        // Project Config (&C)
+        componentResourceManager.ApplyResources((object)this.menuItem_30, "menuItem38" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸莺", 3)*/);
+        LogData.LogInfo($"menuItem_30 : {menuItem_30.Text}");
         this.menuItem_30.Index = 1;
         this.menuItem_30.MenuItems.AddRange(new MenuItem[18]
         {
@@ -1525,70 +1561,135 @@ public class c : Form
       this.menuItem_97,
       this.menuItem_109
         });
-        componentResourceManager.ApplyResources((object)this.menuItem_72, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸誺", 3));
+
+
+        componentResourceManager.ApplyResources((object)this.menuItem_72, "menuItem71" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸誺", 3)*/);
+        LogData.LogInfo($"menuItem_71 : {menuItem_71.Text}");
         this.menuItem_72.Index = 0;
         this.menuItem_72.Click += new EventHandler(this.menuItem_72_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_73, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸覺", 3));
+
+        // Import(.cxb) (&C)
+        componentResourceManager.ApplyResources((object)this.menuItem_73, "menuItem82"  /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸覺", 3)*/);
+        LogData.LogInfo($"menuItem_73 : {menuItem_73.Text}");
         this.menuItem_73.Index = 1;
         this.menuItem_73.Click += new EventHandler(this.menuItem_73_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_14, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许誺", 3));
+
+        // Import(.dxf) (&E)...
+        componentResourceManager.ApplyResources((object)this.menuItem_14, "menuItem21" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许誺", 3)*/);
+        LogData.LogInfo($"menuItem_14 : {menuItem_14.Text}");
         this.menuItem_14.Index = 2;
         this.menuItem_14.Click += new EventHandler(this.menuItem_14_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_93, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论趼", 3));
+
+        // Import（CorelDRAW .Dxf）(&W)
+        componentResourceManager.ApplyResources((object)this.menuItem_93, "menuItem100" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论趼", 3)*/);
+        LogData.LogInfo($"menuItem_93 : {menuItem_93.Text}");
         this.menuItem_93.Index = 3;
         this.menuItem_93.Click += new EventHandler(this.menuItem_93_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_15, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许", 3));
+
+        // Auto Layout(&A)...
+        componentResourceManager.ApplyResources((object)this.menuItem_15, "menuItem2" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许", 3)*/);
+        LogData.LogInfo($"menuItem_15 : {menuItem_15.Text}");
         this.menuItem_15.Index = 4;
         this.menuItem_15.Click += new EventHandler(this.menuItem_15_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_74, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许论", 3));
+
+
+        componentResourceManager.ApplyResources((object)this.menuItem_74, "menuItem20" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许论", 3)*/);
+        LogData.LogInfo($"menuItem_74 : {menuItem_74.Text}");
         this.menuItem_74.Index = 5;
-        componentResourceManager.ApplyResources((object)this.menuItem_19, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许袺", 3));
+
+        // Frame Rate(&F)...
+        componentResourceManager.ApplyResources((object)this.menuItem_19, "menuItem23" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许袺", 3)*/);
+        LogData.LogInfo($"menuItem_19 : {menuItem_19.Text}");
         this.menuItem_19.Index = 6;
         this.menuItem_19.Click += new EventHandler(this.menuItem_19_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_38, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸趺", 3));
+
+        // Zoom(&Z)...
+        componentResourceManager.ApplyResources((object)this.menuItem_38, "menuItem46" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸趺", 3)*/);
+        LogData.LogInfo($"menuItem_38 : {menuItem_38.Text}");
         this.menuItem_38.Index = 7;
         this.menuItem_38.Click += new EventHandler(this.menuItem_38_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_57, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸貺", 3));
+
+        // Pixel(&R)
+        componentResourceManager.ApplyResources((object)this.menuItem_57, "menuItem67" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸貺", 3)*/);
+        LogData.LogInfo($"menuItem_57 : {menuItem_57.Text}");
         this.menuItem_57.Index = 8;
         this.menuItem_57.Click += new EventHandler(this.menuItem_57_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_63, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸莺", 3));
+
+        // Gamma and Brightness(G)
+        componentResourceManager.ApplyResources((object)this.menuItem_63, "menuItem68" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸莺", 3)*/);
+        LogData.LogInfo($"menuItem_63 : {menuItem_63.Text}");
         this.menuItem_63.Index = 9;
         this.menuItem_63.Click += new EventHandler(this.menuItem_63_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_75, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸誺", 3));
+
+        // Preferences(&P)...
+        componentResourceManager.ApplyResources((object)this.menuItem_75, "menuItem31" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸誺", 3)*/);
+        LogData.LogInfo($"menuItem_75 : {menuItem_75.Text}");
         this.menuItem_75.Index = 10;
         this.menuItem_75.Click += new EventHandler(this.menuItem_75_Click);
-        componentResourceManager.ApplyResources((object)this.menuItem_76, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸袺", 3));
+
+        // Language(&L)
+        componentResourceManager.ApplyResources((object)this.menuItem_76, "menuItem83" /* Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸袺", 3) */);
+        LogData.LogInfo($"menuItem_76 : {menuItem_76.Text}");
         this.menuItem_76.Index = 11;
         this.menuItem_76.MenuItems.AddRange(new MenuItem[2]
         {
       this.menuItem_77,
       this.menuItem_78
         });
+        //&Chinese
         componentResourceManager.ApplyResources((object)this.menuItem_77, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸辺", 3));
+        LogData.LogInfo($"menuItem77 : {menuItem_77.Text}" );
         this.menuItem_77.Index = 0;
         this.menuItem_77.Click += new EventHandler(this.menuItem_77_Click);
+
+        // &English
         componentResourceManager.ApplyResources((object)this.menuItem_78, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸躺", 3));
+        LogData.LogInfo($"menuItem78 : {menuItem_78.Text}");
         this.menuItem_78.Index = 1;
         this.menuItem_78.Click += new EventHandler(this.menuItem_78_Click);
+
+        // Refresh(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_83, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸论", 3));
+        LogData.LogInfo($"menuItem83 : {menuItem_83.Text}");
         this.menuItem_83.Index = 12;
         this.menuItem_83.Click += new EventHandler(this.menuItem_83_Click);
+
+        // Set the controller number(&N)...
         componentResourceManager.ApplyResources((object)this.menuItem_84, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸誺", 3));
+        LogData.LogInfo($"menuItem84 : {menuItem_84.Text}");
         this.menuItem_84.Index = 13;
         this.menuItem_84.Click += new EventHandler(this.menuItem_84_Click);
+
+        // Controller encryption...
         componentResourceManager.ApplyResources((object)this.menuItem_85, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸覺", 3));
+        LogData.LogInfo($"menuItem85 : {menuItem_85.Text}");
         this.menuItem_85.Index = 14;
         this.menuItem_85.Click += new EventHandler(this.menuItem_85_Click);
+
+        // Setting current...
         componentResourceManager.ApplyResources((object)this.menuItem_87, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸辺", 3));
+        LogData.LogInfo($"menuItem87 : {menuItem_87.Text}");
         this.menuItem_87.Index = 15;
         this.menuItem_87.Click += new EventHandler(this.menuItem_87_Click);
+
+        // Set time(&T)...
         componentResourceManager.ApplyResources((object)this.menuItem_97, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论覼", 3));
+        LogData.LogInfo($"menuItem97 : {menuItem_97.Text}");
         this.menuItem_97.Index = 16;
         this.menuItem_97.Click += new EventHandler(this.menuItem_97_Click);
+
+        // DMX address setting...
         componentResourceManager.ApplyResources((object)this.menuItem_109, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺趼", 3));
+        LogData.LogInfo($"menuItem109 : {menuItem_109.Text}");
         this.menuItem_109.Index = 17;
         this.menuItem_109.Click += new EventHandler(this.menuItem_109_Click);
+        #endregion
+
+        #region Main menu - 3
+        // Main Menu - menu 3
+        // Video Effect(&F)
         componentResourceManager.ApplyResources((object)this.menuItem_22, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸覺", 3));
+        LogData.LogInfo($"menuItem22 : {menuItem_22.Text}");
         this.menuItem_22.Index = 2;
         this.menuItem_22.MenuItems.AddRange(new MenuItem[29]
         {
@@ -1623,90 +1724,182 @@ public class c : Form
       this.menuItem_61
         });
         this.menuItem_22.Popup += new EventHandler(this.menuItem_22_Popup);
+
+        // Open Video(&O)...
         componentResourceManager.ApplyResources((object)this.menuItem_8, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸", 3));
+        LogData.LogInfo($"menuItem8 : {menuItem_8.Text}");
         this.menuItem_8.Index = 0;
         this.menuItem_8.Click += new EventHandler(this.menuItem_8_Click);
+
+        // Open swf(&S)   
         componentResourceManager.ApplyResources((object)this.menuItem_96, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论躼", 3));
+        LogData.LogInfo($"menuItem96 : {menuItem_96.Text}");
         this.menuItem_96.Index = 1;
         this.menuItem_96.Click += new EventHandler(this.menuItem_96_Click);
+
+        // Open tol(&T)...       
         componentResourceManager.ApplyResources((object)this.menuItem_92, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸芺", 3));
+        LogData.LogInfo($"menuItem92 : {menuItem_92.Text}");
         this.menuItem_92.Index = 2;
         this.menuItem_92.Click += new EventHandler(this.menuItem_92_Click);
+
+        // Close Video/Default Effect/tol(&C)
         componentResourceManager.ApplyResources((object)this.menuItem_9, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸袺", 3));
+        LogData.LogInfo($"menuItem9 : {menuItem_9.Text}");
         this.menuItem_9.Index = 3;
         this.menuItem_9.Click += new EventHandler(this.menuItem_9_Click);
+ 
+        
         componentResourceManager.ApplyResources((object)this.menuItem_103, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺貼", 3));
+        LogData.LogInfo($"menuItem103 : {menuItem_103.Text}");
         this.menuItem_103.Index = 4;
+
+        // Speed +  F6
         componentResourceManager.ApplyResources((object)this.menuItem_70, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸论", 3));
+        LogData.LogInfo($"menuItem70 : {menuItem_70.Text}");
         this.menuItem_70.Index = 5;
         this.menuItem_70.Click += new EventHandler(this.menuItem_70_Click);
+
+        // Speed -  F7
         componentResourceManager.ApplyResources((object)this.menuItem_71, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸誺", 3));
+        LogData.LogInfo($"menuItem71 : {menuItem_71.Text}");
         this.menuItem_71.Index = 6;
         this.menuItem_71.Click += new EventHandler(this.menuItem_71_Click);
+
+        // -
         componentResourceManager.ApplyResources((object)this.menuItem_66, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸趺", 3));
+        LogData.LogInfo($"menuItem66 : {menuItem_66.Text}");
         this.menuItem_66.Index = 7;
+
+        // White Gray
         componentResourceManager.ApplyResources((object)this.menuItem_42, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸覺", 3));
+        LogData.LogInfo($"menuItem42 : {menuItem_42.Text}");
         this.menuItem_42.Index = 8;
         this.menuItem_42.Click += new EventHandler(this.menuItem_42_Click);
+
+        // Red Gray
         componentResourceManager.ApplyResources((object)this.menuItem_43, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸袺", 3));
+        LogData.LogInfo($"menuItem43 : {menuItem_43.Text}");
         this.menuItem_43.Index = 9;
         this.menuItem_43.Click += new EventHandler(this.menuItem_43_Click);
+
+        // Green Gray
         componentResourceManager.ApplyResources((object)this.menuItem_44, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸辺", 3));
+        LogData.LogInfo($"menuItem44 : {menuItem_44.Text}");
         this.menuItem_44.Index = 10;
         this.menuItem_44.Click += new EventHandler(this.menuItem_44_Click);
+
+        // Blue Gray
         componentResourceManager.ApplyResources((object)this.menuItem_45, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸躺", 3));
+        LogData.LogInfo($"menuItem45 : {menuItem_45.Text}");
         this.menuItem_45.Index = 11;
         this.menuItem_45.Click += new EventHandler(this.menuItem_45_Click);
+ 
         componentResourceManager.ApplyResources((object)this.menuItem_46, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸趺", 3));
+        LogData.LogInfo($"menuItem46 : {menuItem_46.Text}");
         this.menuItem_46.Index = 12;
         this.menuItem_46.Click += new EventHandler(this.menuItem_46_Click);
+
+        // -
         componentResourceManager.ApplyResources((object)this.menuItem_69, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸芺", 3));
+        LogData.LogInfo($"menuItem69 : {menuItem_69.Text}");
         this.menuItem_69.Index = 13;
+
+        // Color change
         componentResourceManager.ApplyResources((object)this.menuItem_88, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸躺", 3));
+        LogData.LogInfo($"menuItem88 : {menuItem_88.Text}");
         this.menuItem_88.Index = 14;
         this.menuItem_88.Click += new EventHandler(this.menuItem_88_Click);
+
+        // Color gradient
         componentResourceManager.ApplyResources((object)this.menuItem_89, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸趺", 3));
+        LogData.LogInfo($"menuItem89 : {menuItem_89.Text}");
         this.menuItem_89.Index = 15;
         this.menuItem_89.Click += new EventHandler(this.menuItem_89_Click);
+
+        // Passage
         componentResourceManager.ApplyResources((object)this.menuItem_90, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸貺", 3));
+        LogData.LogInfo($"menuItem90 : {menuItem_90.Text}");
         this.menuItem_90.Index = 16;
         this.menuItem_90.Click += new EventHandler(this.menuItem_90_Click);
         componentResourceManager.ApplyResources((object)this.menuItem_60, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸辺", 3));
+
+        // -
+        LogData.LogInfo($"menuItem60 : {menuItem_60.Text}");
         this.menuItem_60.Index = 17;
+
+        // Move upward
         componentResourceManager.ApplyResources((object)this.menuItem_47, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸貺", 3));
+        LogData.LogInfo($"menuItem47 : {menuItem_47.Text}");
         this.menuItem_47.Index = 18;
         this.menuItem_47.Click += new EventHandler(this.menuItem_47_Click);
+
+        // Move down
         componentResourceManager.ApplyResources((object)this.menuItem_48, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸莺", 3));
+        LogData.LogInfo($"menuItem48 : {menuItem_48.Text}");
         this.menuItem_48.Index = 19;
         this.menuItem_48.Click += new EventHandler(this.menuItem_48_Click);
+
+        // Move left
         componentResourceManager.ApplyResources((object)this.menuItem_49, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸芺", 3));
+        LogData.LogInfo($"menuItem49 : {menuItem_49.Text}");
         this.menuItem_49.Index = 20;
         this.menuItem_49.Click += new EventHandler(this.menuItem_49_Click);
+
+        // Move right
         componentResourceManager.ApplyResources((object)this.menuItem_50, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸论", 3));
+        LogData.LogInfo($"menuItem50 : {menuItem_50.Text}");
         this.menuItem_50.Index = 21;
         this.menuItem_50.Click += new EventHandler(this.menuItem_50_Click);
+
+        // Elliptic diffusion
         componentResourceManager.ApplyResources((object)this.menuItem_51, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸誺", 3));
+        LogData.LogInfo($"menuItem51 : {menuItem_51.Text}");
         this.menuItem_51.Index = 22;
         this.menuItem_51.Click += new EventHandler(this.menuItem_51_Click);
+
+        // Elliptic contraction
         componentResourceManager.ApplyResources((object)this.menuItem_52, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸覺", 3));
+        LogData.LogInfo($"menuItem52 : {menuItem_52.Text}");
         this.menuItem_52.Index = 23;
         this.menuItem_52.Click += new EventHandler(this.menuItem_52_Click);
+
+        // Rectangular diffusion
         componentResourceManager.ApplyResources((object)this.menuItem_53, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸袺", 3));
+        LogData.LogInfo($"menuItem_53 : {menuItem_53.Text}");
         this.menuItem_53.Index = 24;
         this.menuItem_53.Click += new EventHandler(this.menuItem_53_Click);
+
+        // Rectangular contraction
         componentResourceManager.ApplyResources((object)this.menuItem_54, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸辺", 3));
+        LogData.LogInfo($"menuItem_64 : {menuItem_54.Text}");
         this.menuItem_54.Index = 25;
         this.menuItem_54.Click += new EventHandler(this.menuItem_54_Click);
+
+        // Double angel close
         componentResourceManager.ApplyResources((object)this.menuItem_55, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸躺", 3));
+        LogData.LogInfo($"menuItem54 : {menuItem_55.Text}");
         this.menuItem_55.Index = 26;
         this.menuItem_55.Click += new EventHandler(this.menuItem_55_Click);
+
+        // Double angel open
         componentResourceManager.ApplyResources((object)this.menuItem_56, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸趺", 3));
+        LogData.LogInfo($"menuItem56 : {menuItem_56.Text}");
         this.menuItem_56.Index = 27;
         this.menuItem_56.Click += new EventHandler(this.menuItem_56_Click);
+
+        // More Effect...
         componentResourceManager.ApplyResources((object)this.menuItem_61, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸袺", 3));
+        LogData.LogInfo($"menuItem61 : {menuItem_61.Text}");
         this.menuItem_61.Index = 28;
         this.menuItem_61.Click += new EventHandler(this.menuItem_61_Click);
+        #endregion
+
+        #region Main menu 4
+        // Main Menu - menu 4
+        // Screen Shot(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_23, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸袺", 3));
+        LogData.LogInfo($"menuItem23 : {menuItem_23.Text}");
         this.menuItem_23.Index = 3;
         this.menuItem_23.MenuItems.AddRange(new MenuItem[5]
         {
@@ -1717,22 +1910,43 @@ public class c : Form
       this.menuItem_82
         });
         this.menuItem_23.Popup += new EventHandler(this.menuItem_23_Popup);
+
+        //  Open(&O)...
         componentResourceManager.ApplyResources((object)this.menuItem_1, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸", 3));
+        LogData.LogInfo($"menuItem_1 : {menuItem_1.Text}");
         this.menuItem_1.Index = 0;
         this.menuItem_1.Click += new EventHandler(this.menuItem_1_Click);
+
+        // Close(&C)
         componentResourceManager.ApplyResources((object)this.menuItem_7, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸", 3));
+        LogData.LogInfo($"menuItem_7 : {menuItem_7.Text}");
         this.menuItem_7.Index = 1;
         this.menuItem_7.Click += new EventHandler(this.menuItem_7_Click);
+
+        // Set Screen...(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_80, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸貺", 3));
+        LogData.LogInfo($"menuItem_80 : {menuItem_80.Text}");
         this.menuItem_80.Index = 2;
         this.menuItem_80.Click += new EventHandler(this.menuItem_80_Click);
+
+        // Transparent(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_81, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸莺", 3));
+        LogData.LogInfo($"menuItem_81 : {menuItem_81.Text}");
         this.menuItem_81.Index = 3;
         this.menuItem_81.Click += new EventHandler(this.menuItem_81_Click);
+
+        // Opaque(&N)
         componentResourceManager.ApplyResources((object)this.menuItem_82, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸芺", 3));
+        LogData.LogInfo($"menuItem_82 : {menuItem_82.Text}");
         this.menuItem_82.Index = 4;
         this.menuItem_82.Click += new EventHandler(this.menuItem_82_Click);
+        #endregion
+
+        #region Main menu 5
+        // Main Menu - menu 5
+        // Text Input(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_104, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸貺", 3));
+        LogData.LogInfo($"menuItem_104 : {menuItem_104.Text}");
         this.menuItem_104.Index = 4;
         this.menuItem_104.MenuItems.AddRange(new MenuItem[2]
         {
@@ -1740,13 +1954,25 @@ public class c : Form
       this.menuItem_106
         });
         this.menuItem_104.Popup += new EventHandler(this.menuItem_104_Popup);
+
+        // Open Text Panel(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_105, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸躺", 3));
+        LogData.LogInfo($"menuItem_105 : {menuItem_105.Text}");
         this.menuItem_105.Index = 0;
         this.menuItem_105.Click += new EventHandler(this.menuItem_105_Click);
+
+        // Close Text Panel(&M)
         componentResourceManager.ApplyResources((object)this.menuItem_106, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸趺", 3));
+        LogData.LogInfo($"menuItem_106 : {menuItem_106.Text}");
         this.menuItem_106.Index = 1;
         this.menuItem_106.Click += new EventHandler(this.menuItem_106_Click);
+        #endregion
+
+        #region Main menu 6
+        // Main Menu - menu 6
+        //  Record(&R)
         componentResourceManager.ApplyResources((object)this.menuItem_2, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸", 3));
+        LogData.LogInfo($"menuItem_2 : {menuItem_2.Text}");
         this.menuItem_2.Index = 5;
         this.menuItem_2.MenuItems.AddRange(new MenuItem[7]
         {
@@ -1758,28 +1984,55 @@ public class c : Form
       this.menuItem_94,
       this.menuItem_67
         });
+
+        //  null(&N)
         componentResourceManager.ApplyResources((object)this.menuItem_10, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸莺", 3));
+        LogData.LogInfo($"menuItem_10 : {menuItem_10.Text}");
         this.menuItem_10.Index = 0;
         this.menuItem_10.Click += new EventHandler(this.menuItem_10_Click);
+
+        // Record(&A)
         componentResourceManager.ApplyResources((object)this.menuItem_20, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许辺", 3));
+        LogData.LogInfo($"menuItem_20 : {menuItem_20.Text}");
         this.menuItem_20.Index = 1;
         this.menuItem_20.Click += new EventHandler(this.menuItem_20_Click);
+
+        // Stop(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_3, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论", 3));
+        LogData.LogInfo($"menuItem_3 : {menuItem_3.Text}");
         this.menuItem_3.Index = 2;
         this.menuItem_3.Click += new EventHandler(this.menuItem_3_Click);
+
+        // null (&D)
         componentResourceManager.ApplyResources((object)this.menuItem_113, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许躺", 3));
+        LogData.LogInfo($"menuItem_113 : {menuItem_113.Text}");
         this.menuItem_113.Index = 3;
         this.menuItem_113.Click += new EventHandler(this.menuItem_113_Click);
+
+        // Recording current swf/tol(&C)
         componentResourceManager.ApplyResources((object)this.menuItem_21, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸论", 3));
+        LogData.LogInfo($"menuItem_21 : {menuItem_21.Text}");
         this.menuItem_21.Index = 4;
         this.menuItem_21.Click += new EventHandler(this.menuItem_21_Click);
+
+        // Fast recording.swf/.tol(&K)
         componentResourceManager.ApplyResources((object)this.menuItem_94, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论貼", 3));
+        LogData.LogInfo($"menuItem_94 : {menuItem_94.Text}");
         this.menuItem_94.Index = 5;
         this.menuItem_94.Click += new EventHandler(this.menuItem_94_Click);
+
+        // Clear(&E)
         componentResourceManager.ApplyResources((object)this.menuItem_67, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸誺", 3));
+        LogData.LogInfo($"menuItem_67 : {menuItem_67.Text}");
         this.menuItem_67.Index = 6;
         this.menuItem_67.Click += new EventHandler(this.menuItem_67_Click);
+        #endregion
+
+        #region Main menu 7
+        // Main Menu - menu 7
+        // Edit/Preview(&P)
         componentResourceManager.ApplyResources((object)this.menuItem_4, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺", 3));
+        LogData.LogInfo($"menuItem_4 : {menuItem_4.Text}");
         this.menuItem_4.Index = 6;
         this.menuItem_4.MenuItems.AddRange(new MenuItem[15]
         {
@@ -1799,50 +2052,100 @@ public class c : Form
       this.menuItem_101,
       this.menuItem_102
         });
+
+        // Edit/Preview(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_5, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸躺", 3));
+        LogData.LogInfo($"menuItem_5 : {menuItem_5.Text}");
         this.menuItem_5.Index = 0;
         this.menuItem_5.Click += new EventHandler(this.menuItem_5_Click);
+
+        // Exit&T)
         componentResourceManager.ApplyResources((object)this.menuItem_6, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸覺", 3));
+        LogData.LogInfo($"menuItem_6 : {menuItem_6.Text}");
         this.menuItem_6.Index = 1;
         this.menuItem_6.Click += new EventHandler(this.menuItem_6_Click);
+
+        // Pause(&P)
         componentResourceManager.ApplyResources((object)this.menuItem_25, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许貺", 3));
+        LogData.LogInfo($"menuItem_25 : {menuItem_25.Text}");
         this.menuItem_25.Index = 2;
         this.menuItem_25.Click += new EventHandler(this.menuItem_25_Click);
+
+        // Play(&G)
         componentResourceManager.ApplyResources((object)this.menuItem_28, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸趺", 3));
+        LogData.LogInfo($"menuItem_28 : {menuItem_28.Text}");
         this.menuItem_28.Index = 3;
         this.menuItem_28.Click += new EventHandler(this.menuItem_28_Click);
+
+        // Previous(&L)
         componentResourceManager.ApplyResources((object)this.menuItem_26, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸辺", 3));
+        LogData.LogInfo($"menuItem_26 : {menuItem_26.Text}");
         this.menuItem_26.Index = 4;
         this.menuItem_26.Click += new EventHandler(this.menuItem_26_Click);
+
+        // Next(&N)
         componentResourceManager.ApplyResources((object)this.menuItem_27, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸躺", 3));
+        LogData.LogInfo($"menuItem_27 : {menuItem_27.Text}");
         this.menuItem_27.Index = 5;
         this.menuItem_27.Click += new EventHandler(this.menuItem_27_Click);
+
+        // Save(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_31, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸誺", 3));
+        LogData.LogInfo($"menuItem_31 : {menuItem_31.Text}");
         this.menuItem_31.Index = 6;
         this.menuItem_31.Click += new EventHandler(this.menuItem_31_Click);
+
+        // Clear(&E)
         componentResourceManager.ApplyResources((object)this.menuItem_68, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸莺", 3));
+        LogData.LogInfo($"menuItem_68 : {menuItem_68.Text}");
         this.menuItem_68.Index = 7;
         this.menuItem_68.Click += new EventHandler(this.menuItem_68_Click);
+
+        // Text input(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_108, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸貺", 3));
+        LogData.LogInfo($"menuItem_108 : {menuItem_108.Text}");
         this.menuItem_108.Index = 8;
+
+        // -
         componentResourceManager.ApplyResources((object)this.menuItem_107, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许覺", 3));
+        LogData.LogInfo($"menuItem_107 : {menuItem_107.Text}");
         this.menuItem_107.Index = 9;
+
+        // Cut(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_98, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论袼", 3));
+        LogData.LogInfo($"menuItem_98 : {menuItem_98.Text}");
         this.menuItem_98.Index = 10;
         this.menuItem_98.Click += new EventHandler(this.menuItem_98_Click);
+
+        //  Copy(&C)
         componentResourceManager.ApplyResources((object)this.menuItem_99, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论讼", 3));
+        LogData.LogInfo($"menuItem_99 : {menuItem_99.Text}");
         this.menuItem_99.Index = 11;
         this.menuItem_99.Click += new EventHandler(this.menuItem_99_Click);
+
+        // Paste(&P)
         componentResourceManager.ApplyResources((object)this.menuItem_100, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论誼", 3));
+        LogData.LogInfo($"menuItem_100 : {menuItem_100.Text}");
         this.menuItem_100.Index = 12;
         this.menuItem_100.Click += new EventHandler(this.menuItem_100_Click);
+
+        // Delete(&D)
         componentResourceManager.ApplyResources((object)this.menuItem_101, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论薼", 3));
+        LogData.LogInfo($"menuItem_101 : {menuItem_101.Text}");
         this.menuItem_101.Index = 13;
         this.menuItem_101.Click += new EventHandler(this.menuItem_101_Click);
+
+        // Undo(&U)
         componentResourceManager.ApplyResources((object)this.menuItem_102, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论蒼", 3));
+        LogData.LogInfo($"menuItem_102 : {menuItem_102.Text}");
         this.menuItem_102.Index = 14;
         this.menuItem_102.Click += new EventHandler(this.menuItem_102_Click);
+        #endregion
+
+        #region Main menu 8
+        //  Auto Play(&L)
         componentResourceManager.ApplyResources((object)this.menuItem_32, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸覺", 3));
+        LogData.LogInfo($"menuItem_32 : {menuItem_32.Text}");
         this.menuItem_32.Index = 7;
         this.menuItem_32.MenuItems.AddRange(new MenuItem[9]
         {
@@ -1856,34 +2159,67 @@ public class c : Form
       this.menuItem_111,
       this.menuItem_112
         });
+
+        // Play(&P)
         componentResourceManager.ApplyResources((object)this.menuItem_33, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸芺", 3));
+        LogData.LogInfo($"menuItem_33 : {menuItem_33.Text}");
         this.menuItem_33.Index = 0;
         this.menuItem_33.Click += new EventHandler(this.menuItem_33_Click);
+
+        // 
         componentResourceManager.ApplyResources((object)this.menuItem_34, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸论", 3));
+        LogData.LogInfo($"menuItem_34 : {menuItem_34.Text}");
         this.menuItem_34.Index = 1;
         this.menuItem_34.Click += new EventHandler(this.menuItem_34_Click);
+
+        // Stop PC syn(&C)
         componentResourceManager.ApplyResources((object)this.menuItem_39, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸貺", 3));
+        LogData.LogInfo($"menuItem_39 : {menuItem_39.Text}");
         this.menuItem_39.Index = 2;
         this.menuItem_39.Click += new EventHandler(this.menuItem_39_Click);
+
+        // Start PC syn(&O) 
         componentResourceManager.ApplyResources((object)this.menuItem_40, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸莺", 3));
+        LogData.LogInfo($"menuItem_40 : {menuItem_40.Text}");
         this.menuItem_40.Index = 3;
         this.menuItem_40.Click += new EventHandler(this.menuItem_40_Click);
+
+        // Download...(&L)
         componentResourceManager.ApplyResources((object)this.menuItem_41, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸芺", 3));
+        LogData.LogInfo($"menuItem_41 : {menuItem_41.Text}");
         this.menuItem_41.Index = 4;
         this.menuItem_41.Click += new EventHandler(this.menuItem_41_Click);
+
+        // Reset Controller(&A)
         componentResourceManager.ApplyResources((object)this.menuItem_58, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸芺", 3));
+        LogData.LogInfo($"menuItem_58 : {menuItem_58.Text}");
         this.menuItem_58.Index = 5;
         this.menuItem_58.Click += new EventHandler(this.menuItem_58_Click);
+
+        // DMX addressing(&D)
         componentResourceManager.ApplyResources((object)this.menuItem_110, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺込", 3));
+        LogData.LogInfo($"menuItem_110 : {menuItem_110.Text}");
         this.menuItem_110.Index = 6;
         this.menuItem_110.Click += new EventHandler(this.menuItem_110_Click);
+
+        // Disable the offline player(&I)
         componentResourceManager.ApplyResources((object)this.menuItem_111, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺躼", 3));
+        LogData.LogInfo($"menuItem_111 : {menuItem_111.Text}");
         this.menuItem_111.Index = 7;
         this.menuItem_111.Click += new EventHandler(this.menuItem_111_Click);
+
+        // Enable the offline player(&E)
         componentResourceManager.ApplyResources((object)this.menuItem_112, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺覼", 3));
+        LogData.LogInfo($"menuItem_112 : {menuItem_112.Text}");
         this.menuItem_112.Index = 8;
         this.menuItem_112.Click += new EventHandler(this.menuItem_112_Click);
+        #endregion
+
+#region Main menu 9
+
+        // Realtime Play(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_35, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸袺", 3));
+        LogData.LogInfo($"menuItem_35 : {menuItem_35.Text}");
         this.menuItem_35.Index = 8;
         this.menuItem_35.MenuItems.AddRange(new MenuItem[3]
         {
@@ -1891,16 +2227,30 @@ public class c : Form
       this.menuItem_62,
       this.menuItem_37
         });
+
+        //Play(&R)
         componentResourceManager.ApplyResources((object)this.menuItem_36, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸辺", 3));
+        LogData.LogInfo($"menuItem_36 : {menuItem_36.Text}");
         this.menuItem_36.Index = 0;
         this.menuItem_36.Click += new EventHandler(this.menuItem_36_Click);
+
+        // Screen Realtime Play(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_62, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6貸论", 3));
+        LogData.LogInfo($"menuItem_62 : {menuItem_62.Text}");
         this.menuItem_62.Index = 1;
         this.menuItem_62.Click += new EventHandler(this.menuItem_62_Click);
+
+        // Stop(&S)
         componentResourceManager.ApplyResources((object)this.menuItem_37, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6趸躺", 3));
+        LogData.LogInfo($"menuItem_37 : {menuItem_37.Text}");
         this.menuItem_37.Index = 2;
         this.menuItem_37.Click += new EventHandler(this.menuItem_37_Click);
+        #endregion
+
+        #region Export Menu
+        // Export(&O)
         componentResourceManager.ApplyResources((object)this.menuItem_16, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许趺", 3));
+        LogData.LogInfo($"menuItem_16 : {menuItem_16.Text}");
         this.menuItem_16.Index = 9;
         this.menuItem_16.MenuItems.AddRange(new MenuItem[7]
         {
@@ -1912,46 +2262,86 @@ public class c : Form
       this.menuItem_91,
       this.menuItem_95
         });
+
+        // Export Effect(.led)...(&E)
         componentResourceManager.ApplyResources((object)this.menuItem_59, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸论", 3));
+        LogData.LogInfo($"menuItem_59 : {menuItem_59.Text}");
         this.menuItem_59.Index = 0;
         this.menuItem_59.Click += new EventHandler(this.menuItem_59_Click);
+
+        // Export Instruction(&S)...
         componentResourceManager.ApplyResources((object)this.menuItem_17, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许芺", 3));
+        LogData.LogInfo($"menuItem_17 : {menuItem_17.Text}");
         this.menuItem_17.Index = 1;
         this.menuItem_17.Click += new EventHandler(this.menuItem_17_Click);
+
+        // Export Preview SWF...(&F)
         componentResourceManager.ApplyResources((object)this.menuItem_86, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸袺", 3));
+        LogData.LogInfo($"menuItem_86 : {menuItem_86.Text}");
         this.menuItem_86.Index = 2;
         this.menuItem_86.Click += new EventHandler(this.menuItem_86_Click);
+
+        // Export Preview AVI...(&G)
         componentResourceManager.ApplyResources((object)this.menuItem_64, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸", 3));
+        LogData.LogInfo($"menuItem_64 : {menuItem_64.Text}");
         this.menuItem_64.Index = 3;
         this.menuItem_64.Click += new EventHandler(this.menuItem_64_Click);
+
+        // Export LayOut File(&DXF)
         componentResourceManager.ApplyResources((object)this.menuItem_79, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸趺", 3));
+        LogData.LogInfo($"menuItem_79 : {menuItem_79.Text}");
         this.menuItem_79.Index = 4;
         this.menuItem_79.Click += new EventHandler(this.menuItem_79_Click);
+
+        //  Export Reference BMP(&T)
         componentResourceManager.ApplyResources((object)this.menuItem_91, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸莺", 3));
+        LogData.LogInfo($"menuItem_91 : {menuItem_91.Text}");
         this.menuItem_91.Index = 5;
         this.menuItem_91.Click += new EventHandler(this.menuItem_91_Click);
+
+        // Export Offline player file(.BIN)...(&B)
         componentResourceManager.ApplyResources((object)this.menuItem_95, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论込", 3));
+        LogData.LogInfo($"menuItem_95 : {menuItem_95.Text}");
         this.menuItem_95.Index = 6;
         this.menuItem_95.Click += new EventHandler(this.menuItem_95_Click);
+        #endregion
+
+        #region Help Menu
+        //  Help(&H)
         componentResourceManager.ApplyResources((object)this.menuItem_24, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6辸", 3));
+        LogData.LogInfo($"menuItem_24 : {menuItem_24.Text}");
         this.menuItem_24.Index = 10;
         this.menuItem_24.MenuItems.AddRange(new MenuItem[2]
         {
       this.menuItem_65,
       this.menuItem_18
         });
+
+        // Help(&E)...
         componentResourceManager.ApplyResources((object)this.menuItem_65, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸覺", 3));
+        LogData.LogInfo($"menuItem_65 : {menuItem_65.Text}");
         this.menuItem_65.Index = 0;
         this.menuItem_65.Click += new EventHandler(this.menuItem_65_Click);
+
+        // About(&A)...
         componentResourceManager.ApplyResources((object)this.menuItem_18, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许莺", 3));
+        LogData.LogInfo($"menuItem_18 : {menuItem_18.Text}");
         this.menuItem_18.Index = 1;
         this.menuItem_18.Click += new EventHandler(this.menuItem_18_Click);
+        #endregion
+
         componentResourceManager.ApplyResources((object)this.saveFileDialog_0, Module.a("\uDAA8쪪\uDBAC쪮\uF7B0\uDAB2\uD9B4튶ﶸ튺\uDCBC펾껀꓂\uF4C4", 3));
+        LogData.LogInfo($"this.saveFileDialog_0 : {Module.a("\uDAA8쪪\uDBAC쪮\uF7B0\uDAB2\uD9B4튶ﶸ튺\uDCBC펾껀꓂\uF4C4", 3)}");
         this.panel_0.AccessibleDescription = (string)null;
         this.panel_0.AccessibleName = (string)null;
+
+ 
         componentResourceManager.ApplyResources((object)this.panel_0, Module.a("\uD9A8쪪쎬쪮\uDDB0芲", 3));
+        LogData.LogInfo($"panel_0 : {Module.a("\uD9A8쪪쎬쪮\uDDB0芲", 3)}");
         this.panel_0.BackgroundImage = (Image)null;
         this.panel_0.Font = (Font)null;
+
+        LogData.LogInfo($"panel_0.Name : {Module.a("\uD9A8쪪쎬쪮\uDDB0芲", 3)}");
         this.panel_0.Name = Module.a("\uD9A8쪪쎬쪮\uDDB0芲", 3);
         this.panel_0.Paint += new PaintEventHandler(this.panel_0_Paint);
         this.panel_0.MouseDown += new MouseEventHandler(this.panel_0_MouseDown);
@@ -14930,6 +15320,7 @@ public class c : Form
         this.a_0.method_1();
     }
 
+    // Export Led file
     private void menuItem_59_Click(object sender, EventArgs e)
     {
         int int_0 = 9;
@@ -14939,10 +15330,10 @@ public class c : Form
             {
                 if (c.useEnglishLanguage)
                 {
-                    this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + Module.a("솮\uDEB0鎲잴튶\uDAB8풺쾼\uDBBEꣀ귂ꋄ\uE6C6", int_0));
+                    this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "no recording!"); //Module.a("솮\uDEB0鎲잴튶\uDAB8풺쾼\uDBBEꣀ귂ꋄ\uE6C6", int_0)); // ;
                     return;
                 }
-                this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + Module.a("俋\uE4EF藠ュ\u0EED颸", int_0));
+                this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "无录制内容!"); // Module.a("俋\uE4EF藠ュ\u0EED颸", int_0));
                 return;
             }
         }
@@ -14957,7 +15348,7 @@ public class c : Form
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
                 return;
-            string path = folderBrowserDialog.SelectedPath + Module.a("\uF3AEﶰ횲톴", int_0);
+            string path = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", int_0);
             if (Directory.Exists(path))
                 Directory.Delete(path, true);
             Directory.CreateDirectory(path);
@@ -14972,9 +15363,9 @@ public class c : Form
                     this.method_40(str1, string_25);
                     ((GClass5)c.arrayList_4[c.int_38]).bool_3 = true;
                 }
-                string sourceFileName = string_25 + Module.a("\uF3AE膰莲鮴\uDBB6\uDCB8\uDFBA", int_0);
+                string sourceFileName = string_25 + "\00.led"; // Module.a("\uF3AE膰莲鮴\uDBB6\uDCB8\uDFBA", int_0);
                 string str2 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
-                string destFileName = path + (object)'\\' + str2 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + Module.a("膮\uDDB0횲톴", int_0);
+                string destFileName = path + (object)'\\' + str2 + "_" /*Module.a("\uF0AE", int_0)*/ + ((GClass5)c.arrayList_4[index]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", int_0);
                 System.IO.File.Copy(sourceFileName, destFileName, true);
             }
         }
@@ -14983,11 +15374,11 @@ public class c : Form
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
                 return;
-            string path1 = folderBrowserDialog.SelectedPath + Module.a("\uF3AEﶰ횲톴", int_0);
+            string path1 = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", int_0);
             if (Directory.Exists(path1))
                 Directory.Delete(path1, true);
             Directory.CreateDirectory(path1);
-            string str3 = !c.useEnglishLanguage ? Module.a("\u08CD蟢\uDBE4颴", int_0) : Module.a("\uECAE\uDEB0\uDDB2솴얶횸ힺ톼\uDABE돀\uEEC2", int_0);
+            string str3 = !c.useEnglishLanguage ? "控制器-" /*Module.a("\u08CD蟢\uDBE4颴", int_0)*/ : "Controller-" /*Module.a("\uECAE\uDEB0\uDDB2솴얶횸ힺ톼\uDABE돀\uEEC2", int_0)*/;
             if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16 && c.int_2 != 55)
             {
                 for (int index = 0; index < this.int_32; ++index)
@@ -15014,10 +15405,10 @@ public class c : Form
                         object[] objArray1 = new object[7]
                         {
               (object) string_25,
-              (object) Module.a("\uF3AE\uEEB0ﾲ\uF0B4\uF3B6", int_0),
+              (object) "\\_LED", /*Module.a("\uF3AE\uEEB0ﾲ\uF0B4\uF3B6", int_0),*/
               (object) '\\',
               (object) c.string_3,
-              (object) Module.a("\uF0AE", int_0),
+              (object) "_",/*Module.a("\uF0AE", int_0),*/
               null,
               null
                         };
@@ -15025,7 +15416,7 @@ public class c : Form
                         num1 = index2 + 1;
                         string str5 = num1.ToString();
                         objArray2[5] = (object)str5;
-                        objArray1[6] = (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray1[6] = ".led"; // (object)Module.a("膮\uDDB0횲톴", int_0);
                         string sourceFileName = string.Concat(objArray1);
                         string str6 = index1 >= 10 ? index1.ToString() : '0'.ToString() + index1.ToString();
                         object[] objArray3 = new object[9];
@@ -15038,9 +15429,9 @@ public class c : Form
                         objArray4[3] = (object)str7;
                         objArray3[4] = (object)'\\';
                         objArray3[5] = (object)str6;
-                        objArray3[6] = (object)Module.a("\uF0AE", int_0);
+                        objArray3[6] = (object)"_"; // Module.a("\uF0AE", int_0);
                         objArray3[7] = (object)((GClass5)c.arrayList_4[index1]).string_0;
-                        objArray3[8] = (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray3[8] = (object)".led"; // Module.a("膮\uDDB0횲톴", int_0);
                         string destFileName = string.Concat(objArray3);
                         System.IO.File.Copy(sourceFileName, destFileName, true);
                     }
@@ -15066,7 +15457,7 @@ public class c : Form
                     string str8 = num1.ToString();
                     objArray6[3] = (object)str8;
                     objArray5[4] = (object)'\\';
-                    objArray5[5] = (object)Module.a("\uE4AE鲰讲薴螶覸閺톼\uDABEꗀ", int_0);
+                    objArray5[5] = (object)"K-8000.led"; // Module.a("\uE4AE鲰讲薴螶覸閺톼\uDABEꗀ", int_0);
                     string path3 = string.Concat(objArray5);
                     if (System.IO.File.Exists(path3))
                         System.IO.File.Delete(path3);
@@ -15097,9 +15488,9 @@ public class c : Form
                         objArray8[3] = (object)str10;
                         objArray7[4] = (object)'\\';
                         objArray7[5] = (object)str9;
-                        objArray7[6] = (object)Module.a("\uF0AE", int_0);
+                        objArray7[6] = (object)"_"; //Module.a("\uF0AE", int_0);
                         objArray7[7] = (object)((GClass5)c.arrayList_4[index4]).string_0;
-                        objArray7[8] = (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray7[8] = (object)".led"; //Module.a("膮\uDDB0횲톴", int_0);
                         FileInfo fileInfo = new FileInfo(string.Concat(objArray7));
                         int num2 = (int)(fileInfo.Length / 512L);
                         if ((int)(fileInfo.Length % 512L) <= 0)
@@ -15110,7 +15501,7 @@ public class c : Form
                         {
                             if (c.useEnglishLanguage)
                             {
-                                this.ShowMessage(Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0));
+                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0)*/);
                                 return;
                             }
                             this.ShowMessage(Module.a("⣋䟾䧣갡隶", int_0));
@@ -15139,9 +15530,9 @@ public class c : Form
                         objArray10[3] = (object)str12;
                         objArray9[4] = (object)'\\';
                         objArray9[5] = (object)str11;
-                        objArray9[6] = (object)Module.a("\uF0AE", int_0);
+                        objArray9[6] = (object)"_";/*Module.a("\uF0AE", int_0);*/
                         objArray9[7] = (object)((GClass5)c.arrayList_4[index6]).string_0;
-                        objArray9[8] = (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray9[8] = (object)".led"; //"Module.a("膮\uDDB0횲톴", int_0);
                         string str13 = string.Concat(objArray9);
                         FileStream fileStream2 = new FileStream(str13, FileMode.Open, FileAccess.Read);
                         BufferedStream bufferedStream2 = new BufferedStream((Stream)fileStream2);
@@ -15177,9 +15568,9 @@ public class c : Form
                     this.textBox_4.Text = this.listBox_0.Items[c.int_38].ToString();
                     if (System.IO.File.Exists(str14))
                         this.method_40(str14, string_25);
-                    string sourceFileName = string_25 + Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0) + c.string_3 + Module.a("\uF0AE肰鶲\uD9B4튶\uDDB8", int_0);
+                    string sourceFileName = string_25 + "\\_T_1000_AC\\" /*+ Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0)*/ + c.string_3 + "_1.led" /*Module.a("\uF0AE肰鶲\uD9B4튶\uDDB8", int_0)*/;
                     string str15 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
-                    string destFileName = path1 + (object)'\\' + str15 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + Module.a("膮\uDDB0횲톴", int_0);
+                    string destFileName = path1 + (object)'\\' + str15 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + ".led" /*Module.a("膮\uDDB0횲톴", int_0)*/;
                     System.IO.File.Copy(sourceFileName, destFileName, true);
                 }
             }
@@ -15205,9 +15596,9 @@ public class c : Form
                         string[] strArray1 = new string[6]
                         {
               string_25,
-              Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0),
+              "\\_T_1000_AC\\", /*Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0),*/
               c.string_3,
-              Module.a("\uF0AE", int_0),
+              "_", /*Module.a("\uF0AE", int_0),*/
               null,
               null
                         };
@@ -15215,7 +15606,7 @@ public class c : Form
                         int num = gclass8.method_4() + 1;
                         string str17 = num.ToString();
                         strArray2[4] = str17;
-                        strArray1[5] = Module.a("膮\uDDB0횲톴", int_0);
+                        strArray1[5] = ".led"; // Module.a("膮\uDDB0횲톴", int_0);
                         string sourceFileName = string.Concat(strArray1);
                         string str18 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
                         object[] objArray11 = new object[9];
@@ -15228,9 +15619,9 @@ public class c : Form
                         objArray12[3] = (object)str19;
                         objArray11[4] = (object)'\\';
                         objArray11[5] = (object)str18;
-                        objArray11[6] = (object)Module.a("\uF0AE", int_0);
+                        objArray11[6] = (object)"_"; //Module.a("\uF0AE", int_0);
                         objArray11[7] = (object)((GClass5)c.arrayList_4[index]).string_0;
-                        objArray11[8] = (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray11[8] = (object)".led";// Module.a("膮\uDDB0횲톴", int_0);
                         string destFileName = string.Concat(objArray11);
                         System.IO.File.Copy(sourceFileName, destFileName, true);
                     }
@@ -15242,7 +15633,7 @@ public class c : Form
                 numArray[1] = 1;
                 foreach (GClass8 gclass8 in this.arrayList_3)
                 {
-                    string path5 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + Module.a("\uE4AE鲰芲薴螶覸閺톼\uDABEꗀ", int_0);
+                    string path5 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + "K-1000.led" /*Module.a("\uE4AE鲰芲薴螶覸閺톼\uDABEꗀ", int_0)*/;
                     if (System.IO.File.Exists(path5))
                         System.IO.File.Delete(path5);
                     FileStream fileStream3 = new FileStream(path5, FileMode.Create, FileAccess.Write);
@@ -15272,7 +15663,7 @@ public class c : Form
                         {
                             if (c.useEnglishLanguage)
                             {
-                                this.ShowMessage(Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0));
+                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0)*/);
                                 return;
                             }
                             this.ShowMessage(Module.a("⣋䟾䧣갡隶", int_0));
@@ -15291,7 +15682,7 @@ public class c : Form
                     for (int index8 = 0; index8 < c.arrayList_4.Count; ++index8)
                     {
                         string str21 = index8 >= 10 ? index8.ToString() : '0'.ToString() + index8.ToString();
-                        string str22 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + str21 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index8]).string_0 + Module.a("膮\uDDB0횲톴", int_0);
+                        string str22 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + str21 + "_" /*Module.a("\uF0AE", int_0)*/ + ((GClass5)c.arrayList_4[index8]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", int_0);
                         FileStream fileStream4 = new FileStream(str22, FileMode.Open, FileAccess.Read);
                         BufferedStream bufferedStream4 = new BufferedStream((Stream)fileStream4);
                         bufferedStream4.Seek(0L, SeekOrigin.Begin);
@@ -16069,10 +16460,11 @@ public class c : Form
         Class5.smethod_2();
     }
 
+    // Sets language to chinese
     private void menuItem_77_Click(object sender, EventArgs e)
     {
         c.useEnglishLanguage = false;
-        string path = c.string_2 + Module.a("\uEEB1톳\uD8B5隷캹쒻쪽", 12);
+        string path = c.string_2 + "\\en.txt"; //Module.a("\uEEB1톳\uD8B5隷캹쒻쪽", 12);
         if (System.IO.File.Exists(path))
             System.IO.File.Delete(path);
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.ASCII))
@@ -16082,10 +16474,11 @@ public class c : Form
         this.method_83();
     }
 
+    // Sets language to English
     private void menuItem_78_Click(object sender, EventArgs e)
     {
         c.useEnglishLanguage = true;
-        string path = c.string_2 + Module.a("\uF2AD햯\uDCB1骳습삷캹", 8);
+        string path = c.string_2 + "\\en.txt"; //Module.a("\uF2AD햯\uDCB1骳습삷캹", 8);
         if (System.IO.File.Exists(path))
             System.IO.File.Delete(path);
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.ASCII))
