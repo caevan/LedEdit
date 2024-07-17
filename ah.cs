@@ -1,8 +1,5 @@
-﻿// Decompiled with JetBrains decompiler
+﻿// Additional controller form
 // Type: ah
-// Assembly: LedEdit, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null
-// MVID: D08429D7-F24F-41DD-AFC4-7F40AB03BFB1
-// Assembly location: C:\pixelled\2020 LedEdit\2020 LedEdit\2020 lededit.exe
 
 using System;
 using System.Collections;
@@ -11,7 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
+// Additional controller form
 public class ah : Form
 {
   private string string_0;
@@ -90,21 +87,21 @@ public class ah : Form
         node1.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node2 = new TreeNode();
-        node2.Text = "T-1000A"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃", int_0);
+        node2.Text = "T-1000A"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃", dataEntryPoint);
     this.treeView_0.Nodes.Add(node2);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == "T-1000A-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃\uEBC5", int_0)*/)
+      if (str != null && str.Substring(0, 8) == "T-1000A-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1藃\uEBC5", dataEntryPoint)*/)
         node2.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node3 = new TreeNode();
-        node3.Text = "T-1000B"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃", int_0);
+        node3.Text = "T-1000B"; // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃", dataEntryPoint);
     this.treeView_0.Nodes.Add(node3);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == "T-1000B-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃\uEBC5", int_0)*/)
+      if (str != null && str.Substring(0, 8) == "T-1000B-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1蛃\uEBC5", dataEntryPoint)*/)
         node3.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node4 = new TreeNode();
@@ -113,66 +110,66 @@ public class ah : Form
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 8) == "T-1000S-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5", int_0)*/)
+      if (str != null && str.Substring(0, 8) == "T-1000S-" /*Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5", dataEntryPoint)*/)
         node4.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node5 = new TreeNode();
-        node5.Text = "T-2000"; // Module.a("\uECB7鞹躻躽\uF0BF\uF2C1", int_0);
+        node5.Text = "T-2000"; // Module.a("\uECB7鞹躻躽\uF0BF\uF2C1", dataEntryPoint);
     this.treeView_0.Nodes.Add(node5);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == "T-2000-" /*Module.a("\uECB7鞹躻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
+      if (str != null && str.Substring(0, 7) == "T-2000-" /*Module.a("\uECB7鞹躻躽\uF0BF\uF2C1\uE9C3", dataEntryPoint)*/)
         node5.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node6 = new TreeNode();
-        node6.Text = "T-4000"; //Module.a("\uECB7鞹袻躽\uF0BF\uF2C1", int_0);
+        node6.Text = "T-4000"; //Module.a("\uECB7鞹袻躽\uF0BF\uF2C1", dataEntryPoint);
     this.treeView_0.Nodes.Add(node6);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == "T-4000-" /*Module.a("\uECB7鞹袻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
+      if (str != null && str.Substring(0, 7) == "T-4000-" /*Module.a("\uECB7鞹袻躽\uF0BF\uF2C1\uE9C3", dataEntryPoint)*/)
         node6.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node7 = new TreeNode();
-        node7.Text = "T-8000"; // Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1", int_0);
+        node7.Text = "T-8000"; // Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1", dataEntryPoint);
     this.treeView_0.Nodes.Add(node7);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == "T-8000-" /*Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1\uE9C3", int_0)*/)
+      if (str != null && str.Substring(0, 7) == "T-8000-" /*Module.a("\uECB7鞹蒻躽\uF0BF\uF2C1\uE9C3", dataEntryPoint)*/)
         node7.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node8 = new TreeNode();
-        node8.Text = "T-100K-B"; // Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅", int_0);
+        node8.Text = "T-100K-B"; // Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅", dataEntryPoint);
     this.treeView_0.Nodes.Add(node8);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 9) == "T-100K-B-" /*Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅\uE5C7", int_0)*/)
+      if (str != null && str.Substring(0, 9) == "T-100K-B-" /*Module.a("\uECB7鞹趻躽\uF0BF见\uE9C3蓅\uE5C7", dataEntryPoint)*/)
         node8.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node9 = new TreeNode();
-        node9.Text = "T-200K-B"; // Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅", int_0);
+        node9.Text = "T-200K-B"; // Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅", dataEntryPoint);
     this.treeView_0.Nodes.Add(node9);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 9) == "T-200K-B-" /*Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅\uE5C7", int_0)*/)
+      if (str != null && str.Substring(0, 9) == "T-200K-B-" /*Module.a("\uECB7鞹躻躽\uF0BF见\uE9C3蓅\uE5C7", dataEntryPoint)*/)
         node9.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     TreeNode node10 = new TreeNode();
-        node10.Text = "T-300K"; // Module.a("\uECB7鞹辻躽\uF0BF见", int_0);
+        node10.Text = "T-300K"; // Module.a("\uECB7鞹辻躽\uF0BF见", dataEntryPoint);
     this.treeView_0.Nodes.Add(node10);
     for (int index = 0; index < c.string_14.Length; ++index)
     {
       string str = c.string_14[index];
-      if (str != null && str.Substring(0, 7) == "T-300K-"/*Module.a("\uECB7鞹辻躽\uF0BF见\uE9C3", int_0)*/)
+      if (str != null && str.Substring(0, 7) == "T-300K-"/*Module.a("\uECB7鞹辻躽\uF0BF见\uE9C3", dataEntryPoint)*/)
         node10.Nodes.Add(new TreeNode(c.string_14[index]));
     }
     this.treeView_0.Nodes.Add(new TreeNode()
     {
-      Text = "T-400K " //Module.a("\uECB7鞹袻躽\uF0BF见\uE4C3\uE6C5\uE8C7", int_0)
+      Text = "T-400K " //Module.a("\uECB7鞹袻躽\uF0BF见\uE4C3\uE6C5\uE8C7", dataEntryPoint)
     });
     for (int index1 = 0; index1 < this.treeView_0.Nodes.Count; ++index1)
     {
@@ -180,9 +177,9 @@ public class ah : Form
       {
         for (int index2 = 0; index2 < this.treeView_0.Nodes[index1].Nodes.Count; ++index2)
         {
-          if (this.treeView_0.Nodes[index1].Nodes[index2].Text == "T-1000S-UCS1903,1903B,1909,1912") // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5鷇觉鿋ￍ\uE9CF\uE2D1\uE7D3𥉉\uE9D7\uE3D9\uECDB\uEDDDꋟ컡헣\uDFE5\uD8E7폩샫\uDFED짯쏱웳", int_0))
+          if (this.treeView_0.Nodes[index1].Nodes[index2].Text == "T-1000S-UCS1903,1903B,1909,1912") // Module.a("\uECB7鞹趻躽\uF0BF\uF2C1韃\uEBC5鷇觉鿋ￍ\uE9CF\uE2D1\uE7D3𥉉\uE9D7\uE3D9\uECDB\uEDDDꋟ컡헣\uDFE5\uD8E7폩샫\uDFED짯쏱웳", dataEntryPoint))
           {
-            this.treeView_0.SelectedNode = this.treeView_0.Nodes[0].Nodes[1];
+            this.treeView_0.SelectedNode = this.treeView_0.Nodes[index1].Nodes[index2];
             this.treeView_0.Focus();
             return;
           }
@@ -199,9 +196,10 @@ public class ah : Form
     if (this.arrayList_0.Count == 0)
     {
       if (c.useEnglishLanguage)
-        this.method_0(Module.a("節\uD8AFힱ钳햵춷좹캻\uDBBD꺿뛁\uE4C3ꋅꇇ껉\uECCBꃍ뿏ꛑ\uF4D3럕볗뻙ﳛ뿝軟鯡쓣藥蟧蓩飫鳭\u9FEF黱飳鏵諷훹賻鋽旿持眃挅⠇欉栋樍』昑簓猕㠗礙猛瀝吟倡䬣䨥䐧伩師\u0F2D", int_0));
+            this.ShowMessage("The current did not add any controller,please add the controller!");
+  //          this.ShowMessage(Module.a("節\uD8AFힱ钳햵춷좹캻\uDBBD꺿뛁\uE4C3ꋅꇇ껉\uECCBꃍ뿏ꛑ\uF4D3럕볗뻙ﳛ뿝軟鯡쓣藥蟧蓩飫鳭\u9FEF黱飳鏵諷훹賻鋽旿持眃挅⠇欉栋樍』昑簓猕㠗礙猛瀝吟倡䬣䨥䐧伩師\u0F2D", dataEntryPoint));
       else
-        this.method_0(Module.a("ﷲ﷽Ꮭ뷔䷘ᣥ䇷\uE9F4᧞\uF6EDꪗ侔㆖\uE4C7㵂㞦溟瞬\uE483벅嶂⾄ﯙ", int_0));
+        this.ShowMessage(Module.a("ﷲ﷽Ꮭ뷔䷘ᣥ䇷\uE9F4᧞\uF6EDꪗ侔㆖\uE4C7㵂㞦溟瞬\uE483벅嶂⾄ﯙ", int_0));
     }
     else
     {
@@ -230,14 +228,14 @@ public class ah : Form
       return;
     if (this.treeView_0.SelectedNode.Parent == null)
     {
-      if (this.treeView_0.SelectedNode.Text == Module.a("\uE5B0麲膴螶覸\uF0BA鶼龾\uE1C0", int_0))
-      {
-        if (c.useEnglishLanguage)
-          this.method_0(Module.a("\uE1B0\uDFB2킴횶쪸\uDEBA鶼쪾닀ꛂ\uE5C4돆ꇈ껊\uEDCC鯎ﳐ\uE7D2\uE5D4\uE7D6鋘ﯚ껜꿞蓠胢賤蛦藨쯪黬胮韰蟲苴零诸黺\uDCFC\uDFFE唀⸂\u3104㜆㤈䀊ⴌ洎砐琒爔爖樘漚㴜氞吠匢唤䠦嬨弪ബᴮἰԲᔴ娶倸场儼嘾⹀ⵂ敄㝆⁈㍊⡌⍎≐獒❔≖㕘㹚\u2E5C罞ൠ\u0A62ɤསᵨɪͬ\u086E兰rᙴնᱸṺ\u137C幾", int_0));
-        else
-          this.method_0(Module.a("䘻쳽鷁\uE3B6钸辺趼达諀킌\uEDB1ꡉ㾆\uEACA\uEDCC鯎ﳐ\uE7D2\uE5D4\uE7D6鋘\uDBBD徭ろ캅\uE281ퟤ퇦\uD9E8\uECA4⊼쾓䢀瞄ㅽ\uEEA4隈譣늠\uDEFE", int_0));
-      }
-      this.treeView_0.SelectedNode = (TreeNode) null;
+            if (this.treeView_0.SelectedNode.Text == "T-400K   ")
+            {
+                if (c.useEnglishLanguage)
+                    this.ShowMessage("Please use the T-400K special software! T-400K biggest support 2.6 million pixels rules lighting screen!");
+                else
+                    this.ShowMessage("请使用T-400K专用软件! T-400K最大可支持260万像素点的规则灯饰屏!");
+            }
+            this.treeView_0.SelectedNode = (TreeNode) null;
     }
     else
     {
@@ -258,13 +256,13 @@ public class ah : Form
         this.label_4.Text = c.string_15[index1];
       }
       else if (c.useEnglishLanguage)
-        this.method_0(Module.a("\uE2B0\uDCB2펴쎶캸\uDABA쾼\uDABE\uE1C0뇂냄꧆\uA7C8ꋊꏌ꣎\uF1D0뛒\uA7D4ꗖ뛘\uA9DAﳜ", int_0));
+        this.ShowMessage("Software running error!");
       else
-        this.method_0(Module.a("\uDE3F䗼攻מּ䏩ꈯ鲼", int_0));
+        this.ShowMessage("软件运行出错!");
     }
   }
 
-  private void method_0(string string_1)
+  private void ShowMessage(string string_1)
   {
     MessageDialog aa = new MessageDialog();
     aa.label_0.Text = string_1;
@@ -280,13 +278,14 @@ public class ah : Form
     {
       if (this.string_0 == (string) this.arrayList_0[index])
       {
-        if (c.useEnglishLanguage)
-        {
-          this.method_0(Module.a("\uE6AD톯솱钳풵\uDDB7\uDFB9튻麽ꆿꛁꃃꏅ곇\uEBC9", int_0));
-          return;
-        }
-        this.method_0(Module.a("峰翑䧜ᓡ鞵", int_0));
-        return;
+            if (c.useEnglishLanguage)
+            {
+                this.ShowMessage("Has been added!");
+                return;
+            }
+            this.ShowMessage("嵒繏测剀A");
+
+            return;
       }
     }
     if (this.string_0 != null)

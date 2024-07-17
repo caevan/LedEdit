@@ -211,6 +211,6 @@ internal class Class1
     return str2;
   }
 
-  [SpecialName]
-  private static void old_acctor_mc() => Class1.string_0 = Module.a("얮薰삲貴\uDCB6풸솺袼", 9);
+    [SpecialName]
+    private static void old_acctor_mc() => Class1.string_0 = "j4s9kmz5"; // Module.a("얮薰삲貴\uDCB6풸솺袼", 9);
 }

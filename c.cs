@@ -34,9 +34,9 @@ public class c : Form
     private const int int_1 = 2;
     public static string string_0;
     public static string string_1;
-    public static string string_2;
+    public static string settingsPath;
     public static bool useEnglishLanguage;
-    public static int int_2;
+    public static int ledControllerType;
     public static bool bool_1;
     public static Rectangle rectangle_0;
     public static bool bool_2;
@@ -93,11 +93,11 @@ public class c : Form
     private int int_11;
     private int int_12;
     private int int_13;
-    private string string_6;
+    private string tolFilePath;
     private FileStream fileStream_0;
     private BufferedStream bufferedStream_0;
     protected GClass0 gclass0_1;
-    private bool bool_13;
+    private bool IsTOLFileOpen;
     private int int_14;
     private byte[] byte_16;
     private int int_15;
@@ -186,7 +186,7 @@ public class c : Form
     private ArrayList arrayList_0;
     private ArrayList arrayList_1;
     private ArrayList arrayList_2;
-    private ArrayList arrayList_3;
+    private ArrayList portArrayList; // Contains the pixel array for each port
     public static ArrayList arrayList_4;
     public static int int_38;
     private int int_39;
@@ -200,7 +200,7 @@ public class c : Form
     private string string_16;
     public static string string_17;
     private double double_3;
-    private int int_41;
+    private int totalLeds;
     private int int_42;
     private bool bool_36;
     private bool bool_37;
@@ -272,8 +272,8 @@ public class c : Form
     private int int_62;
     private int int_63;
     private int int_64;
-    public static int int_65;
-    public static int int_66;
+    public static int horizontalPixels;
+    public static int verticalPixels;
     private int int_67;
     private int int_68;
     private double double_4;
@@ -597,7 +597,7 @@ public class c : Form
                 return false;
             }
         }
-        string path2 = fullName + "\\blastc1lin.log";//Module.a("ﮦ쮨잪첬\uDCAE얰킲蒴\uDBB6킸햺鎼펾껀꓂", int_0);
+        string path2 = fullName + "\\blastc1lin.log";//Module.a("ﮦ쮨잪첬\uDCAE얰킲蒴\uDBB6킸햺鎼펾껀꓂", dataEntryPoint);
         if (!System.IO.File.Exists(path2))
             return false;
         string strB;
@@ -605,7 +605,7 @@ public class c : Form
             strB = streamReader.ReadLine();
         uint num3 = (num1 * num2 * 12576867U ^ 78654347U) + 15890743U;
         Class1 class1 = new Class1();
-        string path3 = fullName + "\\msxm14-ed3422_v3-enu.LOG"; //Module.a("ﮦ쒨\uD8AA햬슮肰螲颴튶\uDDB8袺覼趾\uF3C0鳂도\uF4C6\uE4C8껊ꏌ뫎\uFFD0鿒體郖", int_0);
+        string path3 = fullName + "\\msxm14-ed3422_v3-enu.LOG"; //Module.a("ﮦ쒨\uD8AA햬슮肰螲颴튶\uDDB8袺覼趾\uF3C0鳂도\uF4C6\uE4C8껊ꏌ뫎\uFFD0鿒體郖", dataEntryPoint);
         if (!System.IO.File.Exists(path3))
             return false;
         string str3;
@@ -664,7 +664,7 @@ public class c : Form
         if (string.Compare(class1.method_0(num36.ToString(), Class1.string_0), strB) != 0)
             return false;
         string str5 = class1.method_3() + ": Registered user! Computer ID number:\r\n\r\n" + str4 + "Using software!";
-//        string str5 = class1.method_3() + Module.a("鶦覨姷䗀\u23FF駅蓐둋苃꠹\uF2BA寮䣭﯀", int_0) + str4 + Module.a("螦覨讪컇蟹컿鯇\uDA3B䇸롇", int_0);
+//        string str5 = class1.LayoutForm() + Module.a("鶦覨姷䗀\u23FF駅蓐둋苃꠹\uF2BA寮䣭﯀", dataEntryPoint) + str4 + Module.a("螦覨讪컇蟹컿鯇\uDA3B䇸롇", dataEntryPoint);
         return true;
     }
 
@@ -675,7 +675,7 @@ public class c : Form
         this.arrayList_0 = new ArrayList();
         this.arrayList_1 = new ArrayList();
         this.arrayList_2 = new ArrayList();
-        this.arrayList_3 = new ArrayList();
+        this.portArrayList = new ArrayList();
         this.d_0 = new d();
         this.d_0.Location = new Point(100, 80);
         this.r_0 = new r();
@@ -702,20 +702,20 @@ public class c : Form
         rectangle_3 = new Rectangle(0, 0, this.panel_0.Width, this.panel_0.Height);
         this.gclass0_2 = new GClass0(c.gclass1_0.method_1(), rectangle_2, rectangle_3);
         this.intptr_1 = c.CreateDC("DISPLAY", (string)null, (string)null, (IntPtr)null);
-//        this.intptr_1 = c.CreateDC(Module.a("\uF1B4ﺶ\uEAB8\uEBBA\uF1BCﺾ飀", int_0), (string)null, (string)null, (IntPtr)null);
+//        this.intptr_1 = c.CreateDC(Module.a("\uF1B4ﺶ\uEAB8\uEBBA\uF1BCﺾ飀", dataEntryPoint), (string)null, (string)null, (IntPtr)null);
         this.Location = new Point(0, 0);
         this.k_0 = new k();
         this.k_0.Hide();
         try
         {
             c.font_0 = new Font("宋体", 12f);
-//            c.font_0 = new Font(Module.a("㻯\uE4F9", int_0), 12f);
+//            c.font_0 = new Font(Module.a("㻯\uE4F9", dataEntryPoint), 12f);
         }
         catch
         {
             c.font_0 = (Font)null;
             c.font_0 = new Font("Arial", 12f);
-//            c.font_0 = new Font(Module.a("\uF4B4얶킸\uDABA톼", int_0), 12f);
+//            c.font_0 = new Font(Module.a("\uF4B4얶킸\uDABA톼", dataEntryPoint), 12f);
         }
         c.color_2 = Color.FromArgb(0, 0, 1);
         c.color_3 = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
@@ -728,7 +728,7 @@ public class c : Form
         this.bool_30 = false;
     }
 
-    private void method_2()
+    private void AdditionalFormLayout()
     {
         this.toolStrip_1.Location = new Point(0, 25);
         this.textBox_0.Location = new Point(155, 50);
@@ -970,27 +970,28 @@ public class c : Form
         if (num == 0)
         {
             c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\LedEdit_T_setting\\chyong_ttype_2013.txt";
- //           c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘蟚뻜럞飠賢诤胦뛨\u9FEA駬雮臰雲ꫴ엶째쫺컼퇾甀笂焄", int_0, true);
+ //           c.string_1 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘蟚뻜럞飠賢诤胦뛨\u9FEA駬雮臰雲ꫴ엶째쫺컼퇾甀笂焄", dataEntryPoint, true);
             LogData.LogInfo($"In c num==0 - string_1: {string_1}");
-            c.string_2 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\LedEdit_T_setting"; //Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘", int_0);
-            LogData.LogInfo($"In c num==0 - string_2: { string_2}");
-            var string3 = Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0, true);
+            c.settingsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\LedEdit_T_setting"; //Module.a("\uEBB6\uF5B8\uDEBA\uD9BC諭ꗀꫂ뇄飆鷈铊뻌\uAACEꗐ\uA7D2볔맖뻘", dataEntryPoint);
+            LogData.LogInfo($"In c num==0 - settingsPath: { settingsPath}");
+            //           var string3 = Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", dataEntryPoint, true);
+            var string3 = "Runtime error,it will not switch to English interface,please uninstall it,and then reinstall the software to the D drive or E drive !";
             LogData.LogInfo($"In c num==0 - string3: {string3}");
-            if (!Directory.Exists(c.string_2))
-                Directory.CreateDirectory(c.string_2);
+            if (!Directory.Exists(c.settingsPath))
+                Directory.CreateDirectory(c.settingsPath);
         }
         else
         {
-            c.string_1 = "D:\\LedEdit_T_setting\\chyong_ttype_2013.txt"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0, true);
- //           c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0, true);
+            c.string_1 = "D:\\LedEdit_T_setting\\chyong_ttype_2013.txt"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", dataEntryPoint, true);
+ //           c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", dataEntryPoint, true);
             LogData.LogInfo($"In c num!=0 - string_1: {string_1}");
-            //            c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", int_0);
-            c.string_2 = "D:\\LedEdit_T_setting"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜", int_0);
-            LogData.LogInfo($"In c num!=0 - string_2: {string_2}");
-            if (!Directory.Exists(c.string_2))
-                Directory.CreateDirectory(c.string_2);
+            //            c.string_1 = Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜菞苠询鳤裦蟨質달鯮藰諲藴鋶\uA6F8짺췼컾㈀ⴂ焄缆紈", dataEntryPoint);
+            c.settingsPath = "D:\\LedEdit_T_setting"; //Module.a("\uF3B6莸\uE7BA\uF1BC\uDABEꗀ蛂ꇄ껆뷈铊駌郎ꋐ뛒ꇔꏖ냘뗚뫜", dataEntryPoint);
+            LogData.LogInfo($"In c num!=0 - settingsPath: {settingsPath}");
+            if (!Directory.Exists(c.settingsPath))
+                Directory.CreateDirectory(c.settingsPath);
         }
-        string str1 = Application.StartupPath + "\\SET\\qd.jpg"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE냀\uA7C2\uEBC4귆마곊", int_0);
+        string str1 = Application.StartupPath + "\\SET\\qd.jpg"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE냀\uA7C2\uEBC4귆마곊", dataEntryPoint);
         if (System.IO.File.Exists(str1))
         {
             GForm1 gform1 = new GForm1();
@@ -1008,7 +1009,7 @@ public class c : Form
         c.byte_14 = byte.MaxValue;
         c.byte_15 = byte.MaxValue;
         this.method_79();
-        string path2 = c.string_2 + "\\en.txt";  //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
+        string path2 = c.settingsPath + "\\en.txt";  //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", dataEntryPoint);
         if (System.IO.File.Exists(path2))
         {
             using (StreamReader streamReader = new StreamReader(path2, Encoding.ASCII))
@@ -1024,25 +1025,25 @@ public class c : Form
                 if (flag)
                 {
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
- //                   Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
+ //                   Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", dataEntryPoint));
                     c.useEnglishLanguage = true;
                 }
                 else
                 {
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
-//                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0));
+//                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", dataEntryPoint));
                     c.useEnglishLanguage = false;
                 }
             }
         }
-        else if (new h().ShowDialog() == DialogResult.OK)
+        else if (new LanguageSelectionForm().ShowDialog() == DialogResult.OK)
         {
             Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo("zh-CN") : new CultureInfo("en-US");
- //           Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", int_0)) : new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", int_0));
+ //           Thread.CurrentThread.CurrentUICulture = !c.useEnglishLanguage ? new CultureInfo(Module.a("춶톸隺ﺼ\uF1BE", dataEntryPoint)) : new CultureInfo(Module.a("튶ힸ隺\uE8BC\uECBE", dataEntryPoint));
             using (StreamWriter streamWriter = new StreamWriter(path2, false, Encoding.ASCII))
                 streamWriter.WriteLine(c.useEnglishLanguage.ToString());
         }
-        string path3 = Application.StartupPath + "\\en.txt"; //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", int_0);
+        string path3 = Application.StartupPath + "\\en.txt"; //Module.a("\uEBB6\uDCB8햺鎼쮾맀럂", dataEntryPoint);
         try
         {
             if (System.IO.File.Exists(path3))
@@ -1054,20 +1055,20 @@ public class c : Form
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage("The software is running incorrectly, which will cause the Chinese interface and English interface to be unable to switch normally. Please uninstall the software.\r\n\r\n");
-         //       this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0));
-//            this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", int_0));
+         //       this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", dataEntryPoint));
+//            this.ShowMessage(Module.a("\uE5B6첸햺즼횾곀ꛂ\uE5C4ꋆ믈맊ꋌ뷎\uFDD0뫒ꇔ\uF7D6께닚뇜돞쇠跢諤鏦짨飪髬蛮藰郲鷴ퟶ跸铺\uDDFC뫾漀搂椄渆稈挊ⴌ明缐朒瀔攖缘稚縜稞ഠ匢䤤䈦䠨堪䠬\u0F2E䐰崲尴夶䨸伺尼匾ⵀ捂ⱄ㍆效⩊⍌⭎煐❒㵔\u3256㝘筚⽜㩞\u0860ൢᙤ፦\u0868ݪŬ佮հ᭲ၴ坶\u0A78ᑺ᭼\u0B7E\uF680\uE282\uF784\uE286ꦈﾊ\uE28C꾎\uE590ﮒ\uF094랖\uDD98뮚列\uED9E좠햢삤螦욨\uD9AA趬\uEAAE醰ힲ잴\uDEB6쾸\uDEBA鶼麾", dataEntryPoint));
             else
                 this.ShowMessage(Module.a("\uD839俶欵\uF134ꘫ\u2E4B\uEFC2\u1C4B솚㖓㽋\uEDCC\uE280嚵龧띃\uF7D6喌ﯚⱞ墻궕腵엤\uEAA8ᑨ袁햲\uE8BC鎓\uDFF2ɿ\uF1AA陷ප薯艱ⴀ㕳\u0B50쪗륭艑좄㽜唐쭤Ͷኖ尘썬ፈ鉏\uF4ABȢ", int_0));
         }
- //       string path4 = Application.StartupPath + Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE럀ꛂ럄\uE9C6뷈돊만", int_0);
+ //       string path4 = Application.StartupPath + Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE럀ꛂ럄\uE9C6뷈돊만", dataEntryPoint);
         string path4 = Application.StartupPath + "\\SET\\ver.txt";
         if (System.IO.File.Exists(path4))
         {
             using (StreamReader streamReader = new StreamReader(path4, Encoding.ASCII))
                 c.string_0 = streamReader.ReadLine();
         }
-        this.method_3();
-        this.method_2();
+        this.LayoutForm();
+        this.AdditionalFormLayout();
         c.bool_32 = false;
         c.i_0 = new i();
         this.bool_37 = false;
@@ -1081,18 +1082,18 @@ public class c : Form
         this.int_13 = 1;
         this.int_11 = 0;
         this.int_15 = 0;
-        this.bool_13 = false;
+        this.IsTOLFileOpen = false;
         this.menuItem_98.Enabled = false;
         this.menuItem_99.Enabled = false;
         this.menuItem_100.Enabled = false;
         this.menuItem_101.Enabled = false;
         this.menuItem_102.Enabled = false;
-        string str2 = Application.StartupPath + "\\SET\\icon.ico"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BEꣀꃂ\uAAC4꧆\uE7C8ꋊ껌ꃎ", int_0);
+        string str2 = Application.StartupPath + "\\SET\\icon.ico"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BEꣀꃂ\uAAC4꧆\uE7C8ꋊ껌ꃎ", dataEntryPoint);
         if (System.IO.File.Exists(str2))
             this.Icon = new Icon(str2);
         Class1 class1 = new Class1();
         c.bool_35 = false;
-        string path5 = Application.StartupPath + "\\SET\\set_xb.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE닀ꛂ뇄飆뇈꧊\uE3CC믎꧐\uA7D2", int_0);
+        string path5 = Application.StartupPath + "\\SET\\set_xb.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE닀ꛂ뇄飆뇈꧊\uE3CC믎꧐\uA7D2", dataEntryPoint);
         if (System.IO.File.Exists(path5))
         {
             c.bool_35 = true;
@@ -1122,7 +1123,9 @@ public class c : Form
                     }
                     if (string_1_2 != null)
                     {
+                        LogData.LogInfo($"MainForm class1.GetVerticalPixels string_1_2 {string_1_2}");
                         string[] strArray = class1.method_1(string_1_2, Class1.string_0).Split(';');
+                        LogData.LogInfo($"MainForm class1.GetVerticalPixels stringArray {strArray[0]};{strArray[1]};{strArray[2]}");
                         if (strArray.Length == 3)
                         {
                             c.string_13[index] = strArray[0];
@@ -1141,14 +1144,14 @@ public class c : Form
         }
         if (!c.bool_35)
         {
-            string path6 = Application.StartupPath + "\\SET\\set.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE닀ꛂ뇄\uE9C6뷈돊만", int_0);
+            string path6 = Application.StartupPath + "\\SET\\set.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE닀ꛂ뇄\uE9C6뷈돊만", dataEntryPoint);
             if (System.IO.File.Exists(path6))
             {
                 using (StreamReader streamReader = new StreamReader(path6, Encoding.ASCII))
                 {
                     this.string_8 = streamReader.ReadLine();
                     this.Text = this.string_8 + "@" + c.string_0;
-//                    this.Text = this.string_8 + Module.a("鞶", int_0) + c.string_0;
+//                    this.Text = this.string_8 + Module.a("鞶", dataEntryPoint) + c.string_0;
                     for (int index = 0; index < c.string_12.Length; ++index)
                     {
                         try
@@ -1160,12 +1163,12 @@ public class c : Form
                             break;
                         }
                     }
-                    if (this.string_8 == "LED007") //Module.a("﮶ﲸﾺ趼达\uF6C0", int_0))
+                    if (this.string_8 == "LED007") //Module.a("﮶ﲸﾺ趼达\uF6C0", dataEntryPoint))
                         this.menuItem_24.Visible = false;
                 }
             }
         }
-        string path7 = Application.StartupPath + "\\SET\\6803.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE\uF7C0\uFBC2\uF5C4\uF4C6\uE7C8뿊뗌믎", int_0);
+        string path7 = Application.StartupPath + "\\SET\\6803.txt"; //Module.a("\uEBB6\uEAB8ﺺ\uE9BC\uE3BE\uF7C0\uFBC2\uF5C4\uF4C6\uE7C8뿊뗌믎", dataEntryPoint);
         if (System.IO.File.Exists(path7))
         {
             using (StreamReader streamReader = new StreamReader(path7, Encoding.ASCII))
@@ -1181,7 +1184,7 @@ public class c : Form
                 }
             }
         }
-        this.string_5 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object)'\\' + "xb_swf_ck.jp";//Module.a("쾶\uDBB8\uE4BA캼좾\uA7C0鳂ꛄ곆\uE7C8ꇊ뷌꣎", int_0);
+        this.string_5 = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + (object)'\\' + "xb_swf_ck.jp";//Module.a("쾶\uDBB8\uE4BA캼좾\uA7C0鳂ꛄ곆\uE7C8ꇊ뷌꣎", dataEntryPoint);
         this.color_0 = new Color[10];
         this.color_0[0] = Color.FromArgb(128, (int)byte.MaxValue, 128);
         this.color_0[1] = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, 128);
@@ -1208,10 +1211,10 @@ public class c : Form
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage("Error occurs while creating UDP!");
- //           this.ShowMessage(Module.a("\uF2B6쮸즺튼춾\uE1C0곂ꛄ꓆볈맊뻌\uEFCEꛐ믒볔믖볘ﯚ뻜귞蓠苢釤軦蟨質췬뫮뗰ꏲ퓴", int_0));
+ //           this.ShowMessage(Module.a("\uF2B6쮸즺튼춾\uE1C0곂ꛄ꓆볈맊뻌\uEFCEꛐ믒볔믖볘ﯚ뻜귞蓠苢釤軦蟨質췬뫮뗰ꏲ퓴", dataEntryPoint));
             else
                 this.ShowMessage("创建UDP出错！");
-//            this.ShowMessage(Module.a("곤䏦\uEEBA寮\uEFBE㮑\uDA57쐻", int_0));
+//            this.ShowMessage(Module.a("곤䏦\uEEBA寮\uEFBE㮑\uDA57쐻", dataEntryPoint));
         }
         this.udpClient_0.Client.Blocking = false;
         this.class4_0[4] = new Class4();
@@ -1222,7 +1225,7 @@ public class c : Form
 
 
 
-    private void method_3()
+    private void LayoutForm()
     {
         this.icontainer_0 = (IContainer)new System.ComponentModel.Container();
         ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(c));
@@ -1590,7 +1593,7 @@ public class c : Form
         componentResourceManager.ApplyResources((object)this.menuItem_15, "menuItem2" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许", 3)*/);
         LogData.LogInfo($"menuItem_15 : {menuItem_15.Text}");
         this.menuItem_15.Index = 4;
-        this.menuItem_15.Click += new EventHandler(this.menuItem_15_Click);
+        this.menuItem_15.Click += new EventHandler(this.AutoLayout_Click);
 
 
         componentResourceManager.ApplyResources((object)this.menuItem_74, "menuItem20" /*Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6许论", 3)*/);
@@ -1685,7 +1688,7 @@ public class c : Form
         this.menuItem_109.Click += new EventHandler(this.menuItem_109_Click);
         #endregion
 
-        #region Main menu - 3
+        #region Main menu - 3 Video Effects
         // Main Menu - menu 3
         // Video Effect(&F)
         componentResourceManager.ApplyResources((object)this.menuItem_22, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6誸覺", 3));
@@ -1726,28 +1729,34 @@ public class c : Form
         this.menuItem_22.Popup += new EventHandler(this.menuItem_22_Popup);
 
         // Open Video(&O)...
-        componentResourceManager.ApplyResources((object)this.menuItem_8, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸", 3));
+ //       componentResourceManager.ApplyResources((object)this.menuItem_8, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6膸", 3));
+        componentResourceManager.ApplyResources((object)this.menuItem_8, "menuItem8");
+
         LogData.LogInfo($"menuItem8 : {menuItem_8.Text}");
         this.menuItem_8.Index = 0;
-        this.menuItem_8.Click += new EventHandler(this.menuItem_8_Click);
+        this.menuItem_8.Click += new EventHandler(this.OpenVideo_Click);
 
         // Open swf(&S)   
-        componentResourceManager.ApplyResources((object)this.menuItem_96, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论躼", 3));
+    //    componentResourceManager.ApplyResources((object)this.menuItem_96, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸论躼", 3));
+        componentResourceManager.ApplyResources((object)this.menuItem_96, "menuItem103");
+
         LogData.LogInfo($"menuItem96 : {menuItem_96.Text}");
         this.menuItem_96.Index = 1;
-        this.menuItem_96.Click += new EventHandler(this.menuItem_96_Click);
+        this.menuItem_96.Click += new EventHandler(this.OpenSWF_Click);
+
+        //        this.menuItem_96.Click += new EventHandler(this.menuItem_96_Click);
 
         // Open tol(&T)...       
         componentResourceManager.ApplyResources((object)this.menuItem_92, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6肸芺", 3));
         LogData.LogInfo($"menuItem92 : {menuItem_92.Text}");
         this.menuItem_92.Index = 2;
-        this.menuItem_92.Click += new EventHandler(this.menuItem_92_Click);
+        this.menuItem_92.Click += new EventHandler(this.OpenTOLFile_Click);
 
         // Close Video/Default Effect/tol(&C)
-        componentResourceManager.ApplyResources((object)this.menuItem_9, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸袺", 3));
+        componentResourceManager.ApplyResources((object)this.menuItem_9, "menuItem13");
         LogData.LogInfo($"menuItem9 : {menuItem_9.Text}");
         this.menuItem_9.Index = 3;
-        this.menuItem_9.Click += new EventHandler(this.menuItem_9_Click);
+        this.menuItem_9.Click += new EventHandler(this.CloseVideoEffectFile_Click);
  
         
         componentResourceManager.ApplyResources((object)this.menuItem_103, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6袸誺貼", 3));
@@ -1889,10 +1898,10 @@ public class c : Form
         this.menuItem_56.Click += new EventHandler(this.menuItem_56_Click);
 
         // More Effect...
-        componentResourceManager.ApplyResources((object)this.menuItem_61, Module.a("쒨캪쎬\uDAAE\uF8B0잲킴\uDAB6躸袺", 3));
+        componentResourceManager.ApplyResources((object)this.menuItem_61, "menuItem73");
         LogData.LogInfo($"menuItem61 : {menuItem_61.Text}");
         this.menuItem_61.Index = 28;
-        this.menuItem_61.Click += new EventHandler(this.menuItem_61_Click);
+        this.menuItem_61.Click += new EventHandler(this.OpenSWF_Click);
         #endregion
 
         #region Main menu 4
@@ -3219,7 +3228,8 @@ public class c : Form
         this.Icon = (Icon)null;
         this.KeyPreview = true;
         this.Menu = this.mainMenu_0;
-        this.Name = Module.a("\uEFA8쒪\uDFAC슮肰", 3);
+        this.Name = "Form1";
+        //this.Name = Module.a("\uEFA8쒪\uDFAC슮肰", 3);
         this.WindowState = FormWindowState.Maximized;
         this.Load += new EventHandler(this.c_Load);
         this.SizeChanged += new EventHandler(this.c_SizeChanged);
@@ -3255,7 +3265,8 @@ public class c : Form
         int int_0 = 1;
         if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
         {
-            int num = (int)MessageBox.Show(Module.a("\uF7A6\uDBA8쒪쪬\uDDAE킰\uDEB2閴\uDEB6쪸鮺쾼쪾꿀귂계꧆껈\uEACA\uEDCC", int_0), Module.a("\uEBA6첨쾪\uE8AC쮮\uD8B0잲", int_0), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            int num = (int)MessageBox.Show("Program is running! ", "LedEdit", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+ //           int num = (int)MessageBox.Show(Module.a("\uF7A6\uDBA8쒪쪬\uDDAE킰\uDEB2閴\uDEB6쪸鮺쾼쪾꿀귂계꧆껈\uEACA\uEDCC", dataEntryPoint), Module.a("\uEBA6첨쾪\uE8AC쮮\uD8B0잲", dataEntryPoint), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         else
         {
@@ -3284,7 +3295,7 @@ public class c : Form
 
     private void timer_2_Tick(object sender, EventArgs e)
     {
-        int int_0 = 3;
+    //    int dataEntryPoint = 3;
         if (this.int_29 != 0)
             return;
         this.int_29 = 1;
@@ -3295,7 +3306,9 @@ public class c : Form
             this.byte_35[2] = (byte)136;
             try
             {
-                this.udpClient_0.Send(this.byte_35, 5, Module.a("風銪龬膮肰薲趴馶辸论鎼誾\uF1C0", int_0), 5000);
+                //                this.udpClient_0.Send(this.byte_35, 5, Module.a("風銪龬膮肰薲趴馶辸论鎼誾\uF1C0", dataEntryPoint), 5000);
+                this.udpClient_0.Send(this.byte_35, 5, "192.168.60.50", 5000);
+
             }
             catch
             {
@@ -3840,28 +3853,28 @@ public class c : Form
             if ((double)pointF.Y > this.double_7)
                 this.double_7 = (double)pointF.Y;
         }
-        c.int_65 = (int)(this.double_6 - this.double_4 + 0.001);
-        c.int_66 = (int)(this.double_7 - this.double_5 + 0.001);
-        c.int_65 += this.int_18;
-        c.int_66 += this.int_18;
-        if (c.int_65 < 500 && c.int_66 < 400)
+        c.horizontalPixels = (int)(this.double_6 - this.double_4 + 0.001);
+        c.verticalPixels = (int)(this.double_7 - this.double_5 + 0.001);
+        c.horizontalPixels += this.int_18;
+        c.verticalPixels += this.int_18;
+        if (c.horizontalPixels < 500 && c.verticalPixels < 400)
         {
-            int num1 = 500 / c.int_65;
-            int num2 = 400 / c.int_66;
+            int num1 = 500 / c.horizontalPixels;
+            int num2 = 400 / c.verticalPixels;
             int num3 = num1 > num2 ? num2 : num1;
-            this.int_24 = c.int_65 * num3;
-            this.int_25 = c.int_66 * num3;
+            this.int_24 = c.horizontalPixels * num3;
+            this.int_25 = c.verticalPixels * num3;
         }
         else
         {
-            this.int_24 = c.int_65;
-            this.int_25 = c.int_66;
+            this.int_24 = c.horizontalPixels;
+            this.int_25 = c.verticalPixels;
         }
         ++this.int_21;
         if (this.int_21 > 15)
             this.int_21 = 0;
         this.progressBar_0.Value = this.int_21;
-        if (c.int_65 <= 8050 && c.int_66 <= 6050)
+        if (c.horizontalPixels <= 8050 && c.verticalPixels <= 6050)
         {
             PointF[] pointFArray5 = new PointF[this.arrayList_1.Count];
             int count4 = this.arrayList_1.Count;
@@ -3903,9 +3916,9 @@ public class c : Form
             return this.method_8();
         }
         if (c.useEnglishLanguage)
-            this.ShowMessage(Module.a("ﮪ솬쪮킰삲킴鞶쮸\uDEBA\uD9BC쪾ꋀꛂ\uE5C4돆ꇈ껊\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢짤쟦裨飪췬髮\u9FF0韲郴藶\uD9F8迺闼髾℀怂瀄甆笈渊挌笎ㄐ愒瀔搖瘘眚栜欞䠠䰢䬤ଦन弪䔬䨮ᄰ倲吴夶伸娺丼Ἶ㉀⩂㽄≆楈⑊⭌潎ၐ♒\u2154㡖ᩘᩚᥜ罞ൠɢᱤ\u0866ᱨὪ䵬ᱮᥰᱲt᭶ᵸ孺ὼ\u1A7Eꆀ\uED82\uEA84Ꞇ\uE488\uE48Aﾌ\uEA8E놐\uE792ﶔ\uF696\uF798뮚ꖜ꾞醠鎢辤醦馨鮪鶬莮펰욲솴鞶춸펺\uD8BC龾ꃀꃂ뇄닆\uA8C8\uA7CA\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢엤触蛨鳪췬蛮苰", int_0) + c.int_65.ToString() + Module.a("膪", int_0) + c.int_66.ToString());
+            this.ShowMessage(Module.a("ﮪ솬쪮킰삲킴鞶쮸\uDEBA\uD9BC쪾ꋀꛂ\uE5C4돆ꇈ껊\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢짤쟦裨飪췬髮\u9FF0韲郴藶\uD9F8迺闼髾℀怂瀄甆笈渊挌笎ㄐ愒瀔搖瘘眚栜欞䠠䰢䬤ଦन弪䔬䨮ᄰ倲吴夶伸娺丼Ἶ㉀⩂㽄≆楈⑊⭌潎ၐ♒\u2154㡖ᩘᩚᥜ罞ൠɢᱤ\u0866ᱨὪ䵬ᱮᥰᱲt᭶ᵸ孺ὼ\u1A7Eꆀ\uED82\uEA84Ꞇ\uE488\uE48Aﾌ\uEA8E놐\uE792ﶔ\uF696\uF798뮚ꖜ꾞醠鎢辤醦馨鮪鶬莮펰욲솴鞶춸펺\uD8BC龾ꃀꃂ뇄닆\uA8C8\uA7CA\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢엤触蛨鳪췬蛮苰", int_0) + c.horizontalPixels.ToString() + Module.a("膪", int_0) + c.verticalPixels.ToString());
         else
-            this.ShowMessage(Module.a("菽ﻳ\uE2FC럢ᬽ㋇본閸諸좼쮾껀胂蓄菆\uE486좔趐\uF4BB튎\uF48B\uDA88\uDA98\u2458幗ᩓ\uE7DE퇠폢헤췦\uDFE8\uDBEA\uDDEC\uDFEE\uDDF0ｲꚫ몤슍\uF8A4\uDAA5\uF0A2㭎", int_0) + c.int_65.ToString() + Module.a("膪", int_0) + c.int_66.ToString() + Module.a("螪\uEDCE䫠鷗\uDC3D䏺埓泔뿣믈鎾㙋\uEABD쪘ﲳ쪖쨵", int_0));
+            this.ShowMessage(Module.a("菽ﻳ\uE2FC럢ᬽ㋇본閸諸좼쮾껀胂蓄菆\uE486좔趐\uF4BB튎\uF48B\uDA88\uDA98\u2458幗ᩓ\uE7DE퇠폢헤췦\uDFE8\uDBEA\uDDEC\uDFEE\uDDF0ｲꚫ몤슍\uF8A4\uDAA5\uF0A2㭎", int_0) + c.horizontalPixels.ToString() + Module.a("膪", int_0) + c.verticalPixels.ToString() + Module.a("螪\uEDCE䫠鷗\uDC3D䏺埓泔뿣믈鎾㙋\uEABD쪘ﲳ쪖쨵", int_0));
         this.progressBar_0.Visible = false;
         this.progressBar_0.Enabled = false;
         return 1;
@@ -3991,28 +4004,28 @@ public class c : Form
             if ((double)pointF.Y > this.double_7)
                 this.double_7 = (double)pointF.Y;
         }
-        c.int_65 = (int)(this.double_6 - this.double_4 + 0.001);
-        c.int_66 = (int)(this.double_7 - this.double_5 + 0.001);
-        c.int_65 += this.int_18;
-        c.int_66 += this.int_18;
-        if (c.int_65 < 500 && c.int_66 < 400)
+        c.horizontalPixels = (int)(this.double_6 - this.double_4 + 0.001);
+        c.verticalPixels = (int)(this.double_7 - this.double_5 + 0.001);
+        c.horizontalPixels += this.int_18;
+        c.verticalPixels += this.int_18;
+        if (c.horizontalPixels < 500 && c.verticalPixels < 400)
         {
-            int num1 = 500 / c.int_65;
-            int num2 = 400 / c.int_66;
+            int num1 = 500 / c.horizontalPixels;
+            int num2 = 400 / c.verticalPixels;
             int num3 = num1 > num2 ? num2 : num1;
-            this.int_24 = c.int_65 * num3;
-            this.int_25 = c.int_66 * num3;
+            this.int_24 = c.horizontalPixels * num3;
+            this.int_25 = c.verticalPixels * num3;
         }
         else
         {
-            this.int_24 = c.int_65;
-            this.int_25 = c.int_66;
+            this.int_24 = c.horizontalPixels;
+            this.int_25 = c.verticalPixels;
         }
         ++this.int_21;
         if (this.int_21 > 15)
             this.int_21 = 0;
         this.progressBar_0.Value = this.int_21;
-        if (c.int_65 <= 8050 && c.int_66 <= 6050)
+        if (c.horizontalPixels <= 8050 && c.verticalPixels <= 6050)
         {
             PointF[] pointFArray5 = new PointF[this.arrayList_1.Count];
             int count4 = this.arrayList_1.Count;
@@ -4054,9 +4067,9 @@ public class c : Form
             return this.method_8();
         }
         if (c.useEnglishLanguage)
-            this.ShowMessage(Module.a("ﮪ솬쪮킰삲킴鞶쮸\uDEBA\uD9BC쪾ꋀꛂ\uE5C4돆ꇈ껊\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢짤쟦裨飪췬髮\u9FF0韲郴藶\uD9F8迺闼髾℀怂瀄甆笈渊挌笎ㄐ愒瀔搖瘘眚栜欞䠠䰢䬤ଦन弪䔬䨮ᄰ倲吴夶伸娺丼Ἶ㉀⩂㽄≆楈⑊⭌潎ၐ♒\u2154㡖ᩘᩚᥜ罞ൠɢᱤ\u0866ᱨὪ䵬ᱮᥰᱲt᭶ᵸ孺ὼ\u1A7Eꆀ\uED82\uEA84Ꞇ\uE488\uE48Aﾌ\uEA8E놐\uE792ﶔ\uF696\uF798뮚ꖜ꾞醠鎢辤醦馨鮪鶬莮펰욲솴鞶춸펺\uD8BC龾ꃀꃂ뇄닆\uA8C8\uA7CA\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢엤触蛨鳪췬蛮苰", int_0) + c.int_65.ToString() + Module.a("膪", int_0) + c.int_66.ToString());
+            this.ShowMessage(Module.a("ﮪ솬쪮킰삲킴鞶쮸\uDEBA\uD9BC쪾ꋀꛂ\uE5C4돆ꇈ껊\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢짤쟦裨飪췬髮\u9FF0韲郴藶\uD9F8迺闼髾℀怂瀄甆笈渊挌笎ㄐ愒瀔搖瘘眚栜欞䠠䰢䬤ଦन弪䔬䨮ᄰ倲吴夶伸娺丼Ἶ㉀⩂㽄≆楈⑊⭌潎ၐ♒\u2154㡖ᩘᩚᥜ罞ൠɢᱤ\u0866ᱨὪ䵬ᱮᥰᱲt᭶ᵸ孺ὼ\u1A7Eꆀ\uED82\uEA84Ꞇ\uE488\uE48Aﾌ\uEA8E놐\uE792ﶔ\uF696\uF798뮚ꖜ꾞醠鎢辤醦馨鮪鶬莮펰욲솴鞶춸펺\uD8BC龾ꃀꃂ뇄닆\uA8C8\uA7CA\uEDCC곎냐뷒ꏔ뛖\uAAD8ﯚ껜뛞鯠蛢엤触蛨鳪췬蛮苰", int_0) + c.horizontalPixels.ToString() + Module.a("膪", int_0) + c.verticalPixels.ToString());
         else
-            this.ShowMessage(Module.a("菽ﻳ\uE2FC럢ᬽ㋇본閸諸좼쮾껀胂蓄菆\uE486좔趐\uF4BB튎\uF48B\uDA88\uDA98\u2458幗ᩓ\uE7DE퇠폢헤췦\uDFE8\uDBEA\uDDEC\uDFEE\uDDF0ｲꚫ몤슍\uF8A4\uDAA5\uF0A2㭎", int_0) + c.int_65.ToString() + Module.a("膪", int_0) + c.int_66.ToString() + Module.a("螪\uEDCE䫠鷗\uDC3D䏺埓泔뿣믈鎾㙋\uEABD쪘ﲳ쪖쨵", int_0));
+            this.ShowMessage(Module.a("菽ﻳ\uE2FC럢ᬽ㋇본閸諸좼쮾껀胂蓄菆\uE486좔趐\uF4BB튎\uF48B\uDA88\uDA98\u2458幗ᩓ\uE7DE퇠폢헤췦\uDFE8\uDBEA\uDDEC\uDFEE\uDDF0ｲꚫ몤슍\uF8A4\uDAA5\uF0A2㭎", int_0) + c.horizontalPixels.ToString() + Module.a("膪", int_0) + c.verticalPixels.ToString() + Module.a("螪\uEDCE䫠鷗\uDC3D䏺埓泔뿣믈鎾㙋\uEABD쪘ﲳ쪖쨵", int_0));
         this.progressBar_0.Visible = false;
         this.progressBar_0.Enabled = false;
         return 1;
@@ -4065,7 +4078,7 @@ public class c : Form
     private int method_8()
     {
         int int_0 = 6;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 9:
                 this.int_82 = 2048;
@@ -4083,9 +4096,9 @@ public class c : Form
                 this.int_82 = 2048;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
             this.int_82 = c.bool_1 ? 170 : 512;
-        this.arrayList_3.Clear();
+        this.portArrayList.Clear();
         double num1;
         double num2;
         switch (c.byte_10)
@@ -4106,7 +4119,7 @@ public class c : Form
     label_54:
         for (int int_2 = 0; int_2 < 1024 && this.arrayList_2.Count != 0; ++int_2)
         {
-            GClass8 gclass8;
+            PixelArray gclass8;
             do
             {
                 int index = 0;
@@ -4136,7 +4149,7 @@ public class c : Form
                     this.int_21 = 0;
                 this.progressBar_0.Value = this.int_21;
                 PointF pointF1 = ((GClass2)this.arrayList_2[index]).method_2();
-                gclass8 = new GClass8(int_2, this.int_82);
+                gclass8 = new PixelArray(int_2, this.int_82);
                 do
                 {
                     this.bool_58 = true;
@@ -4152,10 +4165,10 @@ public class c : Form
                                 {
                                     if ((double)pointF2.X >= (double)pointF1.X - num2 && (double)pointF2.X <= (double)pointF1.X + num2 && (double)pointF2.Y >= (double)pointF1.Y - num2 && (double)pointF2.Y <= (double)pointF1.Y + num2)
                                     {
-                                        gclass8.method_7(gclass8.method_0(), new Point((int)pointF2.X, (int)pointF2.Y));
+                                        gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point((int)pointF2.X, (int)pointF2.Y));
                                         this.arrayList_1.Remove((object)pointF2);
-                                        gclass8.method_1(gclass8.method_0() + 1);
-                                        if (gclass8.method_0() >= this.int_82)
+                                        gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
+                                        if (gclass8.GetPixelIndex() >= this.int_82)
                                         {
                                             this.bool_58 = true;
                                             break;
@@ -4175,10 +4188,10 @@ public class c : Form
                             {
                                 if ((double)pointF3.X >= (double)pointF1.X - num2 && (double)pointF3.X <= (double)pointF1.X + num2 && (double)pointF3.Y >= (double)pointF1.Y - num2 && (double)pointF3.Y <= (double)pointF1.Y + num2)
                                 {
-                                    gclass8.method_7(gclass8.method_0(), new Point((int)pointF3.X, (int)pointF3.Y));
+                                    gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point((int)pointF3.X, (int)pointF3.Y));
                                     this.arrayList_1.Remove((object)pointF3);
-                                    gclass8.method_1(gclass8.method_0() + 1);
-                                    if (gclass8.method_0() >= this.int_82)
+                                    gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
+                                    if (gclass8.GetPixelIndex() >= this.int_82)
                                     {
                                         this.bool_58 = true;
                                         break;
@@ -4194,8 +4207,8 @@ public class c : Form
                 while (!this.bool_58);
                 this.arrayList_2.RemoveAt(index);
             }
-            while (gclass8.method_0() <= 0);
-            this.arrayList_3.Add((object)gclass8);
+            while (gclass8.GetPixelIndex() <= 0);
+            this.portArrayList.Add((object)gclass8);
         }
         this.progressBar_0.Value = 15;
         for (int index = 0; index < this.arrayList_2.Count; ++index)
@@ -4212,36 +4225,36 @@ public class c : Form
                     bool flag2 = false;
                     if (int_2_1 != num6)
                     {
-                        foreach (GClass8 gclass8 in this.arrayList_3)
+                        foreach (PixelArray gclass8 in this.portArrayList)
                         {
-                            if (gclass8.method_4() == int_2_1)
+                            if (gclass8.GetPortNum() == int_2_1)
                                 flag1 = true;
-                            if (gclass8.method_4() == num6)
+                            if (gclass8.GetPortNum() == num6)
                                 flag2 = true;
                         }
                         if (flag2 && !flag1)
                         {
-                            GClass8 gclass8_1 = new GClass8(int_2_1, this.int_82);
-                            foreach (GClass8 gclass8_2 in this.arrayList_3)
+                            PixelArray gclass8_1 = new PixelArray(int_2_1, this.int_82);
+                            foreach (PixelArray gclass8_2 in this.portArrayList)
                             {
-                                if (gclass8_2.method_4() == num6)
+                                if (gclass8_2.GetPortNum() == num6)
                                 {
-                                    for (int int_2_2 = 0; int_2_2 < gclass8_2.method_0(); ++int_2_2)
-                                        gclass8_1.method_7(int_2_2, gclass8_2.method_6(int_2_2));
-                                    gclass8_1.method_1(gclass8_2.method_0());
+                                    for (int int_2_2 = 0; int_2_2 < gclass8_2.GetPixelIndex(); ++int_2_2)
+                                        gclass8_1.SetPointForPixel(int_2_2, gclass8_2.GetPointForPixel(int_2_2));
+                                    gclass8_1.SetPixelIndex(gclass8_2.GetPixelIndex());
                                     break;
                                 }
                             }
-                            this.arrayList_3.Add((object)gclass8_1);
+                            this.portArrayList.Add((object)gclass8_1);
                         }
                     }
                 }
             }
         }
         bool flag = false;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            if (gclass8.method_0() > 0)
+            if (gclass8.GetPixelIndex() > 0)
             {
                 flag = true;
                 break;
@@ -4258,13 +4271,13 @@ public class c : Form
             return 1;
         }
         int num7 = 0;
-        for (int index = 0; index < this.arrayList_3.Count; ++index)
+        for (int index = 0; index < this.portArrayList.Count; ++index)
         {
-            if (((GClass8)this.arrayList_3[index]).method_4() > num7)
-                num7 = ((GClass8)this.arrayList_3[index]).method_4();
+            if (((PixelArray)this.portArrayList[index]).GetPortNum() > num7)
+                num7 = ((PixelArray)this.portArrayList[index]).GetPortNum();
         }
         int num8 = num7 + 1;
-        this.int_23 = this.arrayList_3.Count;
+        this.int_23 = this.portArrayList.Count;
         if (num8 > this.int_23)
         {
             if (!this.bool_23)
@@ -4276,7 +4289,7 @@ public class c : Form
             }
             this.int_23 = num8;
         }
-        if ((c.int_2 == 7 || c.int_2 == 41 || c.int_2 == 48 || c.int_2 == 49 || c.int_2 == 50) && this.int_23 > 4)
+        if ((c.ledControllerType == 7 || c.ledControllerType == 41 || c.ledControllerType == 48 || c.ledControllerType == 49 || c.ledControllerType == 50) && this.int_23 > 4)
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage(Module.a("\uF8AB욭햯銱\uD9B3ힵ삷钹鲻킽떿꿁ꛃꏅ뫇\uEAC9ꏋ\uA8CD\uF0CFꋑ믓ꓕ곗꧙ﳛ럝鏟싡탣쫥죧裩駫髭탯蛱鳳鏵\uD8F7鯹\u9FFB諽痿持栃★昇缉愋氍甏怑㐓琕紗猙爛礝\u001F圡圣䌥䰧\u0A29䔫䀭ု䘱尳匵ᠷ夹䤻䰽㈿❁⩃㉅桇摉⡋㙍㙏絑㝓\u2E55㩗穙㩛㝝\u0C5Fݡ䑣ཥ᭧", int_0) + this.int_23.ToString());
@@ -4287,7 +4300,7 @@ public class c : Form
             return 1;
         }
         this.int_23 = this.int_23 % c.int_75 != 0 ? (this.int_23 / c.int_75 + 1) * c.int_75 : this.int_23 / c.int_75 * c.int_75;
-        if ((c.int_2 == 3 || c.int_2 == 8 || c.int_2 == 12 || c.int_2 == 31 || c.int_2 == 46 || c.int_2 == 2) && this.int_23 > 8)
+        if ((c.ledControllerType == 3 || c.ledControllerType == 8 || c.ledControllerType == 12 || c.ledControllerType == 31 || c.ledControllerType == 46 || c.ledControllerType == 2) && this.int_23 > 8)
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage(Module.a("\uF8AB욭햯銱\uD9B3ힵ삷钹鲻킽떿꿁ꛃꏅ뫇\uEAC9ꏋ\uA8CD\uF0CFꋑ믓ꓕ곗꧙ﳛ럝鏟싡\uDCE3쫥죧裩駫髭탯蛱鳳鏵\uD8F7鯹\u9FFB諽痿持栃★昇缉愋氍甏怑㐓琕紗猙爛礝\u001F圡圣䌥䰧\u0A29䔫䀭ု䘱尳匵ᠷ夹䤻䰽㈿❁⩃㉅桇摉⡋㙍㙏絑㝓\u2E55㩗穙㩛㝝\u0C5Fݡ䑣ཥ᭧", int_0) + this.int_23.ToString());
@@ -4297,25 +4310,25 @@ public class c : Form
             this.progressBar_0.Enabled = false;
             return 1;
         }
-        this.int_41 = 0;
+        this.totalLeds = 0;
         this.int_42 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            this.int_41 += gclass8.method_0();
-            if (this.int_42 < gclass8.method_0())
-                this.int_42 = gclass8.method_0();
+            this.totalLeds += gclass8.GetPixelIndex();
+            if (this.int_42 < gclass8.GetPixelIndex())
+                this.int_42 = gclass8.GetPixelIndex();
         }
         int num9 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            if (gclass8.method_0() > num9)
-                num9 = gclass8.method_0();
+            if (gclass8.GetPixelIndex() > num9)
+                num9 = gclass8.GetPixelIndex();
         }
-        if (c.int_2 == 9)
+        if (c.ledControllerType == 9)
             this.int_82 = num9 <= 1024 ? 1024 : 2048;
-        else if (c.int_2 == 13 || c.int_2 == 32 || c.int_2 == 47 || c.int_2 == 52)
+        else if (c.ledControllerType == 13 || c.ledControllerType == 32 || c.ledControllerType == 47 || c.ledControllerType == 52)
             this.int_82 = num9 <= 1536 ? (num9 <= 1024 ? (num9 <= 512 ? 512 : 1024) : 1536) : 2048;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.int_82 = 256;
@@ -4324,15 +4337,15 @@ public class c : Form
                 this.int_82 = 512;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
         {
             if (!c.bool_1)
             {
                 int num10 = 0;
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    if (gclass8.method_0() > num10)
-                        num10 = gclass8.method_0();
+                    if (gclass8.GetPixelIndex() > num10)
+                        num10 = gclass8.GetPixelIndex();
                 }
                 c.int_74 = num10 % 128 != 0 ? (num10 / 128 + 1) * 128 : num10 / 128 * 128;
                 this.int_82 = c.int_74;
@@ -4353,7 +4366,7 @@ public class c : Form
                 c.int_3 = 20;
             else if (this.byte_29 == (byte)4)
                 c.int_3 = 14;
-            if (c.int_2 == 16 && !c.bool_1)
+            if (c.ledControllerType == 16 && !c.bool_1)
             {
                 c.int_74 = 512;
                 this.int_82 = c.int_74;
@@ -4369,7 +4382,7 @@ public class c : Form
                 this.int_63 = 4096;
                 this.byte_29 = (byte)0;
                 c.int_3 = 30;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 2:
                     case 49:
@@ -4386,7 +4399,7 @@ public class c : Form
             }
         }
         this.int_39 = this.int_23 * this.int_82 * 3;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_39 = 16384;
         this.byte_37 = new byte[this.int_39];
         this.byte_38 = new byte[this.int_39];
@@ -4399,9 +4412,9 @@ public class c : Form
         if (!this.bool_23)
         {
             if (c.useEnglishLanguage)
-                this.ShowMessage(Module.a("\uE5AB쎭삯\uDDB1욳습颷", int_0) + this.int_41.ToString() + Module.a("貫\uE2AD\uF5AF\uF6B1钳\uDAB5톷\uDDB9풻쪽뎿\uEEC1\uE4C3꿅ꗇ뫉ꏋ볍\uA4CF믑뫓뇕\uF8D7볙뷛럝賟蟡胣웥", int_0) + this.arrayList_1.Count.ToString() + Module.a("貫슭\uD9AF햱\uDCB3습쮷銹쮻횽ꦿ뛁ꇃ\uEFC5\uE9C7", int_0));
+                this.ShowMessage(Module.a("\uE5AB쎭삯\uDDB1욳습颷", int_0) + this.totalLeds.ToString() + Module.a("貫\uE2AD\uF5AF\uF6B1钳\uDAB5톷\uDDB9풻쪽뎿\uEEC1\uE4C3꿅ꗇ뫉ꏋ볍\uA4CF믑뫓뇕\uF8D7볙뷛럝賟蟡胣웥", int_0) + this.arrayList_1.Count.ToString() + Module.a("貫슭\uD9AF햱\uDCB3습쮷銹쮻횽ꦿ뛁ꇃ\uEFC5\uE9C7", int_0));
             else
-                this.ShowMessage(Module.a("볉ㇿ䳴ퟠ钳", int_0) + this.int_41.ToString() + Module.a("貫蓣ﲯ\uF7B1\uF0B3\uD9C5钷돞鲻", int_0) + this.arrayList_1.Count.ToString() + Module.a("貫蓣ﲯ\uF7B1\uF0B3\uD9C5䓬\uDFE8跢鬰\uE8BF뾷뙁\uEFC5\uE9C7", int_0));
+                this.ShowMessage(Module.a("볉ㇿ䳴ퟠ钳", int_0) + this.totalLeds.ToString() + Module.a("貫蓣ﲯ\uF7B1\uF0B3\uD9C5钷돞鲻", int_0) + this.arrayList_1.Count.ToString() + Module.a("貫蓣ﲯ\uF7B1\uF0B3\uD9C5䓬\uDFE8跢鬰\uE8BF뾷뙁\uEFC5\uE9C7", int_0));
         }
         c.int_78 = 0;
         this.method_26(14, c.int_78.ToString());
@@ -4429,7 +4442,7 @@ public class c : Form
     private int method_9()
     {
         int int_0 = 19;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 9:
                 this.int_82 = 2048;
@@ -4447,13 +4460,13 @@ public class c : Form
                 this.int_82 = 2048;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
             this.int_82 = c.bool_1 ? 170 : 512;
-        this.arrayList_3.Clear();
+        this.portArrayList.Clear();
     label_48:
         for (int int_2 = 0; int_2 < 1024; ++int_2)
         {
-            GClass8 gclass8;
+            PixelArray gclass8;
             do
             {
                 int index = 0;
@@ -4474,7 +4487,7 @@ public class c : Form
                     this.int_21 = 0;
                 this.progressBar_0.Value = this.int_21;
                 PointF pointF1 = ((GClass2)this.arrayList_2[index]).method_2();
-                gclass8 = new GClass8(int_2, this.int_82);
+                gclass8 = new PixelArray(int_2, this.int_82);
                 do
                 {
                     this.bool_58 = true;
@@ -4490,10 +4503,10 @@ public class c : Form
                                 {
                                     if ((double)pointF2.X == (double)pointF1.X && (double)pointF2.Y == (double)pointF1.Y)
                                     {
-                                        gclass8.method_7(gclass8.method_0(), new Point((int)pointF2.X, (int)pointF2.Y));
+                                        gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point((int)pointF2.X, (int)pointF2.Y));
                                         this.arrayList_1.Remove((object)pointF2);
-                                        gclass8.method_1(gclass8.method_0() + 1);
-                                        if (gclass8.method_0() >= this.int_82)
+                                        gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
+                                        if (gclass8.GetPixelIndex() >= this.int_82)
                                         {
                                             this.bool_58 = true;
                                             break;
@@ -4513,10 +4526,10 @@ public class c : Form
                             {
                                 if ((double)pointF3.X == (double)pointF1.X && (double)pointF3.Y == (double)pointF1.Y)
                                 {
-                                    gclass8.method_7(gclass8.method_0(), new Point((int)pointF3.X, (int)pointF3.Y));
+                                    gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point((int)pointF3.X, (int)pointF3.Y));
                                     this.arrayList_1.Remove((object)pointF3);
-                                    gclass8.method_1(gclass8.method_0() + 1);
-                                    if (gclass8.method_0() >= this.int_82)
+                                    gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
+                                    if (gclass8.GetPixelIndex() >= this.int_82)
                                     {
                                         this.bool_58 = true;
                                         break;
@@ -4532,8 +4545,8 @@ public class c : Form
                 while (!this.bool_58);
                 this.arrayList_2.RemoveAt(index);
             }
-            while (gclass8.method_0() <= 0);
-            this.arrayList_3.Add((object)gclass8);
+            while (gclass8.GetPixelIndex() <= 0);
+            this.portArrayList.Add((object)gclass8);
         }
         this.progressBar_0.Value = 15;
         for (int index = 0; index < this.arrayList_2.Count; ++index)
@@ -4550,36 +4563,36 @@ public class c : Form
                     bool flag2 = false;
                     if (int_2_1 != num)
                     {
-                        foreach (GClass8 gclass8 in this.arrayList_3)
+                        foreach (PixelArray gclass8 in this.portArrayList)
                         {
-                            if (gclass8.method_4() == int_2_1)
+                            if (gclass8.GetPortNum() == int_2_1)
                                 flag1 = true;
-                            if (gclass8.method_4() == num)
+                            if (gclass8.GetPortNum() == num)
                                 flag2 = true;
                         }
                         if (flag2 && !flag1)
                         {
-                            GClass8 gclass8_1 = new GClass8(int_2_1, this.int_82);
-                            foreach (GClass8 gclass8_2 in this.arrayList_3)
+                            PixelArray gclass8_1 = new PixelArray(int_2_1, this.int_82);
+                            foreach (PixelArray gclass8_2 in this.portArrayList)
                             {
-                                if (gclass8_2.method_4() == num)
+                                if (gclass8_2.GetPortNum() == num)
                                 {
-                                    for (int int_2_2 = 0; int_2_2 < gclass8_2.method_0(); ++int_2_2)
-                                        gclass8_1.method_7(int_2_2, gclass8_2.method_6(int_2_2));
-                                    gclass8_1.method_1(gclass8_2.method_0());
+                                    for (int int_2_2 = 0; int_2_2 < gclass8_2.GetPixelIndex(); ++int_2_2)
+                                        gclass8_1.SetPointForPixel(int_2_2, gclass8_2.GetPointForPixel(int_2_2));
+                                    gclass8_1.SetPixelIndex(gclass8_2.GetPixelIndex());
                                     break;
                                 }
                             }
-                            this.arrayList_3.Add((object)gclass8_1);
+                            this.portArrayList.Add((object)gclass8_1);
                         }
                     }
                 }
             }
         }
         bool flag = false;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            if (gclass8.method_0() > 0)
+            if (gclass8.GetPixelIndex() > 0)
             {
                 flag = true;
                 break;
@@ -4596,13 +4609,13 @@ public class c : Form
             return 1;
         }
         int num1 = 0;
-        for (int index = 0; index < this.arrayList_3.Count; ++index)
+        for (int index = 0; index < this.portArrayList.Count; ++index)
         {
-            if (((GClass8)this.arrayList_3[index]).method_4() > num1)
-                num1 = ((GClass8)this.arrayList_3[index]).method_4();
+            if (((PixelArray)this.portArrayList[index]).GetPortNum() > num1)
+                num1 = ((PixelArray)this.portArrayList[index]).GetPortNum();
         }
         int num2 = num1 + 1;
-        this.int_23 = this.arrayList_3.Count;
+        this.int_23 = this.portArrayList.Count;
         if (num2 > this.int_23)
         {
             if (!this.bool_23)
@@ -4614,7 +4627,7 @@ public class c : Form
             }
             this.int_23 = num2;
         }
-        if ((c.int_2 == 7 || c.int_2 == 41 || c.int_2 == 48 || c.int_2 == 49 || c.int_2 == 50) && this.int_23 > 4)
+        if ((c.ledControllerType == 7 || c.ledControllerType == 41 || c.ledControllerType == 48 || c.ledControllerType == 49 || c.ledControllerType == 50) && this.int_23 > 4)
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage(Module.a("\uEDB8펺\uD8BC龾곀ꋂ뷄\uE9C6\uE9C8ꗊ료ꋎ돐뛒\uA7D4\uF7D6뛘뷚\uFDDC꿞軠釢釤铦짨苪黬쿮연\uDFF2헴闶賸迺\uDDFC课椀昂┄昆樈缊砌渎紐㌒笔或琘礚砜洞Ġ䄢䀤並䜨䰪ബ娮䈰嘲儴᜶倸唺ᴼ䬾⥀♂敄⑆㱈㥊㽌⩎㽐❒畔祖㵘⍚㭜灞ɠ᭢ݤ䝦ཨɪŬ੮兰ᩲٴ", int_0) + this.int_23.ToString());
@@ -4625,7 +4638,7 @@ public class c : Form
             return 1;
         }
         this.int_23 = this.int_23 % c.int_75 != 0 ? (this.int_23 / c.int_75 + 1) * c.int_75 : this.int_23 / c.int_75 * c.int_75;
-        if ((c.int_2 == 3 || c.int_2 == 8 || c.int_2 == 12 || c.int_2 == 31 || c.int_2 == 46 || c.int_2 == 2) && this.int_23 > 8)
+        if ((c.ledControllerType == 3 || c.ledControllerType == 8 || c.ledControllerType == 12 || c.ledControllerType == 31 || c.ledControllerType == 46 || c.ledControllerType == 2) && this.int_23 > 8)
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage(Module.a("\uEDB8펺\uD8BC龾곀ꋂ뷄\uE9C6\uE9C8ꗊ료ꋎ돐뛒\uA7D4\uF7D6뛘뷚\uFDDC꿞軠釢釤铦짨苪黬쿮짰\uDFF2헴闶賸迺\uDDFC课椀昂┄昆樈缊砌渎紐㌒笔或琘礚砜洞Ġ䄢䀤並䜨䰪ബ娮䈰嘲儴᜶倸唺ᴼ䬾⥀♂敄⑆㱈㥊㽌⩎㽐❒畔祖㵘⍚㭜灞ɠ᭢ݤ䝦ཨɪŬ੮兰ᩲٴ", int_0) + this.int_23.ToString());
@@ -4635,25 +4648,25 @@ public class c : Form
             this.progressBar_0.Enabled = false;
             return 1;
         }
-        this.int_41 = 0;
+        this.totalLeds = 0;
         this.int_42 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            this.int_41 += gclass8.method_0();
-            if (this.int_42 < gclass8.method_0())
-                this.int_42 = gclass8.method_0();
+            this.totalLeds += gclass8.GetPixelIndex();
+            if (this.int_42 < gclass8.GetPixelIndex())
+                this.int_42 = gclass8.GetPixelIndex();
         }
         int num3 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            if (gclass8.method_0() > num3)
-                num3 = gclass8.method_0();
+            if (gclass8.GetPixelIndex() > num3)
+                num3 = gclass8.GetPixelIndex();
         }
-        if (c.int_2 == 9)
+        if (c.ledControllerType == 9)
             this.int_82 = num3 <= 1024 ? 1024 : 2048;
-        else if (c.int_2 == 13 || c.int_2 == 32 || c.int_2 == 47 || c.int_2 == 52)
+        else if (c.ledControllerType == 13 || c.ledControllerType == 32 || c.ledControllerType == 47 || c.ledControllerType == 52)
             this.int_82 = num3 <= 1536 ? (num3 <= 1024 ? (num3 <= 512 ? 512 : 1024) : 1536) : 2048;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.int_82 = 256;
@@ -4662,15 +4675,15 @@ public class c : Form
                 this.int_82 = 512;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
         {
             if (!c.bool_1)
             {
                 int num4 = 0;
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    if (gclass8.method_0() > num4)
-                        num4 = gclass8.method_0();
+                    if (gclass8.GetPixelIndex() > num4)
+                        num4 = gclass8.GetPixelIndex();
                 }
                 c.int_74 = num4 % 128 != 0 ? (num4 / 128 + 1) * 128 : num4 / 128 * 128;
                 this.int_82 = c.int_74;
@@ -4691,7 +4704,7 @@ public class c : Form
                 c.int_3 = 20;
             else if (this.byte_29 == (byte)4)
                 c.int_3 = 14;
-            if (c.int_2 == 16 && !c.bool_1)
+            if (c.ledControllerType == 16 && !c.bool_1)
             {
                 c.int_74 = 512;
                 this.int_82 = c.int_74;
@@ -4707,7 +4720,7 @@ public class c : Form
                 this.int_63 = 4096;
                 this.byte_29 = (byte)0;
                 c.int_3 = 30;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 2:
                     case 49:
@@ -4724,7 +4737,7 @@ public class c : Form
             }
         }
         this.int_39 = this.int_23 * this.int_82 * 3;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_39 = 16384;
         this.byte_37 = new byte[this.int_39];
         this.byte_38 = new byte[this.int_39];
@@ -4737,9 +4750,9 @@ public class c : Form
         if (!this.bool_23)
         {
             if (c.useEnglishLanguage)
-                this.ShowMessage(Module.a("\uEDB8펺\uD8BC龾뗀곂뇄ꛆꗈ\uEBCAꏌ뫎볐뇒냔ꗖ律듚믜\uFFDE균ꛢꇤ铦짨黪黬諮闰폲鳴駶\uD9F8迺闼雾爀⌂甄甆昈愊栌氎攐㌒簔搖⌘", int_0) + this.int_41.ToString());
+                this.ShowMessage(Module.a("\uEDB8펺\uD8BC龾뗀곂뇄ꛆꗈ\uEBCAꏌ뫎볐뇒냔ꗖ律듚믜\uFFDE균ꛢꇤ铦짨黪黬諮闰폲鳴駶\uD9F8迺闼雾爀⌂甄甆昈愊栌氎攐㌒簔搖⌘", int_0) + this.totalLeds.ToString());
             else
-                this.ShowMessage(Module.a("\uEAE7\uF6E8壡듄\uEC8E늓몋\uEFB3來턵", int_0) + this.int_41.ToString() + Module.a("鏶\uF7BA\uF8BC﮾꺰숽", int_0));
+                this.ShowMessage(Module.a("\uEAE7\uF6E8壡듄\uEC8E늓몋\uEFB3來턵", int_0) + this.totalLeds.ToString() + Module.a("鏶\uF7BA\uF8BC﮾꺰숽", int_0));
         }
         c.int_78 = 0;
         this.method_26(14, c.int_78.ToString());
@@ -4772,8 +4785,8 @@ public class c : Form
         byte[] buffer1 = new byte[512];
         bufferedStream.Seek(0L, SeekOrigin.Begin);
         bufferedStream.Read(buffer1, 0, 512);
-        c.int_65 = (int)buffer1[4] * 256 + (int)buffer1[5];
-        c.int_66 = (int)buffer1[6] * 256 + (int)buffer1[7];
+        c.horizontalPixels = (int)buffer1[4] * 256 + (int)buffer1[5];
+        c.verticalPixels = (int)buffer1[6] * 256 + (int)buffer1[7];
         this.int_23 = (int)buffer1[8] * 256 + (int)buffer1[9];
         this.int_82 = (int)buffer1[10] * 256 + (int)buffer1[11];
         this.int_18 = (int)buffer1[12] * 256 + (int)buffer1[13];
@@ -4817,8 +4830,8 @@ public class c : Form
         byte[] numArray2 = new byte[256];
         byte[] buffer2 = new byte[256];
         bufferedStream.Seek(512L, SeekOrigin.Begin);
-        this.arrayList_3.Clear();
-        GClass8 gclass8_1 = (GClass8)null;
+        this.portArrayList.Clear();
+        PixelArray gclass8_1 = (PixelArray)null;
         int num2 = 0;
         int num3 = 0;
         while (bufferedStream.Read(buffer2, 0, 256) == 256)
@@ -4835,62 +4848,62 @@ public class c : Form
                     if (num2 == 0)
                     {
                         num2 = 1;
-                        gclass8_1 = new GClass8(int_2, this.int_82);
+                        gclass8_1 = new PixelArray(int_2, this.int_82);
                     }
                     else if (int_2 != num3)
                     {
-                        if (gclass8_1.method_0() > 0)
-                            this.arrayList_3.Add((object)gclass8_1);
-                        gclass8_1 = new GClass8(int_2, this.int_82);
+                        if (gclass8_1.GetPixelIndex() > 0)
+                            this.portArrayList.Add((object)gclass8_1);
+                        gclass8_1 = new PixelArray(int_2, this.int_82);
                     }
                     num3 = int_2;
-                    gclass8_1.method_7(gclass8_1.method_0(), new Point(x, y));
-                    gclass8_1.method_1(gclass8_1.method_0() + 1);
-                    if (gclass8_1.method_0() >= this.int_82)
+                    gclass8_1.SetPointForPixel(gclass8_1.GetPixelIndex(), new Point(x, y));
+                    gclass8_1.SetPixelIndex(gclass8_1.GetPixelIndex() + 1);
+                    if (gclass8_1.GetPixelIndex() >= this.int_82)
                     {
-                        this.arrayList_3.Add((object)gclass8_1);
-                        gclass8_1 = new GClass8(int_2, this.int_82);
+                        this.portArrayList.Add((object)gclass8_1);
+                        gclass8_1 = new PixelArray(int_2, this.int_82);
                     }
                 }
             }
         }
-        if (num2 == 1 && gclass8_1.method_0() > 0)
-            this.arrayList_3.Add((object)gclass8_1);
+        if (num2 == 1 && gclass8_1.GetPixelIndex() > 0)
+            this.portArrayList.Add((object)gclass8_1);
         bufferedStream.Flush();
         bufferedStream.Close();
         fileStream.Close();
-        if (c.int_65 < 500 && c.int_66 < 400)
+        if (c.horizontalPixels < 500 && c.verticalPixels < 400)
         {
-            int num4 = 500 / c.int_65;
-            int num5 = 400 / c.int_66;
+            int num4 = 500 / c.horizontalPixels;
+            int num5 = 400 / c.verticalPixels;
             int num6 = num4 > num5 ? num5 : num4;
-            this.int_24 = c.int_65 * num6;
-            this.int_25 = c.int_66 * num6;
+            this.int_24 = c.horizontalPixels * num6;
+            this.int_25 = c.verticalPixels * num6;
         }
         else
         {
-            this.int_24 = c.int_65;
-            this.int_25 = c.int_66;
+            this.int_24 = c.horizontalPixels;
+            this.int_25 = c.verticalPixels;
         }
-        this.int_41 = 0;
+        this.totalLeds = 0;
         this.int_42 = 0;
-        foreach (GClass8 gclass8_2 in this.arrayList_3)
+        foreach (PixelArray gclass8_2 in this.portArrayList)
         {
-            this.int_41 += gclass8_2.method_0();
-            if (this.int_42 < gclass8_2.method_0())
-                this.int_42 = gclass8_2.method_0();
+            this.totalLeds += gclass8_2.GetPixelIndex();
+            if (this.int_42 < gclass8_2.GetPixelIndex())
+                this.int_42 = gclass8_2.GetPixelIndex();
         }
         int num7 = 0;
-        foreach (GClass8 gclass8_3 in this.arrayList_3)
+        foreach (PixelArray gclass8_3 in this.portArrayList)
         {
-            if (gclass8_3.method_0() > num7)
-                num7 = gclass8_3.method_0();
+            if (gclass8_3.GetPixelIndex() > num7)
+                num7 = gclass8_3.GetPixelIndex();
         }
-        if (c.int_2 == 9)
+        if (c.ledControllerType == 9)
             this.int_82 = num7 <= 1024 ? 1024 : 2048;
-        else if (c.int_2 == 13 || c.int_2 == 32 || c.int_2 == 47 || c.int_2 == 52)
+        else if (c.ledControllerType == 13 || c.ledControllerType == 32 || c.ledControllerType == 47 || c.ledControllerType == 52)
             this.int_82 = num7 <= 1536 ? (num7 <= 1024 ? (num7 <= 512 ? 512 : 1024) : 1536) : 2048;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.int_82 = 256;
@@ -4899,15 +4912,15 @@ public class c : Form
                 this.int_82 = 512;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
         {
             if (!c.bool_1)
             {
                 int num8 = 0;
-                foreach (GClass8 gclass8_4 in this.arrayList_3)
+                foreach (PixelArray gclass8_4 in this.portArrayList)
                 {
-                    if (gclass8_4.method_0() > num8)
-                        num8 = gclass8_4.method_0();
+                    if (gclass8_4.GetPixelIndex() > num8)
+                        num8 = gclass8_4.GetPixelIndex();
                 }
                 c.int_74 = num8 % 128 != 0 ? (num8 / 128 + 1) * 128 : num8 / 128 * 128;
                 this.int_82 = c.int_74;
@@ -4928,7 +4941,7 @@ public class c : Form
                 c.int_3 = 20;
             else if (this.byte_29 == (byte)4)
                 c.int_3 = 14;
-            if (c.int_2 == 16 && !c.bool_1)
+            if (c.ledControllerType == 16 && !c.bool_1)
             {
                 c.int_74 = 512;
                 this.int_82 = c.int_74;
@@ -4944,7 +4957,7 @@ public class c : Form
                 this.int_63 = 4096;
                 this.byte_29 = (byte)0;
                 c.int_3 = 30;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 2:
                     case 49:
@@ -4961,7 +4974,7 @@ public class c : Form
             }
         }
         this.int_39 = this.int_23 * this.int_82 * 3;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_39 = 16384;
         this.byte_37 = new byte[this.int_39];
         this.byte_38 = new byte[this.int_39];
@@ -4974,9 +4987,9 @@ public class c : Form
         if (!this.bool_23)
         {
             if (c.useEnglishLanguage)
-                this.ShowMessage(Module.a("\uF8AB욭햯銱삳\uD9B5첷\uDBB9킻麽꺿럁꧃꓅귇룉\uECCBꇍ뛏\uF2D1飓鏕鳗꧙ﳛꯝ鏟蟡胣웥臧蓩쳫髭飯鯱蟳훵裷裹鏻铽旿愁瀃★愇礉㘋", int_0) + this.int_41.ToString());
+                this.ShowMessage(Module.a("\uF8AB욭햯銱삳\uD9B5첷\uDBB9킻麽꺿럁꧃꓅귇룉\uECCBꇍ뛏\uF2D1飓鏕鳗꧙ﳛꯝ鏟蟡胣웥臧蓩쳫髭飯鯱蟳훵裷裹鏻铽旿愁瀃★愇礉㘋", int_0) + this.totalLeds.ToString());
             else
-                this.ShowMessage(Module.a("\uFFF4\uE3FF嗲맋駽쟤쟸鋌㫵ꑂ", int_0) + this.int_41.ToString() + Module.a("蛥\uE2AD\uF5AF\uF6B1\uDBC3띊", int_0));
+                this.ShowMessage(Module.a("\uFFF4\uE3FF嗲맋駽쟤쟸鋌㫵ꑂ", int_0) + this.totalLeds.ToString() + Module.a("蛥\uE2AD\uF5AF\uF6B1\uDBC3띊", int_0));
         }
         c.int_78 = 0;
         this.method_26(14, c.int_78.ToString());
@@ -5015,30 +5028,30 @@ public class c : Form
             if ((double)pointF.Y > this.double_7)
                 this.double_7 = (double)pointF.Y;
         }
-        c.int_65 = (int)(this.double_6 - this.double_4);
-        c.int_66 = (int)(this.double_7 - this.double_5);
-        c.int_65 += this.int_18;
-        c.int_66 += this.int_18;
-        this.double_6 = (double)c.int_65;
-        this.double_7 = (double)c.int_66;
-        if (c.int_65 < 500 && c.int_66 < 400)
+        c.horizontalPixels = (int)(this.double_6 - this.double_4);
+        c.verticalPixels = (int)(this.double_7 - this.double_5);
+        c.horizontalPixels += this.int_18;
+        c.verticalPixels += this.int_18;
+        this.double_6 = (double)c.horizontalPixels;
+        this.double_7 = (double)c.verticalPixels;
+        if (c.horizontalPixels < 500 && c.verticalPixels < 400)
         {
-            int num1 = 500 / c.int_65;
-            int num2 = 400 / c.int_66;
+            int num1 = 500 / c.horizontalPixels;
+            int num2 = 400 / c.verticalPixels;
             int num3 = num1 > num2 ? num2 : num1;
-            this.int_24 = c.int_65 * num3;
-            this.int_25 = c.int_66 * num3;
+            this.int_24 = c.horizontalPixels * num3;
+            this.int_25 = c.verticalPixels * num3;
         }
         else
         {
-            this.int_24 = c.int_65;
-            this.int_25 = c.int_66;
+            this.int_24 = c.horizontalPixels;
+            this.int_25 = c.verticalPixels;
         }
         ++this.int_21;
         if (this.int_21 > 15)
             this.int_21 = 0;
         this.progressBar_0.Value = this.int_21;
-        if (c.int_65 <= 8050 && c.int_66 <= 6050)
+        if (c.horizontalPixels <= 8050 && c.verticalPixels <= 6050)
         {
             PointF[] pointFArray1 = new PointF[this.arrayList_1.Count];
             int count1 = this.arrayList_1.Count;
@@ -5080,11 +5093,11 @@ public class c : Form
             return this.method_8();
         }
         if (c.useEnglishLanguage)
-            this.ShowMessage("At the current resolution, the layout canvas size in AutoCAD cannot exceed 8000*6000, and the current canvas size is" + c.int_65.ToString() + "*" + c.int_66.ToString() + ",Therefore, this software cannot handle it, please reduce the canvas size!");
-//        this.ShowMessage(Module.a("\uF8A7용즫쾭쎯ힱ钳쒵\uDDB7\uDEB9즻\uDDBDꖿ\uE2C1냃껅귇\uEAC9꿋꿍뻏ꓑ뗓ꗕ\uF8D7꧙뗛ꓝ藟컡쓣蟥鯧쫩駫胭铯韱蛳훵賷鋹駻\uDEFD揿省瘃琅洇搉砋⸍戏眑朓礕琗漙栛眝伟䰡ࠣإ尧䈩䤫อ匯匱娳䀵夷䤹᰻䴽⤿㡁⅃晅❇ⱉ汋ཌྷ╏♑㭓ᕕᥗṙ籛\u325Dş᭡ୣ፥ᱧ䩩Ὣ٭Ὧݱᡳት塷\u1879\u197B幽\uEE7F\uED81ꒃ\uEB85\uE787\uF889\uE98B꺍\uE48F晴\uF593\uF895뢗ꊙ겛꺝邟袡銣隥颧骩肫청얯욱钳습킷\uDFB9鲻\uDFBDꎿ뛁뇃\uA7C5\uA4C7\uEAC9꿋꿍뻏ꓑ뗓ꗕ\uF8D7꧙뗛ꓝ藟싡諣觥\u9FE7쫩藫鷭", int_0) + c.int_65.ToString() + Module.a("芧", int_0) + c.int_66.ToString());
+            this.ShowMessage("At the current resolution, the layout canvas size in AutoCAD cannot exceed 8000*6000, and the current canvas size is" + c.horizontalPixels.ToString() + "*" + c.verticalPixels.ToString() + ",Therefore, this software cannot handle it, please reduce the canvas size!");
+//        this.ShowMessage(Module.a("\uF8A7용즫쾭쎯ힱ钳쒵\uDDB7\uDEB9즻\uDDBDꖿ\uE2C1냃껅귇\uEAC9꿋꿍뻏ꓑ뗓ꗕ\uF8D7꧙뗛ꓝ藟컡쓣蟥鯧쫩駫胭铯韱蛳훵賷鋹駻\uDEFD揿省瘃琅洇搉砋⸍戏眑朓礕琗漙栛眝伟䰡ࠣإ尧䈩䤫อ匯匱娳䀵夷䤹᰻䴽⤿㡁⅃晅❇ⱉ汋ཌྷ╏♑㭓ᕕᥗṙ籛\u325Dş᭡ୣ፥ᱧ䩩Ὣ٭Ὧݱᡳት塷\u1879\u197B幽\uEE7F\uED81ꒃ\uEB85\uE787\uF889\uE98B꺍\uE48F晴\uF593\uF895뢗ꊙ겛꺝邟袡銣隥颧骩肫청얯욱钳습킷\uDFB9鲻\uDFBDꎿ뛁뇃\uA7C5\uA4C7\uEAC9꿋꿍뻏ꓑ뗓ꗕ\uF8D7꧙뗛ꓝ藟싡諣觥\u9FE7쫩藫鷭", dataEntryPoint) + c.horizontalPixels.ToString() + Module.a("芧", dataEntryPoint) + c.verticalPixels.ToString());
         else
-            this.ShowMessage("在当前分辨率下,AutoCAD中布局画布大小不能超过8000*6000,而当前画布大小为" + c.int_65.ToString() + "*" + c.int_66.ToString() + ",所以本软件无法处理,请缩小画布！");
-//        this.ShowMessage(Module.a("胰臨\uE1F9\uA8FFᠠ㗂뿽骵醴쾹좻톽莿菁胃\uEB8B쮙誕\uF7BE춓\uF796\uDD8D\uD99D⭕嵚ᵖ\uE4DB\uEEDD탟틡컣탥\uD8E7\uDAE9\uDCEB십ﱯꆮ릡춀ﮩ\uDDA0\uF3A7쒳", int_0) + c.int_65.ToString() + Module.a("芧", int_0) + c.int_66.ToString() + Module.a("蒧\uEACB䧥苊\uDF20䓿哖揙볮볍邻䤶\uE9C0춝ﾶ얛줸", int_0));
+            this.ShowMessage("在当前分辨率下,AutoCAD中布局画布大小不能超过8000*6000,而当前画布大小为" + c.horizontalPixels.ToString() + "*" + c.verticalPixels.ToString() + ",所以本软件无法处理,请缩小画布！");
+//        this.ShowMessage(Module.a("胰臨\uE1F9\uA8FFᠠ㗂뿽骵醴쾹좻톽莿菁胃\uEB8B쮙誕\uF7BE춓\uF796\uDD8D\uD99D⭕嵚ᵖ\uE4DB\uEEDD탟틡컣탥\uD8E7\uDAE9\uDCEB십ﱯꆮ릡춀ﮩ\uDDA0\uF3A7쒳", dataEntryPoint) + c.horizontalPixels.ToString() + Module.a("芧", dataEntryPoint) + c.verticalPixels.ToString() + Module.a("蒧\uEACB䧥苊\uDF20䓿哖揙볮볍邻䤶\uE9C0춝ﾶ얛줸", dataEntryPoint));
         this.progressBar_0.Visible = false;
         this.progressBar_0.Enabled = false;
         return 1;
@@ -5092,20 +5105,20 @@ public class c : Form
 
     private void method_12()
     {
-//        int int_0 = 6;
-        int num1 = 8050 / c.int_65;
-        int num2 = 6050 / c.int_66;
+//        int dataEntryPoint = 6;
+        int num1 = 8050 / c.horizontalPixels;
+        int num2 = 6050 / c.verticalPixels;
         c.int_76 = num1 > num2 ? num2 : num1;
         if (this.bool_21)
         {
-            int num3 = 200 / c.int_65;
-            int num4 = 150 / c.int_66;
+            int num3 = 200 / c.horizontalPixels;
+            int num4 = 150 / c.verticalPixels;
             int num5 = num3 > num4 ? num4 : num3;
-            this.int_24 = c.int_65 * num5;
-            this.int_25 = c.int_66 * num5;
+            this.int_24 = c.horizontalPixels * num5;
+            this.int_25 = c.verticalPixels * num5;
         }
-        int num6 = this.int_24 / c.int_65;
-        int num7 = this.int_25 / c.int_66;
+        int num6 = this.int_24 / c.horizontalPixels;
+        int num7 = this.int_25 / c.verticalPixels;
         int num8 = num6 > num7 ? num7 : num6;
         c.int_77 = num8;
         if (c.int_78 != 0)
@@ -5119,8 +5132,8 @@ public class c : Form
         }
         this.int_85 = num8;
         this.int_86 = this.int_85;
-        this.int_67 = c.int_65 * this.int_85;
-        this.int_68 = c.int_66 * this.int_85;
+        this.int_67 = c.horizontalPixels * this.int_85;
+        this.int_68 = c.verticalPixels * this.int_85;
         if (this.int_67 < 1 || this.int_68 < 1)
         {
             this.int_67 = 300;
@@ -5161,7 +5174,7 @@ public class c : Form
         int num9 = 0;
         while (num9 < 4)
             ++num9;
-        rectangle_2 = new Rectangle(0, 0, c.int_65, c.int_66);
+        rectangle_2 = new Rectangle(0, 0, c.horizontalPixels, c.verticalPixels);
         rectangle_3 = new Rectangle(0, 0, this.panel_0.Width, this.panel_0.Height);
         this.gclass0_7 = new GClass0(c.gclass1_0.method_1(), rectangle_2, rectangle_3);
         this.gclass0_7.method_12().ColorFill(Color.FromArgb(0, 0, 0));
@@ -5172,19 +5185,19 @@ public class c : Form
             ColorSpaceLowValue = 0,
             ColorSpaceHighValue = 0
         });
-        c.int_58 = c.int_65;
-        c.int_59 = c.int_65;
-        c.int_60 = c.int_65;
-        c.int_61 = c.int_66;
+        c.int_58 = c.horizontalPixels;
+        c.int_59 = c.horizontalPixels;
+        c.int_60 = c.horizontalPixels;
+        c.int_61 = c.verticalPixels;
         if (this.a_0 == null)
         {
             this.a_0 = new a();
             this.a_0.Hide();
         }
-        this.int_43 = new int[this.int_41];
-        this.int_51 = new int[this.int_41];
-        this.int_44 = new int[this.int_41];
-        this.bool_49 = this.int_41 > this.int_52;
+        this.int_43 = new int[this.totalLeds];
+        this.int_51 = new int[this.totalLeds];
+        this.int_44 = new int[this.totalLeds];
+        this.bool_49 = this.totalLeds > this.int_52;
         uint index1 = 0;
         LockedData lockedData1 = this.gclass0_3.method_12().Lock(LockFlags.ReadOnly);
         lockedData1.Data.Position = 0L;
@@ -5194,14 +5207,14 @@ public class c : Form
         this.int_90 = lockedData2.Pitch;
         int num11 = this.int_86 / 2;
         Point point;
-        for (int index2 = 0; index2 < this.arrayList_3.Count; ++index2)
+        for (int index2 = 0; index2 < this.portArrayList.Count; ++index2)
         {
-            this.int_91 = ((GClass8)this.arrayList_3[index2]).method_4() * this.int_82 * 3;
-            for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index2]).method_0(); ++int_2)
+            this.int_91 = ((PixelArray)this.portArrayList[index2]).GetPortNum() * this.int_82 * 3;
+            for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index2]).GetPixelIndex(); ++int_2)
             {
-                point = ((GClass8)this.arrayList_3[index2]).method_6(int_2);
+                point = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2);
                 this.int_87 = point.X;
-                this.int_88 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).Y;
+                this.int_88 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).Y;
                 int num12 = this.int_87 * this.int_86 + num11;
                 int num13 = (this.int_88 * this.int_86 + num11) * num10 + num12 * 4;
                 this.int_43[index1] = num13;
@@ -5220,20 +5233,20 @@ public class c : Form
         int num14 = this.int_18 * this.int_85;
         if (num14 == 8)
             num14 = 7;
-        if (this.int_41 > this.int_52)
+        if (this.totalLeds > this.int_52)
             num14 = 1;
         if (num14 > 4)
         {
             this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
             this.gclass0_2.method_12().DrawWidth = num14 / 2;
-            foreach (GClass8 gclass8 in this.arrayList_3)
+            foreach (PixelArray gclass8 in this.portArrayList)
             {
-                for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                 {
-                    this.color_1 = this.color_0[gclass8.method_4() % 10];
+                    this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                     this.gclass0_2.method_12().ForeColor = this.color_1;
-                    int x = gclass8.method_6(int_2).X * this.int_85 + num14 / 2;
-                    int y = gclass8.method_6(int_2).Y * this.int_85 + num14 / 2;
+                    int x = gclass8.GetPointForPixel(int_2).X * this.int_85 + num14 / 2;
+                    int y = gclass8.GetPointForPixel(int_2).Y * this.int_85 + num14 / 2;
                     this.gclass0_2.method_12().DrawCircle(x, y, num14 / 4);
                 }
             }
@@ -5245,18 +5258,18 @@ public class c : Form
                 case 1:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    IEnumerator enumerator1 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator1 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator1.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator1.Current;
-                            for (int int_2 = 0; int_2 < current.method_0(); ++int_2)
+                            PixelArray current = (PixelArray)enumerator1.Current;
+                            for (int int_2 = 0; int_2 < current.GetPixelIndex(); ++int_2)
                             {
-                                this.color_1 = this.color_0[current.method_4() % 10];
+                                this.color_1 = this.color_0[current.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
-                                int x1 = current.method_6(int_2).X * this.int_85;
-                                point = current.method_6(int_2);
+                                int x1 = current.GetPointForPixel(int_2).X * this.int_85;
+                                point = current.GetPointForPixel(int_2);
                                 int num15 = point.Y * this.int_85;
                                 this.gclass0_2.method_12().DrawLine(x1, num15, x1 + 1, num15);
                             }
@@ -5271,18 +5284,18 @@ public class c : Form
                 case 2:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    IEnumerator enumerator2 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator2 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator2.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator2.Current;
-                            for (int int_2 = 0; int_2 < current.method_0(); ++int_2)
+                            PixelArray current = (PixelArray)enumerator2.Current;
+                            for (int int_2 = 0; int_2 < current.GetPixelIndex(); ++int_2)
                             {
-                                this.color_1 = this.color_0[current.method_4() % 10];
+                                this.color_1 = this.color_0[current.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
-                                int num16 = current.method_6(int_2).X * this.int_85;
-                                int num17 = current.method_6(int_2).Y * this.int_85;
+                                int num16 = current.GetPointForPixel(int_2).X * this.int_85;
+                                int num17 = current.GetPointForPixel(int_2).Y * this.int_85;
                                 this.gclass0_2.method_12().DrawLine(num16 + 1, num17, num16 + 2, num17);
                             }
                         }
@@ -5296,18 +5309,18 @@ public class c : Form
                 case 3:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    IEnumerator enumerator3 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator3 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator3.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator3.Current;
-                            for (int int_2 = 0; int_2 < current.method_0(); ++int_2)
+                            PixelArray current = (PixelArray)enumerator3.Current;
+                            for (int int_2 = 0; int_2 < current.GetPixelIndex(); ++int_2)
                             {
-                                this.color_1 = this.color_0[current.method_4() % 10];
+                                this.color_1 = this.color_0[current.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
-                                int num18 = current.method_6(int_2).X * this.int_85;
-                                int num19 = current.method_6(int_2).Y * this.int_85;
+                                int num18 = current.GetPointForPixel(int_2).X * this.int_85;
+                                int num19 = current.GetPointForPixel(int_2).Y * this.int_85;
                                 this.gclass0_2.method_12().DrawLine(num18 + 1, num19, num18 + 3, num19);
                                 this.gclass0_2.method_12().DrawLine(num18 + 1, num19 + 1, num18 + 3, num19 + 1);
                             }
@@ -5322,18 +5335,18 @@ public class c : Form
                 case 4:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    IEnumerator enumerator4 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator4 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator4.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator4.Current;
-                            for (int int_2 = 0; int_2 < current.method_0(); ++int_2)
+                            PixelArray current = (PixelArray)enumerator4.Current;
+                            for (int int_2 = 0; int_2 < current.GetPixelIndex(); ++int_2)
                             {
-                                this.color_1 = this.color_0[current.method_4() % 10];
+                                this.color_1 = this.color_0[current.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
-                                int num20 = current.method_6(int_2).X * this.int_85;
-                                int num21 = current.method_6(int_2).Y * this.int_85;
+                                int num20 = current.GetPointForPixel(int_2).X * this.int_85;
+                                int num21 = current.GetPointForPixel(int_2).Y * this.int_85;
                                 this.gclass0_2.method_12().DrawLine(num20 + 1, num21, num20 + 4, num21);
                                 this.gclass0_2.method_12().DrawLine(num20 + 1, num21 + 1, num20 + 4, num21 + 1);
                                 this.gclass0_2.method_12().DrawLine(num20 + 1, num21 + 2, num20 + 4, num21 + 2);
@@ -5355,7 +5368,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("\uE8AB잭슯ힱힳ습삷骹僚첽늿귁뛃ﳅ\uE8C7", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("\uE8AB잭슯ힱힳ습삷骹僚첽늿귁뛃ﳅ\uE8C7", dataEntryPoint) + ex.Message);
             return;
         }
         this.method_15();
@@ -5369,14 +5382,14 @@ public class c : Form
             c.BitBlt(hdc1, 0, 0, this.panel_0.Width, this.panel_0.Height, hdc2, 0, 0, 13369376);
             graphics2.ReleaseHdc(hdc2);
             graphics1.ReleaseHdc(hdc1);
-            //   this.string_20 + (object) '\\' + this.string_22 + Module.a("ӹ闘狼헀\uEBB3蒵隷\uD8B9톻캽", int_0);
+            //   this.string_20 + (object) '\\' + this.string_22 + Module.a("ӹ闘狼헀\uEBB3蒵隷\uD8B9톻캽", dataEntryPoint);
             if (this.image_1 != null)
                 this.image_1.Dispose();
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "Save as..."; //Module.a("ﾫ쾭욯ힱ钳ힵ쮷钹銻邽", int_0);
+            saveFileDialog.Title = "Save as..."; //Module.a("ﾫ쾭욯ힱ钳ힵ쮷钹銻邽", dataEntryPoint);
             saveFileDialog.AddExtension = true;
-            saveFileDialog.DefaultExt = "bmp"; //Module.a("캫쎭삯", int_0);
-            saveFileDialog.Filter = "BMP(*.bmp)|*.bmp|All File(*.*)|*.*"; //Module.a("\uEEAB\uE3AD\uE0AF骱麳颵\uDAB7ힹ첻鞽벿\uE8C1\uEAC3꓅ꗇ뫉냋迍볏뻑\uF4D3郕뇗뛙맛\uF6DD쫟쳡컣쿥铧샩싫쓭", int_0);
+            saveFileDialog.DefaultExt = "bmp"; //Module.a("캫쎭삯", dataEntryPoint);
+            saveFileDialog.Filter = "BMP(*.bmp)|*.bmp|All File(*.*)|*.*"; //Module.a("\uEEAB\uE3AD\uE0AF骱麳颵\uDAB7ힹ첻鞽벿\uE8C1\uEAC3꓅ꗇ뫉냋迍볏뻑\uF4D3郕뇗뛙맛\uF6DD쫟쳡컣쿥铧샩싫쓭", dataEntryPoint);
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 return;
             string fileName = saveFileDialog.FileName;
@@ -5384,30 +5397,30 @@ public class c : Form
         }
         else if (c.useEnglishLanguage)
             this.ShowMessage("The picture too big, please try again after narrowing picture!");
-        //           this.ShowMessage(Module.a("\uF8AB욭햯銱쒳\uDFB5\uDBB7캹즻첽ꖿ\uE2C1냃꧅\uA7C7\uEAC9껋\uA7CD럏ﻑ\uF4D3ꛕ듗뿙뷛귝藟싡郣铥釧쫩跫觭釯鯱髳훵駷鳹裻鯽狿∁樃朅稇砉挋礍礏簑猓㘕栗猙缛樝唟倡䄣ܥ", int_0));
+        //           this.ShowMessage(Module.a("\uF8AB욭햯銱쒳\uDFB5\uDBB7캹즻첽ꖿ\uE2C1냃꧅\uA7C7\uEAC9껋\uA7CD럏ﻑ\uF4D3ꛕ듗뿙뷛귝藟싡郣铥釧쫩跫觭釯鯱髳훵駷鳹裻鯽狿∁樃朅稇砉挋礍礏簑猓㘕栗猙缛樝唟倡䄣ܥ", dataEntryPoint));
         else
             this.ShowMessage("画面太大,请缩小画面后再试！");
-//        this.ShowMessage(Module.a("韞찺髶门颳䄾釈뗥蟎\uDC2A컫侐ᅈ윺", int_0));
+//        this.ShowMessage(Module.a("韞찺髶门颳䄾釈뗥蟎\uDC2A컫侐ᅈ윺", dataEntryPoint));
     }
 
     private void method_13()
     {
- //       int int_0 = 8;
-        if (c.int_65 < 1 || c.int_66 < 1)
+ //       int dataEntryPoint = 8;
+        if (c.horizontalPixels < 1 || c.verticalPixels < 1)
             return;
-        int num1 = 8050 / c.int_65;
-        int num2 = 6050 / c.int_66;
+        int num1 = 8050 / c.horizontalPixels;
+        int num2 = 6050 / c.verticalPixels;
         c.int_76 = num1 > num2 ? num2 : num1;
         if (this.bool_21)
         {
-            int num3 = 200 / c.int_65;
-            int num4 = 150 / c.int_66;
+            int num3 = 200 / c.horizontalPixels;
+            int num4 = 150 / c.verticalPixels;
             int num5 = num3 > num4 ? num4 : num3;
-            this.int_24 = c.int_65 * num5;
-            this.int_25 = c.int_66 * num5;
+            this.int_24 = c.horizontalPixels * num5;
+            this.int_25 = c.verticalPixels * num5;
         }
-        int num6 = this.int_24 / c.int_65;
-        int num7 = this.int_25 / c.int_66;
+        int num6 = this.int_24 / c.horizontalPixels;
+        int num7 = this.int_25 / c.verticalPixels;
         int num8 = num6 > num7 ? num7 : num6;
         c.int_77 = num8;
         if (c.int_78 != 0)
@@ -5421,8 +5434,8 @@ public class c : Form
         }
         this.int_85 = num8;
         this.int_86 = this.int_85;
-        this.int_67 = c.int_65 * this.int_85;
-        this.int_68 = c.int_66 * this.int_85;
+        this.int_67 = c.horizontalPixels * this.int_85;
+        this.int_68 = c.verticalPixels * this.int_85;
         if (this.int_67 < 1 || this.int_68 < 1)
         {
             this.int_67 = 300;
@@ -5463,7 +5476,7 @@ public class c : Form
         rectangle_2 = new Rectangle(0, 0, this.int_12, this.int_13);
         rectangle_3 = new Rectangle(0, 0, this.panel_0.Width, this.panel_0.Height);
         this.gclass0_1 = new GClass0(c.gclass1_0.method_1(), rectangle_2, rectangle_3);
-        rectangle_2 = new Rectangle(0, 0, c.int_65, c.int_66);
+        rectangle_2 = new Rectangle(0, 0, c.horizontalPixels, c.verticalPixels);
         rectangle_3 = new Rectangle(0, 0, this.panel_0.Width, this.panel_0.Height);
         this.gclass0_7 = new GClass0(c.gclass1_0.method_1(), rectangle_2, rectangle_3);
         this.gclass0_7.method_12().ColorFill(Color.FromArgb(0, 0, 0));
@@ -5474,10 +5487,10 @@ public class c : Form
             ColorSpaceLowValue = 0,
             ColorSpaceHighValue = 0
         });
-        c.int_58 = c.int_65;
-        c.int_59 = c.int_65;
-        c.int_60 = c.int_65;
-        c.int_61 = c.int_66;
+        c.int_58 = c.horizontalPixels;
+        c.int_59 = c.horizontalPixels;
+        c.int_60 = c.horizontalPixels;
+        c.int_61 = c.verticalPixels;
         if (this.a_0 == null)
         {
             this.a_0 = new a();
@@ -5485,10 +5498,10 @@ public class c : Form
         }
         this.a_0.trackBar_1.Maximum = c.int_60;
         this.a_0.trackBar_2.Maximum = c.int_61;
-        this.int_43 = new int[this.int_41];
-        this.int_51 = new int[this.int_41];
-        this.int_44 = new int[this.int_41];
-        this.bool_49 = this.int_41 > this.int_52;
+        this.int_43 = new int[this.totalLeds];
+        this.int_51 = new int[this.totalLeds];
+        this.int_44 = new int[this.totalLeds];
+        this.bool_49 = this.totalLeds > this.int_52;
         uint index1 = 0;
         LockedData lockedData1 = this.gclass0_3.method_12().Lock(LockFlags.ReadOnly);
         lockedData1.Data.Position = 0L;
@@ -5497,13 +5510,13 @@ public class c : Form
         lockedData2.Data.Position = 0L;
         this.int_90 = lockedData2.Pitch;
         int num10 = this.int_86 / 2;
-        for (int index2 = 0; index2 < this.arrayList_3.Count; ++index2)
+        for (int index2 = 0; index2 < this.portArrayList.Count; ++index2)
         {
-            this.int_91 = ((GClass8)this.arrayList_3[index2]).method_4() * this.int_82 * 3;
-            for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index2]).method_0(); ++int_2)
+            this.int_91 = ((PixelArray)this.portArrayList[index2]).GetPortNum() * this.int_82 * 3;
+            for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index2]).GetPixelIndex(); ++int_2)
             {
-                this.int_87 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).X;
-                this.int_88 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).Y;
+                this.int_87 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).X;
+                this.int_88 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).Y;
                 int num11 = this.int_87 * this.int_86 + num10;
                 int num12 = (this.int_88 * this.int_86 + num10) * num9 + num11 * 4;
                 this.int_43[index1] = num12;
@@ -5522,28 +5535,28 @@ public class c : Form
         int num13 = this.int_18 * this.int_85;
         if (num13 == 8)
             num13 = 7;
-        if (this.int_41 > this.int_52)
+        if (this.totalLeds > this.int_52)
             num13 = 1;
         Point point1 = new Point(0, 0);
         if (num13 > 4)
         {
             this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
             this.gclass0_2.method_12().DrawWidth = num13 / 2;
-            foreach (GClass8 gclass8 in this.arrayList_3)
+            foreach (PixelArray gclass8 in this.portArrayList)
             {
-                for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                 {
                     if (this.bool_16)
                     {
-                        this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.method_4() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.method_4() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                        this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.GetPortNum() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.GetPortNum() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                     }
                     else
                     {
-                        this.color_1 = this.color_0[gclass8.method_4() % 10];
+                        this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                         this.gclass0_2.method_12().ForeColor = this.color_1;
                     }
-                    int x = gclass8.method_6(int_2).X * this.int_85 + num13 / 2;
-                    int y = gclass8.method_6(int_2).Y * this.int_85 + num13 / 2;
+                    int x = gclass8.GetPointForPixel(int_2).X * this.int_85 + num13 / 2;
+                    int y = gclass8.GetPointForPixel(int_2).Y * this.int_85 + num13 / 2;
                     this.gclass0_2.method_12().DrawCircle(x, y, num13 / 4);
                 }
             }
@@ -5564,22 +5577,22 @@ public class c : Form
                 case 1:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    foreach (GClass8 gclass8 in this.arrayList_3)
+                    foreach (PixelArray gclass8 in this.portArrayList)
                     {
-                        for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                        for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                         {
                             if (this.bool_16)
                             {
-                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.method_4() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.method_4() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.GetPortNum() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.GetPortNum() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                             }
                             else
                             {
-                                this.color_1 = this.color_0[gclass8.method_4() % 10];
+                                this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
                             }
-                            Point point2 = gclass8.method_6(int_2);
+                            Point point2 = gclass8.GetPointForPixel(int_2);
                             int x1 = point2.X * this.int_85;
-                            point2 = gclass8.method_6(int_2);
+                            point2 = gclass8.GetPointForPixel(int_2);
                             int num14 = point2.Y * this.int_85;
                             this.gclass0_2.method_12().DrawLine(x1, num14, x1 + 1, num14);
                         }
@@ -5607,22 +5620,22 @@ public class c : Form
                 case 2:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    foreach (GClass8 gclass8 in this.arrayList_3)
+                    foreach (PixelArray gclass8 in this.portArrayList)
                     {
-                        for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                        for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                         {
                             if (this.bool_16)
                             {
-                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.method_4() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.method_4() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.GetPortNum() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.GetPortNum() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                             }
                             else
                             {
-                                this.color_1 = this.color_0[gclass8.method_4() % 10];
+                                this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
                             }
-                            Point point3 = gclass8.method_6(int_2);
+                            Point point3 = gclass8.GetPointForPixel(int_2);
                             int num15 = point3.X * this.int_85;
-                            point3 = gclass8.method_6(int_2);
+                            point3 = gclass8.GetPointForPixel(int_2);
                             int num16 = point3.Y * this.int_85;
                             this.gclass0_2.method_12().DrawLine(num15 + 1, num16, num15 + 2, num16);
                         }
@@ -5650,21 +5663,21 @@ public class c : Form
                 case 3:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    foreach (GClass8 gclass8 in this.arrayList_3)
+                    foreach (PixelArray gclass8 in this.portArrayList)
                     {
-                        for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                        for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                         {
                             if (this.bool_16)
                             {
-                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.method_4() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.method_4() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.GetPortNum() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.GetPortNum() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                             }
                             else
                             {
-                                this.color_1 = this.color_0[gclass8.method_4() % 10];
+                                this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
                             }
-                            int num17 = gclass8.method_6(int_2).X * this.int_85;
-                            int num18 = gclass8.method_6(int_2).Y * this.int_85;
+                            int num17 = gclass8.GetPointForPixel(int_2).X * this.int_85;
+                            int num18 = gclass8.GetPointForPixel(int_2).Y * this.int_85;
                             this.gclass0_2.method_12().DrawLine(num17 + 1, num18, num17 + 3, num18);
                             this.gclass0_2.method_12().DrawLine(num17 + 1, num18 + 1, num17 + 3, num18 + 1);
                         }
@@ -5692,21 +5705,21 @@ public class c : Form
                 case 4:
                     this.gclass0_2.method_12().ForeColor = Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
                     this.gclass0_2.method_12().DrawWidth = 1;
-                    foreach (GClass8 gclass8 in this.arrayList_3)
+                    foreach (PixelArray gclass8 in this.portArrayList)
                     {
-                        for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
+                        for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
                         {
                             if (this.bool_16)
                             {
-                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.method_4() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.method_4() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                                this.gclass0_2.method_12().ForeColor = !this.bool_15 ? (this.int_16 != gclass8.GetPortNum() || this.int_17 != int_2 ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != gclass8.GetPortNum() ? Color.FromArgb((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                             }
                             else
                             {
-                                this.color_1 = this.color_0[gclass8.method_4() % 10];
+                                this.color_1 = this.color_0[gclass8.GetPortNum() % 10];
                                 this.gclass0_2.method_12().ForeColor = this.color_1;
                             }
-                            int num19 = gclass8.method_6(int_2).X * this.int_85;
-                            int num20 = gclass8.method_6(int_2).Y * this.int_85;
+                            int num19 = gclass8.GetPointForPixel(int_2).X * this.int_85;
+                            int num20 = gclass8.GetPointForPixel(int_2).Y * this.int_85;
                             this.gclass0_2.method_12().DrawLine(num19 + 1, num20, num19 + 4, num20);
                             this.gclass0_2.method_12().DrawLine(num19 + 1, num20 + 1, num19 + 4, num20 + 1);
                             this.gclass0_2.method_12().DrawLine(num19 + 1, num20 + 2, num19 + 4, num20 + 2);
@@ -5741,7 +5754,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("\uEAAD\uD9AF삱톳햵첷승鲻﮽늿냁ꯃ듅\uF2C7\uEAC9", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("\uEAAD\uD9AF삱톳햵첷승鲻﮽늿냁ꯃ듅\uF2C7\uEAC9", dataEntryPoint) + ex.Message);
             return;
         }
         lockedData2 = this.gclass0_5.method_12().Lock(LockFlags.NoSystemLock);
@@ -5818,10 +5831,10 @@ public class c : Form
         for (int index = 430; index < 511; ++index)
             num1 += (byte)((uint)buffer1[index] ^ 90U);
         this.byte_43 = (byte)((uint)num1 ^ 165U);
-        buffer1[4] = (byte)(c.int_65 / 256);
-        buffer1[5] = (byte)(c.int_65 % 256);
-        buffer1[6] = (byte)(c.int_66 / 256);
-        buffer1[7] = (byte)(c.int_66 % 256);
+        buffer1[4] = (byte)(c.horizontalPixels / 256);
+        buffer1[5] = (byte)(c.horizontalPixels % 256);
+        buffer1[6] = (byte)(c.verticalPixels / 256);
+        buffer1[7] = (byte)(c.verticalPixels % 256);
         buffer1[8] = (byte)(this.int_23 / 256);
         buffer1[9] = (byte)(this.int_23 % 256);
         buffer1[10] = (byte)(this.int_82 / 256);
@@ -5834,13 +5847,13 @@ public class c : Form
         byte[] buffer2 = new byte[256];
         for (int index6 = 0; index6 < 256; ++index6)
             numArray2[index6] = (byte)0;
-        for (int index7 = 0; index7 < this.arrayList_3.Count; ++index7)
+        for (int index7 = 0; index7 < this.portArrayList.Count; ++index7)
         {
-            for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index7]).method_0(); ++int_2)
+            for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index7]).GetPixelIndex(); ++int_2)
             {
-                int x = ((GClass8)this.arrayList_3[index7]).method_6(int_2).X;
-                int y = ((GClass8)this.arrayList_3[index7]).method_6(int_2).Y;
-                int num2 = ((GClass8)this.arrayList_3[index7]).method_4();
+                int x = ((PixelArray)this.portArrayList[index7]).GetPointForPixel(int_2).X;
+                int y = ((PixelArray)this.portArrayList[index7]).GetPointForPixel(int_2).Y;
+                int num2 = ((PixelArray)this.portArrayList[index7]).GetPortNum();
                 numArray2[index5] = (byte)90;
                 int index8 = index5 + 1;
                 numArray2[index8] = (byte)(num2 / 256);
@@ -5951,7 +5964,7 @@ public class c : Form
             this.gclass0_3.method_12().ColorFill(c.color_2);
         else if (this.int_26 == 0)
         {
-            if (this.bool_13)
+            if (this.IsTOLFileOpen)
             {
                 this.bufferedStream_0.Seek((long)this.int_15 * (long)this.int_14 + 14L, SeekOrigin.Begin);
                 this.bufferedStream_0.Read(this.byte_16, 0, this.int_14);
@@ -6032,13 +6045,13 @@ public class c : Form
                 else if (c.int_57 < 0)
                     c.int_58 += c.int_57;
                 if (c.int_58 + c.size_0.Width < 0)
-                    c.int_58 = c.int_65;
+                    c.int_58 = c.horizontalPixels;
                 if (c.string_19.Length > 0)
                 {
                     string[] strArray = c.string_19.Split(new string[1]
                     {
                         "\r\n"
-//            Module.a("떷낹", int_0)
+//            Module.a("떷낹", dataEntryPoint)
                     }, StringSplitOptions.None);
                     if (strArray.Length > 1)
                     {
@@ -6076,7 +6089,7 @@ public class c : Form
                     string[] strArray = c.string_19.Split(new string[1]
                     {
                         "\r\n"
-           // Module.a("떷낹", int_0)
+           // Module.a("떷낹", dataEntryPoint)
                     }, StringSplitOptions.None);
                     if (strArray.Length > 1)
                     {
@@ -6102,7 +6115,7 @@ public class c : Form
                         }
                     }
                     if (c.int_59 + c.size_0.Height * c.string_19.Length < 0)
-                        c.int_59 = c.int_66;
+                        c.int_59 = c.verticalPixels;
                 }
             }
             else
@@ -6229,7 +6242,7 @@ public class c : Form
         this.int_18 = (int)(this.double_3 * 2.0);
         if (this.bool_49)
         {
-            for (int index = 0; index < this.int_41; ++index)
+            for (int index = 0; index < this.totalLeds; ++index)
             {
                 lockedData1.Data.Position = (long)this.int_43[index];
                 byte num10 = (byte)lockedData1.Data.ReadByte();
@@ -6251,13 +6264,13 @@ public class c : Form
         else
         {
             int index8 = 0;
-            for (int index9 = 0; index9 < this.arrayList_3.Count; ++index9)
+            for (int index9 = 0; index9 < this.portArrayList.Count; ++index9)
             {
-                this.int_91 = ((GClass8)this.arrayList_3[index9]).method_4() * this.int_82 * 3;
-                for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index9]).method_0(); ++int_2)
+                this.int_91 = ((PixelArray)this.portArrayList[index9]).GetPortNum() * this.int_82 * 3;
+                for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index9]).GetPixelIndex(); ++int_2)
                 {
-                    this.int_87 = ((GClass8)this.arrayList_3[index9]).method_6(int_2).X;
-                    this.int_88 = ((GClass8)this.arrayList_3[index9]).method_6(int_2).Y;
+                    this.int_87 = ((PixelArray)this.portArrayList[index9]).GetPointForPixel(int_2).X;
+                    this.int_88 = ((PixelArray)this.portArrayList[index9]).GetPointForPixel(int_2).Y;
                     lockedData1.Data.Position = (long)this.int_43[index8];
                     byte num13 = (byte)lockedData1.Data.ReadByte();
                     byte num14 = (byte)lockedData1.Data.ReadByte();
@@ -6293,7 +6306,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("ﲷ펹캻\uDBBDꎿ뛁볃\uE6C5跇룉뻋ꇍꋏ\uE8D1\uF4D3", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("ﲷ펹캻\uDBBDꎿ뛁볃\uE6C5跇룉뻋ꇍꋏ\uE8D1\uF4D3", dataEntryPoint) + ex.Message);
             return;
         }
         try
@@ -6303,7 +6316,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("ﲷ펹캻\uDBBDꎿ뛁볃\uE6C5跇룉뻋ꇍꋏ\uE8D1\uF4D3", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("ﲷ펹캻\uDBBDꎿ뛁볃\uE6C5跇룉뻋ꇍꋏ\uE8D1\uF4D3", dataEntryPoint) + ex.Message);
             return;
         }
         this.method_15();
@@ -6323,12 +6336,12 @@ public class c : Form
             try
             {
                 this.udpClient_0.Send(this.byte_35, 5, "192.168.60.50", 5000);
- //               this.udpClient_0.Send(this.byte_35, 5, Module.a("覷莹躻邽\uF1BF\uF4C1ﳃ\uE8C5ﻇ韛\uE2CB\uFBCD\uE0CF", int_0), 5000);
+ //               this.udpClient_0.Send(this.byte_35, 5, Module.a("覷莹躻邽\uF1BF\uF4C1ﳃ\uE8C5ﻇ韛\uE2CB\uFBCD\uE0CF", dataEntryPoint), 5000);
             }
             catch
             {
             }
-            switch (c.int_2)
+            switch (c.ledControllerType)
             {
                 case 81:
                 case 82:
@@ -6404,7 +6417,7 @@ public class c : Form
                         this.bool_40 = true;
                         ((GClass5)c.arrayList_4[c.int_38]).bool_2 = true;
                         this.method_28();
-                        this.Text = this.string_8 + " "/*Module.a("颷", int_0)*/ + c.string_0;
+                        this.Text = this.string_8 + " "/*Module.a("颷", dataEntryPoint)*/ + c.string_0;
                     }
                     this.genum1_1 = !this.bool_40 ? GEnum1.const_2 : GEnum1.const_6;
                     this.method_31();
@@ -6415,11 +6428,11 @@ public class c : Form
                         this.d_0.axShockwaveFlash_0.Stop();
                     this.d_0.Hide();
                     this.method_26(4, "1");
-//                    this.method_26(4, Module.a("覷", int_0));
- //                   this.method_26(5, this.string_22 + Module.a("隷\uD8B9햻킽", int_0));
+//                    this.method_26(4, Module.a("覷", dataEntryPoint));
+ //                   this.method_26(5, this.string_22 + Module.a("隷\uD8B9햻킽", dataEntryPoint));
                     this.method_26(5, this.string_22 + ".bin");
                     this.method_26(8, "1");
-//                    this.method_26(8, Module.a("覷", int_0));
+//                    this.method_26(8, Module.a("覷", dataEntryPoint));
                     this.method_26(9, this.int_55.ToString());
                     this.Location = new Point(0, 0);
                     this.method_13();
@@ -6447,7 +6460,7 @@ public class c : Form
                 this.d_0.Text = this.d_0.axShockwaveFlash_0.CurrentFrame().ToString() + Module.a("鞷", int_0) + this.int_64.ToString();
             }
         }
-        if (this.bool_13)
+        if (this.IsTOLFileOpen)
         {
             if (this.int_19 == 0)
                 ++this.int_15;
@@ -6500,8 +6513,8 @@ public class c : Form
                     this.method_26(9, this.int_55.ToString());
                     this.Location = new Point(0, 0);
                     this.method_13();
-                    this.bool_13 = false;
-                    this.method_86();
+                    this.IsTOLFileOpen = false;
+                    this.CloseStreams();
                 }
             }
         }
@@ -6509,7 +6522,7 @@ public class c : Form
             this.menuItem_3_Click((object)null, (EventArgs)null);
         if (this.bool_36)
         {
-            if (this.bool_13)
+            if (this.IsTOLFileOpen)
             {
                 this.bool_22 = false;
                 if (this.bool_38)
@@ -6535,8 +6548,8 @@ public class c : Form
                 this.method_26(9, this.int_55.ToString());
                 this.Location = new Point(0, 0);
                 this.method_13();
-                this.bool_13 = false;
-                this.method_86();
+                this.IsTOLFileOpen = false;
+                this.CloseStreams();
             }
             else
                 this.method_19();
@@ -6547,7 +6560,7 @@ public class c : Form
         if (c.bool_51 || !this.bool_29)
             return;
         this.bool_29 = false;
-        this.menuItem_9_Click((object)null, (EventArgs)null);
+        this.CloseVideoEffectFile_Click((object)null, (EventArgs)null);
         this.menuItem_7_Click((object)null, (EventArgs)null);
     }
 
@@ -6558,11 +6571,11 @@ public class c : Form
         lockedData.Data.Position = 0L;
         this.int_90 = lockedData.Pitch;
         int index1 = 0;
-        for (int index2 = 0; index2 < this.arrayList_3.Count; ++index2)
+        for (int index2 = 0; index2 < this.portArrayList.Count; ++index2)
         {
-            for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index2]).method_0(); ++int_2)
+            for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index2]).GetPixelIndex(); ++int_2)
             {
-                Color color = !this.bool_15 ? (this.int_16 != ((GClass8)this.arrayList_3[index2]).method_4() || this.int_17 != int_2 ? Color.FromArgb(0, 100, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != ((GClass8)this.arrayList_3[index2]).method_4() ? Color.FromArgb(0, 100, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
+                Color color = !this.bool_15 ? (this.int_16 != ((PixelArray)this.portArrayList[index2]).GetPortNum() || this.int_17 != int_2 ? Color.FromArgb(0, 100, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0)) : (this.int_16 != ((PixelArray)this.portArrayList[index2]).GetPortNum() ? Color.FromArgb(0, 100, (int)byte.MaxValue) : Color.FromArgb((int)byte.MaxValue, 0, 0));
                 byte r = color.R;
                 byte g = color.G;
                 byte b = color.B;
@@ -6582,8 +6595,8 @@ public class c : Form
                 }
                 else
                 {
-                    this.int_87 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).X;
-                    this.int_88 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).Y;
+                    this.int_87 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).X;
+                    this.int_88 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).Y;
                     for (int index3 = 0; index3 < this.int_18; ++index3)
                     {
                         for (int index4 = 0; index4 < this.int_18; ++index4)
@@ -6608,7 +6621,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("ﶸ튺쾼\uDABEꋀ럂뷄\uE7C6賈맊뿌ꃎꏐ\uE9D2\uF5D4", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("ﶸ튺쾼\uDABEꋀ럂뷄\uE7C6賈맊뿌ꃎꏐ\uE9D2\uF5D4", dataEntryPoint) + ex.Message);
             return;
         }
         try
@@ -6618,7 +6631,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-//            this.ShowMessage(Module.a("ﶸ튺쾼\uDABEꋀ럂뷄\uE7C6賈맊뿌ꃎꏐ\uE9D2\uF5D4", int_0) + ex.Message);
+//            this.ShowMessage(Module.a("ﶸ튺쾼\uDABEꋀ럂뷄\uE7C6賈맊뿌ꃎꏐ\uE9D2\uF5D4", dataEntryPoint) + ex.Message);
             return;
         }
         this.method_15();
@@ -6641,7 +6654,7 @@ public class c : Form
 
     private void method_18()
     {
- //       int int_0 = 7;
+ //       int dataEntryPoint = 7;
         ++this.int_55;
         if (this.int_55 > this.int_40 - 1)
         {
@@ -6745,12 +6758,12 @@ public class c : Form
             try
             {
                 this.udpClient_0.Send(this.byte_35, 5, "192.168.60.50", 5000);
- //               this.udpClient_0.Send(this.byte_35, 5, Module.a("鲬隮莰鶲蒴膶膸閺讼达\uEFC0\uF6C2\uF5C4", int_0), 5000);
+ //               this.udpClient_0.Send(this.byte_35, 5, Module.a("鲬隮莰鶲蒴膶膸閺讼达\uEFC0\uF6C2\uF5C4", dataEntryPoint), 5000);
             }
             catch
             {
             }
-            switch (c.int_2)
+            switch (c.ledControllerType)
             {
                 case 81:
                 case 82:
@@ -6796,7 +6809,7 @@ public class c : Form
         int num3 = (int)(this.double_3 * 2.0);
         if (this.bool_49)
         {
-            for (int index = 0; index < this.int_41; ++index)
+            for (int index = 0; index < this.totalLeds; ++index)
             {
                 this.int_92 = this.int_51[index];
                 byte num4 = this.byte_37[this.int_92];
@@ -6814,13 +6827,13 @@ public class c : Form
         else
         {
             int index1 = 0;
-            for (int index2 = 0; index2 < this.arrayList_3.Count; ++index2)
+            for (int index2 = 0; index2 < this.portArrayList.Count; ++index2)
             {
-                this.int_91 = ((GClass8)this.arrayList_3[index2]).method_4() * this.int_82 * 3;
-                for (int int_2 = 0; int_2 < ((GClass8)this.arrayList_3[index2]).method_0(); ++int_2)
+                this.int_91 = ((PixelArray)this.portArrayList[index2]).GetPortNum() * this.int_82 * 3;
+                for (int int_2 = 0; int_2 < ((PixelArray)this.portArrayList[index2]).GetPixelIndex(); ++int_2)
                 {
-                    this.int_87 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).X;
-                    this.int_88 = ((GClass8)this.arrayList_3[index2]).method_6(int_2).Y;
+                    this.int_87 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).X;
+                    this.int_88 = ((PixelArray)this.portArrayList[index2]).GetPointForPixel(int_2).Y;
                     this.int_92 = this.int_51[index1];
                     byte num7 = this.byte_37[this.int_92];
                     ++this.int_92;
@@ -6851,7 +6864,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
- //           this.ShowMessage(Module.a("\uE9AC욮쎰횲횴쎶솸鮺\uF8BC춾돀곂럄ﷆ\uE9C8", int_0) + ex.Message);
+ //           this.ShowMessage(Module.a("\uE9AC욮쎰횲횴쎶솸鮺\uF8BC춾돀곂럄ﷆ\uE9C8", dataEntryPoint) + ex.Message);
             return;
         }
         try
@@ -6861,7 +6874,7 @@ public class c : Form
         catch (Exception ex)
         {
             this.ShowMessage("Directx Error: " + ex.Message);
-///            this.ShowMessage(Module.a("\uE9AC욮쎰횲횴쎶솸鮺\uF8BC춾돀곂럄ﷆ\uE9C8", int_0) + ex.Message);
+///            this.ShowMessage(Module.a("\uE9AC욮쎰횲횴쎶솸鮺\uF8BC춾돀곂럄ﷆ\uE9C8", dataEntryPoint) + ex.Message);
             return;
         }
         this.method_15();
@@ -6929,10 +6942,10 @@ public class c : Form
         this.bool_40 = true;
         this.genum1_1 = this.bool_39 || this.bool_25 ? GEnum1.const_4 : GEnum1.const_3;
         this.method_26(4, "1");
-        //        this.method_26(4, Module.a("蚶", int_0));
-        this.method_26(5, this.string_22 + ".bin"); //Module.a("馶\uDBB8튺펼", int_0));
+        //        this.method_26(4, Module.a("蚶", dataEntryPoint));
+        this.method_26(5, this.string_22 + ".bin"); //Module.a("馶\uDBB8튺펼", dataEntryPoint));
         this.method_26(8,"1");
-//        this.method_26(8, Module.a("蚶", int_0));
+//        this.method_26(8, Module.a("蚶", dataEntryPoint));
         this.method_26(9, this.int_55.ToString());
         this.method_31();
     }
@@ -6944,10 +6957,10 @@ public class c : Form
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage("The current program without recording!");
- //           this.ShowMessage(Module.a("ﮮ\uD9B0횲閴풶첸즺쾼\uDABE꿀럂\uE5C4럆믈\uA4CA\uAACC뷎냐뻒\uF5D4ꃖ냘꿚뗜냞铠韢엤闦賨裪苬鷮闰髲鯴郶\uD8F8", int_0));
+ //           this.ShowMessage(Module.a("ﮮ\uD9B0횲閴풶첸즺쾼\uDABE꿀럂\uE5C4럆믈\uA4CA\uAACC뷎냐뻒\uF5D4ꃖ냘꿚뗜냞铠韢엤闦賨裪苬鷮闰髲鯴郶\uD8F8", dataEntryPoint));
             else
                 this.ShowMessage("当前节目无录制内容!");
-//            this.ShowMessage(Module.a("ﳱﳢ\u3130寂埓\uECE7跨㣭ۥ\uE0C0", int_0));
+//            this.ShowMessage(Module.a("ﳱﳢ\u3130寂埓\uECE7跨㣭ۥ\uE0C0", dataEntryPoint));
         }
         else
         {
@@ -6956,10 +6969,10 @@ public class c : Form
             {
                 if (c.useEnglishLanguage)
                     this.ShowMessage("The current program without recording!");
-//                this.ShowMessage(Module.a("ﮮ\uD9B0횲閴풶첸즺쾼\uDABE꿀럂\uE5C4럆믈\uA4CA\uAACC뷎냐뻒\uF5D4ꃖ냘꿚뗜냞铠韢엤闦賨裪苬鷮闰髲鯴郶\uD8F8", int_0));
+//                this.ShowMessage(Module.a("ﮮ\uD9B0횲閴풶첸즺쾼\uDABE꿀럂\uE5C4럆믈\uA4CA\uAACC뷎냐뻒\uF5D4ꃖ냘꿚뗜냞铠韢엤闦賨裪苬鷮闰髲鯴郶\uD8F8", dataEntryPoint));
                 else
                     this.ShowMessage("当前节目无录制内容!");
- //               this.ShowMessage(Module.a("ﳱﳢ\u3130寂埓\uECE7跨㣭ۥ\uE0C0", int_0));
+ //               this.ShowMessage(Module.a("ﳱﳢ\u3130寂埓\uECE7跨㣭ۥ\uE0C0", dataEntryPoint));
             }
             else
             {
@@ -7013,7 +7026,7 @@ public class c : Form
             if (new z().ShowDialog() == DialogResult.OK)
             {
                 string str1 = this.string_20 + (object)'\\' + this.string_22 + "_tp.bin";
-//                string str1 = this.string_20 + (object)'\\' + this.string_22 + Module.a("\uEDB1삳욵隷\uD8B9햻킽", int_0);
+//                string str1 = this.string_20 + (object)'\\' + this.string_22 + Module.a("\uEDB1삳욵隷\uD8B9햻킽", dataEntryPoint);
                 if (System.IO.File.Exists(str1))
                     System.IO.File.Delete(str1);
                 FileStream fileStream = new FileStream(str1, FileMode.Create, FileAccess.Write);
@@ -7055,22 +7068,22 @@ public class c : Form
                 System.IO.File.Copy(str1, str2);
                 System.IO.File.Delete(str1);
                 this.method_26(4, "1");
-                //               this.method_26(4, Module.a("莱", int_0));
+                //               this.method_26(4, Module.a("莱", dataEntryPoint));
                 this.method_26(5, this.string_22 + ".bin");
-//                this.method_26(5, this.string_22 + Module.a("鲱횳\uDFB5횷", int_0));
+//                this.method_26(5, this.string_22 + Module.a("鲱횳\uDFB5횷", dataEntryPoint));
                 this.method_26(8, "1");
- //               this.method_26(8, Module.a("莱", int_0));
+ //               this.method_26(8, Module.a("莱", dataEntryPoint));
                 this.method_26(9, this.int_50.ToString());
                 this.bool_46 = false;
                 this.menuItem_31.Enabled = false;
-//                this.Text = this.string_8 + Module.a("\uE9B1馳鮵", int_0) + this.string_22 + (object)']';
+//                this.Text = this.string_8 + Module.a("\uE9B1馳鮵", dataEntryPoint) + this.string_22 + (object)']';
                 this.Text = this.string_8 + "[--" + this.string_22 + (object)']';
                 this.method_26(6, Module.a("花", int_0));
             }
             else
             {
                 this.bool_46 = false;
-//                this.Text = this.string_8 + Module.a("\uE9B1馳鮵", int_0) + this.string_22 + (object)']';
+//                this.Text = this.string_8 + Module.a("\uE9B1馳鮵", dataEntryPoint) + this.string_22 + (object)']';
                 this.Text = this.string_8 + "[--" + this.string_22 + (object)']';
                 this.trackBar_0.Enabled = false;
                 this.method_13();
@@ -7145,12 +7158,12 @@ public class c : Form
         c.i_0.BackgroundImageLayout = ImageLayout.Tile;
         c.i_0.TransparencyKey = this.d_0.BackColor;
         c.i_0.Opacity = 1.0;
-        c.i_0.Text = "Player"; //Module.a("ﲫ슭톯쮱톳쒵", int_0);
+        c.i_0.Text = "Player"; //Module.a("ﲫ슭톯쮱톳쒵", dataEntryPoint);
         c.i_0.Show();
         this.method_15();
         this.bool_50 = false;
         this.bool_37 = true;
- //       if ((c.string_7 == Module.a("\uF8AB\uE2AD\uE3AF銱\uE2B3莵閷\uF7B9", int_0) || c.string_7 == Module.a("\uEFAB\uDBAD슯욱햳\uDFB5횷骹\uEABB讽", int_0)) && c.smethod_0() > 20)
+ //       if ((c.string_7 == Module.a("\uF8AB\uE2AD\uE3AF銱\uE2B3莵閷\uF7B9", dataEntryPoint) || c.string_7 == Module.a("\uEFAB\uDBAD슯욱햳\uDFB5횷骹\uEABB讽", dataEntryPoint)) && c.smethod_0() > 20)
         if ((c.string_7 == "TLS V5-M" || c.string_7 == "Curtain V5") && c.smethod_0() > 20)
              c.smethod_1(20);
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -7164,10 +7177,10 @@ public class c : Form
         c.gclass0_4.method_15(rectangle_2);
     }
 
-    private void menuItem_8_Click(object sender, EventArgs e)
+    private void OpenVideo_Click(object sender, EventArgs e)
     {
         int int_0 = 17;
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.int_19 = 0;
         this.bool_19 = false;
         if (this.bool_28)
@@ -7192,25 +7205,27 @@ public class c : Form
         Rectangle rectangle_2 = new Rectangle(0, 0, this.d_0.ClientSize.Width, this.d_0.ClientSize.Height);
         c.gclass0_4.method_15(rectangle_2);
         OpenFileDialog openFileDialog = new OpenFileDialog();
-        openFileDialog.Title = "Open Video";//Module.a("\uF8B6즸\uDEBA펼龾韀ꫂꇄꋆꛈ", int_0);
+        openFileDialog.Title = "Open Video";//Module.a("\uF8B6즸\uDEBA펼龾韀ꫂꇄꋆꛈ", dataEntryPoint);
         openFileDialog.AddExtension = true;
         openFileDialog.CheckFileExists = true;
         openFileDialog.CheckPathExists = true;
-//        openFileDialog.Filter = Module.a("\uE1B6킸\uDFBA\uD8BC킾\uE1C0藂계ꯆ곈\uE3CA\uE7CC\uE1CEꋐꓒ돔ﯖ\uF3D8\uF5DA볜꧞裠쿢쿤짦黨蛪鯬쏮\uDBF0\uDDF2飴蟶鳸鳺퇼헾⼀渂甄怆 眊✌ℎ成搒猔Ⱆ㌘㔚簜椞䠠ᠢ༤द帨䘪嬬ᐮᬰᴲ場䜶尸尺ؼᔾ潀⹂㕄⁆㕈\u0A4A⅌⍎煐ᕒ㱔㭖㱘獚睜煞䭠䩢ᥤ䵦䝨䅪", int_0);
-        openFileDialog.Filter = Module.a("\uE1B6킸\uDFBA\uD8BC킾\uE1C0藂계ꯆ곈\uE3CA\uE7CC\uE1CEꋐꓒ돔ﯖ\uF3D8\uF5DA볜꧞裠쿢쿤짦黨蛪鯬쏮\uDBF0\uDDF2飴蟶鳸鳺퇼헾⼀渂甄怆 眊✌ℎ成搒猔Ⱆ㌘㔚簜椞䠠ᠢ༤द帨䘪嬬ᐮᬰᴲ場䜶尸尺ؼᔾ潀⹂㕄⁆㕈\u0A4A⅌⍎煐ᕒ㱔㭖㱘獚睜煞䭠䩢ᥤ䵦䝨䅪", int_0);
+//        openFileDialog.Filter = Module.a("\uE1B6킸\uDFBA\uD8BC킾\uE1C0藂계ꯆ곈\uE3CA\uE7CC\uE1CEꋐꓒ돔ﯖ\uF3D8\uF5DA볜꧞裠쿢쿤짦黨蛪鯬쏮\uDBF0\uDDF2飴蟶鳸鳺퇼헾⼀渂甄怆 眊✌ℎ成搒猔Ⱆ㌘㔚簜椞䠠ᠢ༤द帨䘪嬬ᐮᬰᴲ場䜶尸尺ؼᔾ潀⹂㕄⁆㕈\u0A4A⅌⍎煐ᕒ㱔㭖㱘獚睜煞䭠䩢ᥤ䵦䝨䅪", dataEntryPoint);
+//        openFileDialog.Filter = Module.a("\uE1B6킸\uDFBA\uD8BC킾\uE1C0藂계ꯆ곈\uE3CA\uE7CC\uE1CEꋐꓒ돔ﯖ\uF3D8\uF5DA볜꧞裠쿢쿤짦黨蛪鯬쏮\uDBF0\uDDF2飴蟶鳸鳺퇼헾⼀渂甄怆 眊✌ℎ成搒猔Ⱆ㌘㔚簜椞䠠ᠢ༤द帨䘪嬬ᐮᬰᴲ場䜶尸尺ؼᔾ潀⹂㕄⁆㕈\u0A4A⅌⍎煐ᕒ㱔㭖㱘獚睜煞䭠䩢ᥤ䵦䝨䅪", dataEntryPoint);
+        openFileDialog.Filter = "Video File(*.swf,*.avi,*.wmv,*.mpeg,*.mpg)| *.swf; *.avi; *.wmv; *.mpeg; *.mpg | All File(*.*) | *.*";
 
+               LogData.LogInfo($"openFileDialog.Filter = {openFileDialog.Filter}");
         if (openFileDialog.ShowDialog() == DialogResult.OK)
         {
             if (this.bool_28)
-                this.menuItem_9_Click(sender, e);
+                this.CloseVideoEffectFile_Click(sender, e);
             this.d_0.Show();
             this.d_0.Location = new Point(500, 400);
- //           if (openFileDialog.FileName.ToLower().EndsWith(Module.a("馶쪸첺\uDBBC", int_0)))
+ //           if (openFileDialog.FileName.ToLower().EndsWith(Module.a("馶쪸첺\uDBBC", dataEntryPoint)))
             if (openFileDialog.FileName.ToLower().EndsWith(".swf"))
             {
                 if (this.bool_20)
                 {
-                    this.d_0.method_2();
+                    this.d_0.CloseVideo();
                     this.bool_20 = false;
                 }
                 this.d_0.TransparencyKey = Color.FromArgb(0);
@@ -7230,7 +7245,7 @@ public class c : Form
             {
                 if (this.bool_20)
                 {
-                    this.d_0.method_2();
+                    this.d_0.CloseVideo();
                     this.bool_20 = false;
                 }
                 this.bool_20 = true;
@@ -7269,7 +7284,7 @@ public class c : Form
         int int_0 = 9;
         if (this.bool_28)
             this.r_0.Hide();
- //       if ((c.string_7 == Module.a("ﮮﶰ\uE0B2閴\uE1B6貸隺\uF0BC", int_0) || c.string_7 == Module.a("\uECAE쒰솲솴횶킸햺鶼\uE9BE\uF4C0", int_0)) && c.smethod_0() > 20)
+ //       if ((c.string_7 == Module.a("ﮮﶰ\uE0B2閴\uE1B6貸隺\uF0BC", dataEntryPoint) || c.string_7 == Module.a("\uECAE쒰솲솴횶킸햺鶼\uE9BE\uF4C0", dataEntryPoint)) && c.smethod_0() > 20)
             if ((c.string_7 == "TLS V5-M" || c.string_7 == "Curtain V5") && c.smethod_0() > 20)
                 c.smethod_1(20);
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -7282,10 +7297,10 @@ public class c : Form
         this.d_0.ClientSize = new Size(this.int_67, this.int_68);
         this.d_0.Show();
         this.d_0.Location = new Point(500, 400);
- //       if (string_24.ToLower().EndsWith(Module.a("膮슰쒲펴", int_0)))
+ //       if (SWFPath.ToLower().EndsWith(Module.a("膮슰쒲펴", dataEntryPoint)))
         if (string_24.ToLower().EndsWith(".swf"))
         {
-                this.d_0.method_2();
+                this.d_0.CloseVideo();
             this.d_0.TransparencyKey = Color.FromArgb(0);
             this.bool_20 = false;
             this.d_0.FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -7318,10 +7333,10 @@ public class c : Form
         this.BringToFront();
     }
 
-    private void method_21(string string_24)
+    private void LoadSWF(string SWFPath)
     {
         this.bool_19 = false;
-        this.menuItem_9_Click((object)null, (EventArgs)null);
+        this.CloseVideoEffectFile_Click((object)null, (EventArgs)null);
         this.bool_22 = true;
         c.int_59 = 0;
         c.int_58 = 0;
@@ -7338,7 +7353,7 @@ public class c : Form
         this.d_0.axShockwaveFlash_0.Visible = true;
         this.d_0.Show();
         this.d_0.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width + 30, 400);
-        this.d_0.axShockwaveFlash_0.Movie = string_24;
+        this.d_0.axShockwaveFlash_0.Movie = SWFPath;
         if (this.bool_19)
             this.d_0.axShockwaveFlash_0.Play();
         else
@@ -7373,7 +7388,7 @@ public class c : Form
         {
             this.d_0.axShockwaveFlash_0.Stop();
             this.d_0.axShockwaveFlash_0.Movie = (string)null;
-            string path = Application.StartupPath + (object)'\\' + "pre_1.swf";//Module.a("어얶\uDCB8\uE4BA貼醾닀듂ꏄ", int_0);
+            string path = Application.StartupPath + (object)'\\' + "pre_1.swf";//Module.a("어얶\uDCB8\uE4BA貼醾닀듂ꏄ", dataEntryPoint);
             if (System.IO.File.Exists(path))
                 this.d_0.axShockwaveFlash_0.Movie = path;
             this.d_0.axShockwaveFlash_0.Movie = (string)null;
@@ -7387,12 +7402,12 @@ public class c : Form
         this.method_13();
     }
 
-    private void menuItem_9_Click(object sender, EventArgs e)
+    private void CloseVideoEffectFile_Click(object sender, EventArgs e)
     {
-        if (this.bool_13)
+        if (this.IsTOLFileOpen)
         {
-            this.bool_13 = false;
-            this.method_86();
+            this.IsTOLFileOpen = false;
+            this.CloseStreams();
         }
         this.bool_22 = false;
         if (this.bool_28)
@@ -7407,7 +7422,7 @@ public class c : Form
         this.Location = new Point(0, 0);
         if (this.bool_20)
         {
-            this.d_0.method_2();
+            this.d_0.CloseVideo();
             this.bool_20 = false;
         }
         else
@@ -7421,16 +7436,16 @@ public class c : Form
         this.method_13();
     }
 
-    private void method_23(object sender, EventArgs e)
-    {
-        this.bool_57 = true;
-        this.d_0.axShockwaveFlash_0.GotoFrame(0);
-        if (!this.bool_19)
-            return;
-        this.d_0.axShockwaveFlash_0.Play();
-    }
+    //private void method_23(object sender, EventArgs e)
+    //{
+    //    this.bool_57 = true;
+    //    this.d_0.axShockwaveFlash_0.GotoFrame(0);
+    //    if (!this.bool_19)
+    //        return;
+    //    this.d_0.axShockwaveFlash_0.Play();
+    //}
 
-    private void method_24(object sender, EventArgs e)
+    private void PlaySWF(object sender, EventArgs e)
     {
         this.bool_57 = true;
         this.d_0.axShockwaveFlash_0.GotoFrame(0);
@@ -7453,7 +7468,7 @@ public class c : Form
         this.method_77();
         if (this.genum1_1 != GEnum1.const_0)
         {
-            switch (!c.useEnglishLanguage ? MessageBox.Show("是否关傔䩞穓㱷먁", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) : MessageBox.Show("Whether to close the current project?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2))
+            switch (!c.useEnglishLanguage ? MessageBox.Show("是否关傔䩞穓㱷먁", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) : MessageBox.Show("Close the current project?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2))
             {
                 case DialogResult.Yes:
                     this.menuItem_29_Click((object)null, (EventArgs)null);
@@ -7471,7 +7486,7 @@ public class c : Form
         this.int_70 = this.Size.Height;
         c.int_71 = this.panel_1.Width;
         c.int_72 = this.panel_1.Height;
-        f f = new f();
+        NewProjectForm f = new NewProjectForm();
         if (f.ShowDialog() != DialogResult.OK)
             return;
         string path1 = f.method_2();
@@ -7484,22 +7499,22 @@ public class c : Form
         c.string_23 = this.string_22;
         this.string_20 = path1.Substring(0, length1);
         c.string_21 = this.string_20;
-        c.string_17 = c.string_21 + "\\jiemu1i.ini"; // Module.a("\uF7AA재욮풰\uDEB2살蚶킸閺풼톾ꣀ", int_0);
-        this.string_11[0] = "1"; //  Module.a("骪", int_0);
+        c.string_17 = c.string_21 + "\\jiemu1i.ini"; // Module.a("\uF7AA재욮풰\uDEB2살蚶킸閺풼톾ꣀ", dataEntryPoint);
+        this.string_11[0] = "1"; //  Module.a("骪", dataEntryPoint);
         this.string_11[1] = c.string_0;
-        this.string_11[2] = "0"; // Module.a("鮪", int_0);
-        this.string_11[3] = "ss"; //  Module.a("\uD8AA\uDEAC", int_0);
-        this.string_11[4] = "0"; // Module.a("鮪", int_0);
-        this.string_11[5] = "ss"; // Module.a("\uD8AA\uDEAC", int_0);
-        this.string_11[6] = "0"; // Module.a("鮪", int_0);
-        this.string_11[7] = "ss"; // Module.a("\uD8AA\uDEAC", int_0);
-        this.string_11[8] = "0"; // Module.a("鮪", int_0);
-        this.string_11[9] = "0"; // Module.a("鮪", int_0);
-        this.string_11[10] = c.int_2.ToString();
+        this.string_11[2] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[3] = "ss"; //  Module.a("\uD8AA\uDEAC", dataEntryPoint);
+        this.string_11[4] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[5] = "ss"; // Module.a("\uD8AA\uDEAC", dataEntryPoint);
+        this.string_11[6] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[7] = "ss"; // Module.a("\uD8AA\uDEAC", dataEntryPoint);
+        this.string_11[8] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[9] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[10] = c.ledControllerType.ToString();
         this.string_11[11] = c.int_74.ToString();
         this.string_11[12] = c.smethod_0().ToString();
         this.string_11[13] = c.int_81.ToString();
-        this.string_11[14] = "0"; // Module.a("鮪", int_0);
+        this.string_11[14] = "0"; // Module.a("鮪", dataEntryPoint);
         this.string_11[15] = c.int_8.ToString();
         this.string_11[16] = c.int_9.ToString();
         this.string_11[17] = c.int_10.ToString();
@@ -7508,8 +7523,8 @@ public class c : Form
         this.string_11[20] = c.string_7;
         this.string_11[21] = c.bool_3.ToString();
         this.string_11[22] = c.byte_19.ToString();
-        this.string_11[23] = "0"; // Module.a("鮪", int_0);
-        this.string_11[24] = "0"; // Module.a("鮪", int_0);
+        this.string_11[23] = "0"; // Module.a("鮪", dataEntryPoint);
+        this.string_11[24] = "0"; // Module.a("鮪", dataEntryPoint);
         this.string_11[25] = c.bool_14.ToString();
         this.string_11[26] = c.bool_18.ToString();
         this.string_11[27] = c.bool_17.ToString();
@@ -7575,18 +7590,18 @@ public class c : Form
         string string_4;
         if (c.useEnglishLanguage)
         {
-            string_5 = "\\Program_1"; // Module.a("\uF7AAﶬ\uDDAE\uDEB0풲잴횶풸\uE4BA貼", int_0);
-            string_4 = "program1";//Module.a("\uDBAA\uDFAC삮횰솲풴\uDAB6袸", int_0);
+            string_5 = "\\Program_1"; // Module.a("\uF7AAﶬ\uDDAE\uDEB0풲잴횶풸\uE4BA貼", dataEntryPoint);
+            string_4 = "program1";//Module.a("\uDBAA\uDFAC삮횰솲풴\uDAB6袸", dataEntryPoint);
         }
         else
         {
-            string_5 = "\\节目_1";//Module.a("\uF7AA⼮䇘\uEEB0芲", int_0);
-            string_4 = "节目1"; //Module.a("⤨䏚麮", int_0);
+            string_5 = "\\节目_1";//Module.a("\uF7AA⼮䇘\uEEB0芲", dataEntryPoint);
+            string_4 = "节目1"; //Module.a("⤨䏚麮", dataEntryPoint);
         }
         string path2 = c.string_21 + string_5;
         if (Directory.Exists(path2))
             Directory.Delete(path2, true);
-        GClass5 gclass5 = new GClass5(string_4, string_5, string_5 + "\\_rec.bin"); //Module.a("\uF7AA\uF2AC\uDDAE풰킲鮴햶킸햺", int_0));
+        GClass5 gclass5 = new GClass5(string_4, string_5, string_5 + "\\_rec.bin"); //Module.a("\uF7AA\uF2AC\uDDAE풰킲鮴햶킸햺", dataEntryPoint));
         gclass5.gclass6_0[0] = new GClass6();
         gclass5.gclass6_0[1] = new GClass6();
         gclass5.gclass6_0[2] = new GClass6();
@@ -7604,31 +7619,31 @@ public class c : Form
         {
             case 0:
                 this.toolStripTextBox_2.Text = "RGB";
- //               this.toolStripTextBox_2.Text = Module.a("寧\uEAAC\uEDAE", int_0);
+ //               this.toolStripTextBox_2.Text = Module.a("寧\uEAAC\uEDAE", dataEntryPoint);
                 break;
             case 1:
                 this.toolStripTextBox_2.Text = "RBG";
-//                this.toolStripTextBox_2.Text = Module.a("寧\uEFAC\uE8AE", int_0);
+//                this.toolStripTextBox_2.Text = Module.a("寧\uEFAC\uE8AE", dataEntryPoint);
                 break;
             case 2:
                 this.toolStripTextBox_2.Text = "GRB";
-//                this.toolStripTextBox_2.Text = Module.a("\uECAAﾬ\uEDAE", int_0);
+//                this.toolStripTextBox_2.Text = Module.a("\uECAAﾬ\uEDAE", dataEntryPoint);
                 break;
             case 3:
                 this.toolStripTextBox_2.Text = "GBR";
-//                this.toolStripTextBox_2.Text = Module.a("\uECAA\uEFACﶮ", int_0);
+//                this.toolStripTextBox_2.Text = Module.a("\uECAA\uEFACﶮ", dataEntryPoint);
                 break;
             case 4:
                 this.toolStripTextBox_2.Text = "BRG";
-//                this.toolStripTextBox_2.Text = Module.a("\uE9AAﾬ\uE8AE", int_0);
+//                this.toolStripTextBox_2.Text = Module.a("\uE9AAﾬ\uE8AE", dataEntryPoint);
                 break;
             case 5:
                 this.toolStripTextBox_2.Text = "BGR";
- //               this.toolStripTextBox_2.Text = Module.a("\uE9AA\uEAACﶮ", int_0);
+ //               this.toolStripTextBox_2.Text = Module.a("\uE9AA\uEAACﶮ", dataEntryPoint);
                 break;
             default:
                 this.toolStripTextBox_2.Text = "RGB";
-//                this.toolStripTextBox_2.Text = Module.a("寧\uEAAC\uEDAE", int_0);
+//                this.toolStripTextBox_2.Text = Module.a("寧\uEAAC\uEDAE", dataEntryPoint);
                 break;
         }
         this.toolStripTextBox_3.Text = c.string_7;
@@ -7637,7 +7652,7 @@ public class c : Form
         this.method_79();
         this.gclass0_2.method_12().ColorFill(Color.FromArgb(0, 0, 0));
         this.method_15();
-//        this.Text = this.string_8 + Module.a("\uF0AA肬芮", int_0) + this.string_22 + (object)']';
+//        this.Text = this.string_8 + Module.a("\uF0AA肬芮", dataEntryPoint) + this.string_22 + (object)']';
         this.Text = this.string_8 + "[--" + this.string_22 + (object)']';
     }
 
@@ -7842,7 +7857,7 @@ public class c : Form
 
     private void menuItem_14_Click(object sender, EventArgs e)
     {
-//        int int_0 = 12;
+//        int dataEntryPoint = 12;
         this.timer_1.Enabled = false;
         this.bool_7 = false;
         this.bool_8 = false;
@@ -7866,8 +7881,8 @@ public class c : Form
             case 3:
                 break;
             default:
-//                this.method_26(4, Module.a("花", int_0));
-//                this.method_26(6, Module.a("花", int_0));
+//                this.method_26(4, Module.a("花", dataEntryPoint));
+//                this.method_26(6, Module.a("花", dataEntryPoint));
                 this.method_26(4, "0");
                 this.method_26(6, "0");
                 this.genum1_1 = GEnum1.const_2;
@@ -7895,9 +7910,9 @@ public class c : Form
         {
             if (c.useEnglishLanguage)
                 this.ShowMessage("Failed to load program list!");
-            //        this.ShowMessage(Module.a("\uF4B1햳\uDFB5풷\uDFB9\uD8BB麽뒿귁\uE4C3\uAAC5\uA7C7ꯉ\uA8CB\uEECD\uA4CF뫑뇓\uF6D5꣗꣙돛망鋟菡解웥蓧菩\u9FEB髭퇯", int_0));
+            //        this.ShowMessage(Module.a("\uF4B1햳\uDFB5풷\uDFB9\uD8BB麽뒿귁\uE4C3\uAAC5\uA7C7ꯉ\uA8CB\uEECD\uA4CF뫑뇓\uF6D5꣗꣙돛망鋟菡解웥蓧菩\u9FEB髭퇯", dataEntryPoint));
             else
-                //                this.ShowMessage(Module.a("ዣ줼㐷囁귫퐳迤\uE532쌾", int_0));
+                //                this.ShowMessage(Module.a("ዣ줼㐷囁귫퐳迤\uE532쌾", dataEntryPoint));
                 this.ShowMessage("加载节目列表失败");
         }
         else
@@ -7933,7 +7948,7 @@ public class c : Form
         c.string_23 = this.string_22;
         this.string_20 = string_24.Substring(0, length1);
         c.string_21 = this.string_20;
-        c.string_17 = c.string_21 + Module.a("瘟슧쎩즫쎭얯莱\uDDB3颵톷풹햻", int_0);
+        c.string_17 = c.string_21 + "\\jiemu1i.ini";
         this.byte_33 = new byte[512];
         try
         {
@@ -7998,10 +8013,11 @@ public class c : Form
             else
             {
                 c.int_73 = 30;
-                this.method_26(12, Module.a("閥颧", int_0));
+                this.method_26(12, "30");
+
             }
         }
-        c.int_2 = Convert.ToInt32(this.string_11[10]);
+        c.ledControllerType = Convert.ToInt32(this.string_11[10]);
         c.int_81 = 0;
         try
         {
@@ -8026,7 +8042,8 @@ public class c : Form
         catch
         {
         }
-        string path = c.string_21 + (object)'\\' + c.string_23 + Module.a("袥쾧잩솫", int_0);
+        string path = c.string_21 + (object)'\\' + c.string_23 + ".gmm";
+
         if (System.IO.File.Exists(path))
         {
             using (StreamReader streamReader = new StreamReader(path, Encoding.Unicode))
@@ -8056,32 +8073,33 @@ public class c : Form
             c.byte_15 = byte.MaxValue;
         }
         this.method_79();
-        if (c.int_2 == 2 || c.int_2 == 16 || c.int_2 == 110)
+        if (c.ledControllerType == 2 || c.ledControllerType == 16 || c.ledControllerType == 110)
             c.bool_1 = Convert.ToBoolean(this.string_11[19]);
-        if (c.int_2 == 12 || c.int_2 == 31)
+        if (c.ledControllerType == 12 || c.ledControllerType == 31)
             c.bool_3 = Convert.ToBoolean(this.string_11[21]);
         switch (c.int_81)
         {
             case 0:
-                this.toolStripTextBox_2.Text = Module.a("\uF4A5\uEFA7\uE8A9", int_0);
+                this.toolStripTextBox_2.Text = "RGB";
+
                 break;
             case 1:
-                this.toolStripTextBox_2.Text = Module.a("\uF4A5\uEAA7\uEDA9", int_0);
+                this.toolStripTextBox_2.Text = "RBG";
                 break;
             case 2:
-                this.toolStripTextBox_2.Text = Module.a("\uE1A5盛\uE8A9", int_0);
+                this.toolStripTextBox_2.Text = "GRB";
                 break;
             case 3:
-                this.toolStripTextBox_2.Text = Module.a("\uE1A5\uEAA7\uF8A9", int_0);
+                this.toolStripTextBox_2.Text = "GBR";
                 break;
             case 4:
-                this.toolStripTextBox_2.Text = Module.a("\uE4A5盛\uEDA9", int_0);
+                this.toolStripTextBox_2.Text = "BRG";
                 break;
             case 5:
-                this.toolStripTextBox_2.Text = Module.a("\uE4A5\uEFA7\uF8A9", int_0);
+                this.toolStripTextBox_2.Text = "BGR";
                 break;
             default:
-                this.toolStripTextBox_2.Text = Module.a("\uF4A5\uEFA7\uE8A9", int_0);
+                this.toolStripTextBox_2.Text = "RGB";
                 break;
         }
         this.int_82 = c.int_74;
@@ -8190,7 +8208,7 @@ public class c : Form
         }
         c.string_7 = this.string_11[20];
         this.toolStripTextBox_3.Text = c.string_7;
-        this.Text = this.string_8 + Module.a("ﶥ薧螩", int_0) + this.string_22 + (object)']';
+        this.Text = this.string_8 + "[--" + this.string_22 + (object)']';
     }
 
     private void method_31()
@@ -8386,7 +8404,7 @@ public class c : Form
         }
         else
         {
-            if (c.int_2 > 80)
+            if (c.ledControllerType > 80)
                 this.menuItem_36.Enabled = true;
             this.menuItem_38.Enabled = true;
         }
@@ -8394,7 +8412,7 @@ public class c : Form
             this.MinimizeBox = true;
         else
             this.MinimizeBox = false;
-        if (c.int_2 < 80)
+        if (c.ledControllerType < 80)
         {
             this.menuItem_32.Visible = false;
             this.menuItem_35.Visible = false;
@@ -8525,7 +8543,7 @@ public class c : Form
         this.toolStripButton_24.Enabled = this.menuItem_72.Enabled;
         this.toolStripButton_25.Enabled = this.toolStripButton_9.Enabled;
         this.toolStripButton_26.Enabled = this.menuItem_59.Enabled;
-        if (c.int_2 > 80)
+        if (c.ledControllerType > 80)
         {
             this.toolStripButton_21.Enabled = this.menuItem_62.Enabled;
             this.toolStripButton_22.Enabled = this.menuItem_41.Enabled;
@@ -8538,7 +8556,7 @@ public class c : Form
             this.toolStripButton_23.Enabled = false;
         }
         this.menuItem_58.Enabled = c.bool_32;
-        if (c.int_2 != 103 && c.int_2 != 14 && c.int_2 != 15)
+        if (c.ledControllerType != 103 && c.ledControllerType != 14 && c.ledControllerType != 15)
         {
             this.menuItem_42.Visible = true;
             this.menuItem_43.Visible = true;
@@ -8738,25 +8756,25 @@ public class c : Form
     {
         for (int index1 = 0; index1 < 8; ++index1)
         {
-            GClass8 gclass8 = new GClass8(int_95 + index1, 256);
+            PixelArray gclass8 = new PixelArray(int_95 + index1, 256);
             for (int index2 = 0; index2 < 16; ++index2)
             {
                 for (int index3 = 7; index3 >= 0; --index3)
                 {
-                    gclass8.method_7(gclass8.method_0(), new Point(index2 * 8 + int_93 * 128 + index3, index1 + int_94 * 16));
-                    gclass8.method_1(gclass8.method_0() + 1);
+                    gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point(index2 * 8 + int_93 * 128 + index3, index1 + int_94 * 16));
+                    gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
                 }
                 for (int index4 = 0; index4 < 8; ++index4)
                 {
-                    gclass8.method_7(gclass8.method_0(), new Point(index2 * 8 + int_93 * 128 + index4, index1 + 8 + int_94 * 16));
-                    gclass8.method_1(gclass8.method_0() + 1);
+                    gclass8.SetPointForPixel(gclass8.GetPixelIndex(), new Point(index2 * 8 + int_93 * 128 + index4, index1 + 8 + int_94 * 16));
+                    gclass8.SetPixelIndex(gclass8.GetPixelIndex() + 1);
                 }
             }
-            this.arrayList_3.Add((object)gclass8);
+            this.portArrayList.Add((object)gclass8);
         }
     }
-
-    private void menuItem_15_Click(object sender, EventArgs e)
+    // Auto Layout
+    private void AutoLayout_Click(object sender, EventArgs e)
     {
         int int_0 = 13;
         this.timer_1.Enabled = false;
@@ -8764,25 +8782,26 @@ public class c : Form
         this.bool_8 = false;
         this.arrayList_1.Clear();
         this.method_80();
-        int int32_1;
-        int int32_2;
-        int int32_3;
+        int locHorizontalPixels;
+        int locVerticalPixels;
+        int locTotalPixelsPerPort;
         while (true)
         {
-            y y = new y();
-            if (y.ShowDialog() == DialogResult.OK)
+            AutoLayoutForm autoLayoutForm = new AutoLayoutForm();
+            if (autoLayoutForm.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    int32_1 = Convert.ToInt32(y.method_0());
-                    int32_2 = Convert.ToInt32(y.method_1());
-                    int32_3 = Convert.ToInt32(y.method_2());
+                    locHorizontalPixels = Convert.ToInt32(autoLayoutForm.GetHorizontalPixels());
+                    locVerticalPixels = Convert.ToInt32(autoLayoutForm.GetVerticalPixels());
+                    locTotalPixelsPerPort = Convert.ToInt32(autoLayoutForm.GetPixelsPerPort());
                     goto label_6;
                 }
                 catch
                 {
                     if (c.useEnglishLanguage)
-                        this.ShowMessage(Module.a("\uF6B2\uDBB4쎶쮸슺鶼\uDABE돀뇂\uAAC4뗆\uE5C8\uEBCA뷌ꏎ듐닒ꛔ닖律뻚돜ꯞ蓠釢엤蛦軨諪蓬臮탰", int_0));
+                        this.ShowMessage("Entry error, please enter again!");
+//                    this.ShowMessage(Module.a("\uF6B2\uDBB4쎶쮸슺鶼\uDABE돀뇂\uAAC4뗆\uE5C8\uEBCA뷌ꏎ듐닒ꛔ닖律뻚돜ꯞ蓠釢엤蛦軨諪蓬臮탰", dataEntryPoint));
                     else
                         this.ShowMessage(Module.a("‽탥긣嘳띅䨷爯熥偍ꂕ옹", int_0));
                 }
@@ -8794,8 +8813,8 @@ public class c : Form
     label_6:
         c.int_78 = 0;
         this.method_26(14, c.int_78.ToString());
-        this.arrayList_3.Clear();
-        if (c.int_2 == 201)
+        this.portArrayList.Clear();
+        if (c.ledControllerType == 201)
         {
             this.method_38(0, 0, 0);
             this.method_38(0, 1, 8);
@@ -8805,26 +8824,26 @@ public class c : Form
         else
         {
             int int_2 = 0;
-            GClass8 gclass8 = new GClass8(0, int32_3);
-            switch (y.int_0)
+            PixelArray pixelArray = new PixelArray(0, locTotalPixelsPerPort);
+            switch (AutoLayoutForm.dataEntryPoint)
             {
                 case 0:
                     int num1 = 0;
-                    for (int y = 0; y < int32_2; ++y)
+                    for (int y = 0; y < locVerticalPixels; ++y)
                     {
                         if (num1 % 2 == 0)
                         {
                         label_16:
-                            for (int x = 0; x < int32_1; ++x)
+                            for (int x = 0; x < locHorizontalPixels; ++x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (x == int32_1 - 1 && y < int32_2 - 1)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (x == locHorizontalPixels - 1 && y < locVerticalPixels - 1)
                                     {
                                         ++y;
                                         goto label_16;
@@ -8835,15 +8854,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int x = int32_1 - 1; x >= 0; --x)
+                            for (int x = locHorizontalPixels - 1; x >= 0; --x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num1;
@@ -8852,21 +8871,21 @@ public class c : Form
                     break;
                 case 1:
                     int num2 = 0;
-                    for (int y = 0; y < int32_2; ++y)
+                    for (int y = 0; y < locVerticalPixels; ++y)
                     {
                         if (num2 % 2 == 0)
                         {
                         label_33:
-                            for (int x = int32_1 - 1; x >= 0; --x)
+                            for (int x = locHorizontalPixels - 1; x >= 0; --x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (x == 0 && y < int32_2 - 1)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (x == 0 && y < locVerticalPixels - 1)
                                     {
                                         ++y;
                                         goto label_33;
@@ -8877,15 +8896,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int x = 0; x < int32_1; ++x)
+                            for (int x = 0; x < locHorizontalPixels; ++x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num2;
@@ -8894,21 +8913,21 @@ public class c : Form
                     break;
                 case 2:
                     int num3 = 0;
-                    for (int x = 0; x < int32_1; ++x)
+                    for (int x = 0; x < locHorizontalPixels; ++x)
                     {
                         if (num3 % 2 == 0)
                         {
                         label_50:
-                            for (int y = 0; y < int32_2; ++y)
+                            for (int y = 0; y < locVerticalPixels; ++y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (y == int32_2 - 1 && x < int32_1 - 1)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (y == locVerticalPixels - 1 && x < locHorizontalPixels - 1)
                                     {
                                         ++x;
                                         goto label_50;
@@ -8919,15 +8938,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int y = int32_2 - 1; y >= 0; --y)
+                            for (int y = locVerticalPixels - 1; y >= 0; --y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num3;
@@ -8936,21 +8955,21 @@ public class c : Form
                     break;
                 case 3:
                     int num4 = 0;
-                    for (int x = int32_1 - 1; x >= 0; --x)
+                    for (int x = locHorizontalPixels - 1; x >= 0; --x)
                     {
                         if (num4 % 2 == 0)
                         {
                         label_67:
-                            for (int y = 0; y < int32_2; ++y)
+                            for (int y = 0; y < locVerticalPixels; ++y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (y == int32_2 - 1 && x > 0)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (y == locVerticalPixels - 1 && x > 0)
                                     {
                                         --x;
                                         goto label_67;
@@ -8961,15 +8980,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int y = int32_2 - 1; y >= 0; --y)
+                            for (int y = locVerticalPixels - 1; y >= 0; --y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num4;
@@ -8978,21 +8997,21 @@ public class c : Form
                     break;
                 case 4:
                     int num5 = 0;
-                    for (int y = int32_2 - 1; y >= 0; --y)
+                    for (int y = locVerticalPixels - 1; y >= 0; --y)
                     {
                         if (num5 % 2 == 0)
                         {
                         label_84:
-                            for (int x = 0; x < int32_1; ++x)
+                            for (int x = 0; x < locHorizontalPixels; ++x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (x == int32_1 - 1 && y > 0)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (x == locHorizontalPixels - 1 && y > 0)
                                     {
                                         --y;
                                         goto label_84;
@@ -9003,15 +9022,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int x = int32_1 - 1; x >= 0; --x)
+                            for (int x = locHorizontalPixels - 1; x >= 0; --x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num5;
@@ -9020,20 +9039,20 @@ public class c : Form
                     break;
                 case 5:
                     int num6 = 0;
-                    for (int y = int32_2 - 1; y >= 0; --y)
+                    for (int y = locVerticalPixels - 1; y >= 0; --y)
                     {
                         if (num6 % 2 == 0)
                         {
                         label_101:
-                            for (int x = int32_1 - 1; x >= 0; --x)
+                            for (int x = locHorizontalPixels - 1; x >= 0; --x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                     if (x == 0 && y > 0)
                                     {
                                         --y;
@@ -9045,15 +9064,15 @@ public class c : Form
                         }
                         else
                         {
-                            for (int x = 0; x < int32_1; ++x)
+                            for (int x = 0; x < locHorizontalPixels; ++x)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num6;
@@ -9062,21 +9081,21 @@ public class c : Form
                     break;
                 case 6:
                     int num7 = 0;
-                    for (int x = 0; x < int32_1; ++x)
+                    for (int x = 0; x < locHorizontalPixels; ++x)
                     {
                         if (num7 % 2 == 0)
                         {
                         label_118:
-                            for (int y = int32_2 - 1; y >= 0; --y)
+                            for (int y = locVerticalPixels - 1; y >= 0; --y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
-                                    if (y == 0 && x < int32_1 - 1)
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
+                                    if (y == 0 && x < locHorizontalPixels - 1)
                                     {
                                         ++x;
                                         goto label_118;
@@ -9087,37 +9106,37 @@ public class c : Form
                         }
                         else
                         {
-                            for (int y = 0; y < int32_2; ++y)
+                            for (int y = 0; y < locVerticalPixels; ++y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num7;
                         }
                     }
                     break;
-                case 7:
+                case 7: // bottom left entry
                     int num8 = 0;
-                    for (int x = int32_1 - 1; x >= 0; --x)
+                    for (int x = locHorizontalPixels - 1; x >= 0; --x)
                     {
                         if (num8 % 2 == 0)
                         {
                         label_135:
-                            for (int y = int32_2 - 1; y >= 0; --y)
+                            for (int y = locVerticalPixels - 1; y >= 0; --y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                     if (y == 0 && x > 0)
                                     {
                                         --x;
@@ -9129,79 +9148,79 @@ public class c : Form
                         }
                         else
                         {
-                            for (int y = 0; y < int32_2; ++y)
+                            for (int y = 0; y < locVerticalPixels; ++y)
                             {
-                                gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                                gclass8.method_1(gclass8.method_0() + 1);
-                                if (gclass8.method_0() >= int32_3)
+                                pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                                pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                                if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                                 {
-                                    this.arrayList_3.Add((object)gclass8);
+                                    this.portArrayList.Add((object)pixelArray);
                                     ++int_2;
-                                    gclass8 = new GClass8(int_2, int32_3);
+                                    pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                                 }
                             }
                             ++num8;
                         }
                     }
                     break;
-                case 8:
-                    for (int x = 0; x < int32_1; ++x)
+                case 8: // Z - Shape
+                    for (int x = 0; x < locHorizontalPixels; ++x)
                     {
-                        for (int y = 0; y < int32_2; ++y)
+                        for (int y = 0; y < locVerticalPixels; ++y)
                         {
-                            gclass8.method_7(gclass8.method_0(), new Point(x, y));
-                            gclass8.method_1(gclass8.method_0() + 1);
-                            if (gclass8.method_0() >= int32_3)
+                            pixelArray.SetPointForPixel(pixelArray.GetPixelIndex(), new Point(x, y));
+                            pixelArray.SetPixelIndex(pixelArray.GetPixelIndex() + 1);
+                            if (pixelArray.GetPixelIndex() >= locTotalPixelsPerPort)
                             {
-                                this.arrayList_3.Add((object)gclass8);
+                                this.portArrayList.Add((object)pixelArray);
                                 ++int_2;
-                                gclass8 = new GClass8(int_2, int32_3);
+                                pixelArray = new PixelArray(int_2, locTotalPixelsPerPort);
                             }
                         }
                     }
                     break;
             }
-            if (gclass8.method_0() < int32_3 && gclass8.method_0() > 0)
-                this.arrayList_3.Add((object)gclass8);
+            if (pixelArray.GetPixelIndex() < locTotalPixelsPerPort && pixelArray.GetPixelIndex() > 0)
+                this.portArrayList.Add((object)pixelArray);
         }
-        this.int_23 = this.arrayList_3.Count;
+        this.int_23 = this.portArrayList.Count;
         this.int_23 = this.int_23 % c.int_75 != 0 ? (this.int_23 / c.int_75 + 1) * c.int_75 : this.int_23 / c.int_75 * c.int_75;
-        c.int_65 = int32_1;
-        c.int_66 = int32_2;
+        c.horizontalPixels = locHorizontalPixels;
+        c.verticalPixels = locVerticalPixels;
         this.double_3 = 0.5;
         this.int_18 = (int)(this.double_3 * 2.0);
-        if (c.int_65 < 500 && c.int_66 < 400)
+        if (c.horizontalPixels < 500 && c.verticalPixels < 400)
         {
-            int num9 = 500 / c.int_65;
-            int num10 = 400 / c.int_66;
+            int num9 = 500 / c.horizontalPixels;
+            int num10 = 400 / c.verticalPixels;
             int num11 = num9 > num10 ? num10 : num9;
-            this.int_24 = c.int_65 * num11;
-            this.int_25 = c.int_66 * num11;
+            this.int_24 = c.horizontalPixels * num11;
+            this.int_25 = c.verticalPixels * num11;
         }
         else
         {
-            this.int_24 = c.int_65;
-            this.int_25 = c.int_66;
+            this.int_24 = c.horizontalPixels;
+            this.int_25 = c.verticalPixels;
         }
-        this.int_41 = 0;
+        this.totalLeds = 0;
         this.int_42 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            this.int_41 += gclass8.method_0();
-            if (this.int_42 < gclass8.method_0())
-                this.int_42 = gclass8.method_0();
+            this.totalLeds += gclass8.GetPixelIndex();
+            if (this.int_42 < gclass8.GetPixelIndex())
+                this.int_42 = gclass8.GetPixelIndex();
         }
         int num12 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            if (gclass8.method_0() > num12)
-                num12 = gclass8.method_0();
+            if (gclass8.GetPixelIndex() > num12)
+                num12 = gclass8.GetPixelIndex();
         }
-        if (c.int_2 == 9)
+        if (c.ledControllerType == 9)
             this.int_82 = num12 <= 1024 ? 1024 : 2048;
-        else if (c.int_2 == 13 || c.int_2 == 32 || c.int_2 == 47 || c.int_2 == 52)
+        else if (c.ledControllerType == 13 || c.ledControllerType == 32 || c.ledControllerType == 47 || c.ledControllerType == 52)
             this.int_82 = num12 <= 1536 ? (num12 <= 1024 ? (num12 <= 512 ? 512 : 1024) : 1536) : 2048;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.int_82 = 256;
@@ -9210,15 +9229,15 @@ public class c : Form
                 this.int_82 = 512;
                 break;
         }
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83)
         {
             if (!c.bool_1)
             {
                 int num13 = 0;
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    if (gclass8.method_0() > num13)
-                        num13 = gclass8.method_0();
+                    if (gclass8.GetPixelIndex() > num13)
+                        num13 = gclass8.GetPixelIndex();
                 }
                 c.int_74 = num13 % 128 != 0 ? (num13 / 128 + 1) * 128 : num13 / 128 * 128;
                 this.int_82 = c.int_74;
@@ -9239,7 +9258,7 @@ public class c : Form
                 c.int_3 = 20;
             else if (this.byte_29 == (byte)4)
                 c.int_3 = 14;
-            if (c.int_2 == 16 && !c.bool_1)
+            if (c.ledControllerType == 16 && !c.bool_1)
             {
                 c.int_74 = 512;
                 this.int_82 = c.int_74;
@@ -9255,7 +9274,7 @@ public class c : Form
                 this.int_63 = 4096;
                 this.byte_29 = (byte)0;
                 c.int_3 = 30;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 2:
                     case 49:
@@ -9272,7 +9291,7 @@ public class c : Form
             }
         }
         this.int_39 = this.int_23 * this.int_82 * 3;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_39 = 16384;
         this.byte_37 = new byte[this.int_39];
         this.byte_38 = new byte[this.int_39];
@@ -9285,9 +9304,9 @@ public class c : Form
         if (!this.bool_23)
         {
             if (c.useEnglishLanguage)
-                this.ShowMessage(Module.a("\uE7B2\uDDB4튶馸쾺튼쮾ꃀ꿂\uE5C4꧆볈ꛊ꿌\uAACEꏐ\uF3D2뫔뇖律韚飜鯞鋠쏢郤铦賨迪췬蛮\u9FF0폲致\u9FF6郸裺\uDDFC迾猀氂漄戆樈缊ⴌ明成⤒", int_0) + this.int_41.ToString());
+                this.ShowMessage("The total number of LEDs used in this project is:" + this.totalLeds.ToString());
             else
-                this.ShowMessage(Module.a("\uE0ED\uF8E6勫닂雴쳭샱\uE9B5䖌\uDF3B", int_0) + this.int_41.ToString() + Module.a("駼領\uF2B6ﶸ퓊뱃", int_0));
+                this.ShowMessage("当前工程中共使用了：" + this.totalLeds.ToString() + "个LED灯！");
         }
         c.int_78 = 0;
         this.method_26(14, c.int_78.ToString());
@@ -9327,9 +9346,9 @@ public class c : Form
         this.int_40 = ((GClass5)c.arrayList_4[c.int_38]).int_0;
         int num1 = this.int_23 >= 8 ? this.int_23 / c.int_75 : 1;
         int num2 = c.int_75 * this.int_82 * 3;
-        if (c.int_2 == 1 || c.int_2 == 6 || c.int_2 == 7 || c.int_2 == 8 || c.int_2 == 9 || c.int_2 == 84)
+        if (c.ledControllerType == 1 || c.ledControllerType == 6 || c.ledControllerType == 7 || c.ledControllerType == 8 || c.ledControllerType == 9 || c.ledControllerType == 84)
             num2 = c.int_75 * this.int_82 * 2;
-        byte int2 = (byte)c.int_2;
+        byte int2 = (byte)c.ledControllerType;
         byte[] buffer = new byte[512];
         new Random().NextBytes(buffer);
         buffer[0] = (byte)114;
@@ -9359,7 +9378,7 @@ public class c : Form
         buffer[22] = (byte)170;
         buffer[23] = num3;
         buffer[24] = (byte)(c.int_4 / 64);
-        if (c.int_2 == 12 || c.int_2 == 31 || c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 41 || c.int_2 == 46 || c.int_2 == 85 || c.int_2 == 53 || c.int_2 == 54)
+        if (c.ledControllerType == 12 || c.ledControllerType == 31 || c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 41 || c.ledControllerType == 46 || c.ledControllerType == 85 || c.ledControllerType == 53 || c.ledControllerType == 54)
         {
             if (this.int_82 == 512)
                 buffer[26] = (byte)85;
@@ -9367,7 +9386,7 @@ public class c : Form
                 buffer[26] = (byte)170;
         }
         int num7;
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83 || c.int_2 == 51)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83 || c.ledControllerType == 51)
         {
             buffer[25] = this.byte_29;
             if (c.bool_1)
@@ -9381,7 +9400,7 @@ public class c : Form
         buffer[27] = c.byte_19;
         buffer[28] = c.string_7 == Module.a("ﾪ\uE1ACﲮ醰\uE5B2肴骶\uF4B8", int_0) || c.string_7 == Module.a("ﾪ\uE1ACﲮ醰\uE5B2蚴骶\uF4B8", int_0) || c.string_7 == Module.a("ﾪ\uE1ACﲮ醰\uE5B2螴骶\uF4B8", int_0) || c.string_7 == Module.a("ﾪ\uE1ACﲮ醰\uE5B2蒴\uF5B6钸\uF6BA", int_0) || c.string_7 == Module.a("ﶪ麬芮ﲰ鎲\uF8B4\uD8B6ힸ풺\uDEBCힾ돀곂꣄ꋆ", int_0) || c.string_7 == Module.a("\uE8AA\uD8AC\uDDAE얰튲\uDCB4\uD9B6馸\uEDBA袼", int_0) || c.string_7 == Module.a("\uE8AA\uD8AC\uDDAE얰튲\uDCB4\uD9B6馸\uEDBA躼", int_0) || c.string_7 == Module.a("\uE8AA\uD8AC\uDDAE얰튲\uDCB4\uD9B6馸\uEDBA込", int_0) || c.string_7 == Module.a("\uE8AA\uD8AC\uDDAE얰튲\uDCB4\uD9B6馸\uEDBA貼ﶾ", int_0) ? (byte)90 : (byte)0;
         buffer[30] = (byte)0;
-        if (c.int_2 == 47 || c.int_2 == 48 || c.int_2 == 46 || c.int_2 == 140 || c.int_2 == 85)
+        if (c.ledControllerType == 47 || c.ledControllerType == 48 || c.ledControllerType == 46 || c.ledControllerType == 140 || c.ledControllerType == 85)
             buffer[30] = c.bool_17 ? (byte)85 : (byte)0;
         buffer[31] = c.byte_20;
         if (c.string_7 == Module.a("ﾪ肬麮膰莲薴骶\uF1B8\uF7BA込螾\uF1C0\uF0C2", int_0))
@@ -9413,20 +9432,20 @@ public class c : Form
             buffer[45] = this.byte_12[(int)c.byte_7];
             buffer[49] = this.byte_12[(int)c.byte_8];
         }
-        if (c.int_2 == 81)
+        if (c.ledControllerType == 81)
             buffer[15] = (byte)12;
-        if (c.int_2 == 82)
+        if (c.ledControllerType == 82)
             buffer[15] = (byte)31;
-        if (c.int_2 == 83)
+        if (c.ledControllerType == 83)
             buffer[15] = (byte)2;
-        if (c.int_2 == 84)
+        if (c.ledControllerType == 84)
         {
             buffer[15] = (byte)8;
             num7 = c.int_75 * this.int_82 * 2;
         }
-        if (c.int_2 == 85)
+        if (c.ledControllerType == 85)
             buffer[15] = (byte)46;
-        if (c.int_2 == 86)
+        if (c.ledControllerType == 86)
             buffer[15] = (byte)54;
         this.byte_17[0] = (byte)170;
         for (int index = 0; index < 64; ++index)
@@ -9475,25 +9494,25 @@ public class c : Form
         this.method_29(9);
         this.int_40 = ((GClass5)c.arrayList_4[c.int_38]).int_0;
         int num1 = this.int_23 >= 8 ? this.int_23 / c.int_75 : 1;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             num1 = 1;
         int count1 = c.int_75 * this.int_82 * 3;
-        if (c.int_2 == 1 || c.int_2 == 6 || c.int_2 == 7 || c.int_2 == 8 || c.int_2 == 9 || c.int_2 == 84)
+        if (c.ledControllerType == 1 || c.ledControllerType == 6 || c.ledControllerType == 7 || c.ledControllerType == 8 || c.ledControllerType == 9 || c.ledControllerType == 84)
             count1 = c.int_75 * this.int_82 * 2;
-        byte num2 = (byte)c.int_2;
-        if (c.int_2 == 7)
+        byte num2 = (byte)c.ledControllerType;
+        if (c.ledControllerType == 7)
             num2 = (byte)8;
-        if (c.int_2 == 41)
+        if (c.ledControllerType == 41)
             num2 = (byte)12;
-        if (c.int_2 == 48)
+        if (c.ledControllerType == 48)
             num2 = (byte)46;
-        if (c.int_2 == 49)
+        if (c.ledControllerType == 49)
             num2 = (byte)2;
-        if (c.int_2 == 50)
+        if (c.ledControllerType == 50)
             num2 = (byte)31;
-        if (c.int_2 == 53)
+        if (c.ledControllerType == 53)
             num2 = (byte)54;
-        if (c.int_2 == 51)
+        if (c.ledControllerType == 51)
         {
             num2 = (byte)16;
             this.byte_29 = (byte)4;
@@ -9528,13 +9547,13 @@ public class c : Form
         buffer1[22] = (byte)170;
         buffer1[23] = num3;
         buffer1[24] = (byte)(c.int_4 / 64);
-        if (c.int_2 == 9)
+        if (c.ledControllerType == 9)
             buffer1[26] = this.int_82 <= 1024 ? (byte)85 : (byte)170;
-        else if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52)
+        else if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52)
         {
-            if (c.int_2 == 55)
+            if (c.ledControllerType == 55)
                 buffer1[26] = (byte)85;
-            else if (c.int_2 == 12 || c.int_2 == 31 || c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 41 || c.int_2 == 46 || c.int_2 == 85 || c.int_2 == 53 || c.int_2 == 54)
+            else if (c.ledControllerType == 12 || c.ledControllerType == 31 || c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 41 || c.ledControllerType == 46 || c.ledControllerType == 85 || c.ledControllerType == 53 || c.ledControllerType == 54)
             {
                 if (this.int_82 == 512)
                     buffer1[26] = (byte)85;
@@ -9550,7 +9569,7 @@ public class c : Form
             buffer1[26] = (byte)51;
         else if (this.int_82 == 2048)
             buffer1[26] = (byte)204;
-        if (c.int_2 == 2 || c.int_2 == 49 || c.int_2 == 16 || c.int_2 == 110 || c.int_2 == 83 || c.int_2 == 51)
+        if (c.ledControllerType == 2 || c.ledControllerType == 49 || c.ledControllerType == 16 || c.ledControllerType == 110 || c.ledControllerType == 83 || c.ledControllerType == 51)
         {
             buffer1[25] = this.byte_29;
             if (c.bool_1)
@@ -9564,7 +9583,7 @@ public class c : Form
         buffer1[27] = c.byte_19;
         buffer1[28] = c.string_7 == Module.a("節ﲯ\uE1B1钳\uE0B5趷鞹\uF1BB", int_0) || c.string_7 == Module.a("節ﲯ\uE1B1钳\uE0B5讷鞹\uF1BB", int_0) || c.string_7 == Module.a("節ﲯ\uE1B1钳\uE0B5誷鞹\uF1BB", int_0) || c.string_7 == Module.a("節ﲯ\uE1B1钳\uE0B5覷\uF8B9醻\uF3BD", int_0) || c.string_7 == Module.a("\uF8AD莯龱靈隵\uF5B7햹튻톽ꎿ꫁뛃꧅ꗇ꿉", int_0) || c.string_7 == Module.a("\uEDAD얯삱삳ힵ톷풹鲻\uE8BD\uF5BF", int_0) || c.string_7 == Module.a("\uEDAD얯삱삳ힵ톷풹鲻\uE8BD\uF3BF", int_0) || c.string_7 == Module.a("\uEDAD얯삱삳ힵ톷풹鲻\uE8BD\uF2BF", int_0) || c.string_7 == Module.a("\uEDAD얯삱삳ힵ톷풹鲻\uE8BD\uF1BF胁", int_0) ? (byte)90 : (byte)0;
         buffer1[30] = (byte)0;
-        if (c.int_2 == 47 || c.int_2 == 48 || c.int_2 == 46 || c.int_2 == 140 || c.int_2 == 85)
+        if (c.ledControllerType == 47 || c.ledControllerType == 48 || c.ledControllerType == 46 || c.ledControllerType == 140 || c.ledControllerType == 85)
             buffer1[30] = c.bool_17 ? (byte)85 : (byte)0;
         buffer1[31] = c.byte_20;
         if (c.string_7 == Module.a("節鶯莱蒳蚵袷鞹\uF4BB\uF2BD\uF2BF贈\uF4C3\uF5C5", int_0))
@@ -9613,7 +9632,7 @@ public class c : Form
             buffer1[310] = num8;
         }
         byte num9 = 0;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 9:
                 if (c.byte_20 > (byte)1)
@@ -9650,9 +9669,9 @@ public class c : Form
         else if (str1 == Module.a("節鶯莱蒳蚵袷\uF8B9醻", int_0))
             num9 = (byte)17;
         byte num10 = 17;
-        if ((c.int_2 == 130 || c.int_2 == 120 || c.int_2 == 110) && !c.bool_2)
+        if ((c.ledControllerType == 130 || c.ledControllerType == 120 || c.ledControllerType == 110) && !c.bool_2)
             num10 = (byte)0;
-        if (c.int_2 == 47)
+        if (c.ledControllerType == 47)
         {
             if (c.byte_20 == (byte)0)
                 num10 = (byte)0;
@@ -9725,22 +9744,22 @@ public class c : Form
             num13 += (byte)((uint)buffer1[index] ^ 90U);
         this.byte_43 = (byte)((uint)num13 ^ 165U);
         byte num14 = buffer1[15];
-        if (c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 83 || c.int_2 == 84 || c.int_2 == 85)
+        if (c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 83 || c.ledControllerType == 84 || c.ledControllerType == 85)
         {
-            if (c.int_2 == 81)
+            if (c.ledControllerType == 81)
                 buffer1[15] = (byte)12;
-            if (c.int_2 == 82)
+            if (c.ledControllerType == 82)
                 buffer1[15] = (byte)31;
-            if (c.int_2 == 83)
+            if (c.ledControllerType == 83)
                 buffer1[15] = (byte)2;
-            if (c.int_2 == 84)
+            if (c.ledControllerType == 84)
             {
                 buffer1[15] = (byte)8;
                 count1 = c.int_75 * this.int_82 * 2;
             }
-            if (c.int_2 == 85)
+            if (c.ledControllerType == 85)
                 buffer1[15] = (byte)46;
-            if (c.int_2 == 86)
+            if (c.ledControllerType == 86)
                 buffer1[15] = (byte)54;
         }
         if (num10 == (byte)17)
@@ -10162,7 +10181,7 @@ public class c : Form
             this.byte_43 ^= numArray9[3];
         }
         buffer1[15] = num14;
-        if (this.bool_5 && c.int_2 > 80)
+        if (this.bool_5 && c.ledControllerType > 80)
         {
             this.byte_43 = (byte)0;
             this.byte_42 = (byte)0;
@@ -10224,19 +10243,19 @@ public class c : Form
         if (Directory.Exists(string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0)))
             Directory.Delete(string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0), true);
         Directory.CreateDirectory(string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0));
-        if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52)
+        if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52)
         {
-            switch (c.int_2)
+            switch (c.ledControllerType)
             {
                 case 9:
-                    IEnumerator enumerator1 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator1 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator1.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator1.Current;
-                            int int_93 = current.method_4();
-                            string path2 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + current.method_4().ToString() + Module.a("肭\uDCAFힱ킳", int_0);
+                            PixelArray current = (PixelArray)enumerator1.Current;
+                            int int_93 = current.GetPortNum();
+                            string path2 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + current.GetPortNum().ToString() + Module.a("肭\uDCAFힱ킳", int_0);
                             if (System.IO.File.Exists(path2))
                                 System.IO.File.Delete(path2);
                             FileStream fileStream2 = new FileStream(path2, FileMode.Create, FileAccess.Write);
@@ -10283,14 +10302,14 @@ public class c : Form
                             disposable.Dispose();
                     }
                 case 16:
-                    IEnumerator enumerator2 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator2 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator2.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator2.Current;
-                            int int_93 = current.method_4();
-                            string path3 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (current.method_4() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
+                            PixelArray current = (PixelArray)enumerator2.Current;
+                            int int_93 = current.GetPortNum();
+                            string path3 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (current.GetPortNum() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
                             if (System.IO.File.Exists(path3))
                                 System.IO.File.Delete(path3);
                             FileStream fileStream3 = new FileStream(path3, FileMode.Create, FileAccess.Write);
@@ -10345,14 +10364,14 @@ public class c : Form
                             disposable.Dispose();
                     }
                 case 55:
-                    IEnumerator enumerator3 = this.arrayList_3.GetEnumerator();
+                    IEnumerator enumerator3 = this.portArrayList.GetEnumerator();
                     try
                     {
                         while (enumerator3.MoveNext())
                         {
-                            GClass8 current = (GClass8)enumerator3.Current;
-                            int int_93 = current.method_4();
-                            string path4 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (current.method_4() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
+                            PixelArray current = (PixelArray)enumerator3.Current;
+                            int int_93 = current.GetPortNum();
+                            string path4 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (current.GetPortNum() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
                             if (System.IO.File.Exists(path4))
                                 System.IO.File.Delete(path4);
                             FileStream fileStream4 = new FileStream(path4, FileMode.Create, FileAccess.Write);
@@ -10391,11 +10410,11 @@ public class c : Form
                             disposable.Dispose();
                     }
                 default:
-                    if (c.int_2 != 3 && c.int_2 != 5 && c.int_2 != 101 && c.int_2 != 14)
+                    if (c.ledControllerType != 3 && c.ledControllerType != 5 && c.ledControllerType != 101 && c.ledControllerType != 14)
                     {
-                        if (c.int_2 != 103 && c.int_2 != 15)
+                        if (c.ledControllerType != 103 && c.ledControllerType != 15)
                         {
-                            if (c.int_2 == 102)
+                            if (c.ledControllerType == 102)
                             {
                                 if (!c.bool_2)
                                 {
@@ -10503,9 +10522,9 @@ public class c : Form
                                 }
                                 break;
                             }
-                            if (c.int_2 != 1 && c.int_2 != 11 && c.int_2 != 7 && c.int_2 != 8 && c.int_2 != 9 && c.int_2 != 84)
+                            if (c.ledControllerType != 1 && c.ledControllerType != 11 && c.ledControllerType != 7 && c.ledControllerType != 8 && c.ledControllerType != 9 && c.ledControllerType != 84)
                             {
-                                switch (c.int_2)
+                                switch (c.ledControllerType)
                                 {
                                     case 51:
                                         for (int index52 = 0; index52 < this.int_40; ++index52)
@@ -10535,7 +10554,7 @@ public class c : Form
                                                     }
                                                 }
                                             }
-                                            if (c.int_2 == 51)
+                                            if (c.ledControllerType == 51)
                                             {
                                                 int int82 = this.int_82;
                                                 byte[] numArray13 = new byte[int82];
@@ -10586,7 +10605,7 @@ public class c : Form
                                                     }
                                                 }
                                             }
-                                            if (c.int_2 == 55)
+                                            if (c.ledControllerType == 55)
                                             {
                                                 int int82 = this.int_82;
                                                 byte[] numArray14 = new byte[int82];
@@ -10610,11 +10629,11 @@ public class c : Form
                                         }
                                         break;
                                     default:
-                                        if (c.int_2 != 2 && c.int_2 != 49 && c.int_2 != 16 && c.int_2 != 110 && c.int_2 != 83)
+                                        if (c.ledControllerType != 2 && c.ledControllerType != 49 && c.ledControllerType != 16 && c.ledControllerType != 110 && c.ledControllerType != 83)
                                         {
-                                            if (c.int_2 != 120 && c.int_2 != 130 && c.int_2 != 150)
+                                            if (c.ledControllerType != 120 && c.ledControllerType != 130 && c.ledControllerType != 150)
                                             {
-                                                if (c.int_2 == 12 || c.int_2 == 13 || c.int_2 == 31 || c.int_2 == 50 || c.int_2 == 32 || c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 41 || c.int_2 == 140 || c.int_2 == 46 || c.int_2 == 48 || c.int_2 == 47 || c.int_2 == 85 || c.int_2 == 52 || c.int_2 == 53 || c.int_2 == 54)
+                                                if (c.ledControllerType == 12 || c.ledControllerType == 13 || c.ledControllerType == 31 || c.ledControllerType == 50 || c.ledControllerType == 32 || c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 41 || c.ledControllerType == 140 || c.ledControllerType == 46 || c.ledControllerType == 48 || c.ledControllerType == 47 || c.ledControllerType == 85 || c.ledControllerType == 52 || c.ledControllerType == 53 || c.ledControllerType == 54)
                                                 {
                                                     for (int index70 = 0; index70 < this.int_40; ++index70)
                                                     {
@@ -10734,7 +10753,7 @@ public class c : Form
                                                                 }
                                                             }
                                                         }
-                                                        if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52)
+                                                        if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52)
                                                         {
                                                             for (uint index87 = 0; (long)index87 < (long)this.int_39; ++index87)
                                                                 this.byte_38[index87] = (byte)((uint)this.byte_40[(index87 ^ (uint)this.byte_43)] + (uint)this.byte_42);
@@ -11032,7 +11051,7 @@ public class c : Form
                                                     }
                                                 }
                                             }
-                                            if (c.int_2 == 16)
+                                            if (c.ledControllerType == 16)
                                             {
                                                 if (c.bool_1)
                                                 {
@@ -11136,7 +11155,7 @@ public class c : Form
                                             }
                                         }
                                     }
-                                    if (c.int_2 == 9)
+                                    if (c.ledControllerType == 9)
                                     {
                                         int count14 = this.int_82 * 16 / 8;
                                         byte[] numArray18 = new byte[count14];
@@ -11254,7 +11273,7 @@ public class c : Form
                                     }
                                 }
                                 this.class2_0.method_1();
-                                if (c.int_2 == 15)
+                                if (c.ledControllerType == 15)
                                 {
                                     int count16 = this.int_82 * 12 / 8;
                                     byte[] numArray19 = new byte[count16];
@@ -11373,7 +11392,7 @@ public class c : Form
                                 }
                             }
                             this.class2_0.method_1();
-                            if (c.int_2 == 14)
+                            if (c.ledControllerType == 14)
                             {
                                 int count17 = this.int_82 * 24 / 8;
                                 byte[] numArray20 = new byte[count17];
@@ -11401,7 +11420,7 @@ public class c : Form
                     break;
             }
         }
-        else if (c.int_2 == 32 && c.byte_20 > (byte)60)
+        else if (c.ledControllerType == 32 && c.byte_20 > (byte)60)
         {
             string path5 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD膯鲱\uD8B3펵\uDCB7", int_0);
             if (System.IO.File.Exists(path5))
@@ -11461,10 +11480,10 @@ public class c : Form
         }
         else
         {
-            foreach (GClass8 gclass8 in this.arrayList_3)
+            foreach (PixelArray gclass8 in this.portArrayList)
             {
-                int int_93 = gclass8.method_4();
-                string path6 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (gclass8.method_4() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
+                int int_93 = gclass8.GetPortNum();
+                string path6 = string_25 + Module.a("\uF2AD\uEFAF\uE6B1\uEBB3螵袷誹費\uE1BD膿臁飃", int_0) + c.string_3 + Module.a("\uF1AD", int_0) + (gclass8.GetPortNum() + 1).ToString() + Module.a("肭\uDCAFힱ킳", int_0);
                 if (System.IO.File.Exists(path6))
                     System.IO.File.Delete(path6);
                 FileStream fileStream6 = new FileStream(path6, FileMode.Create, FileAccess.Write);
@@ -11556,26 +11575,26 @@ public class c : Form
         this.bufferedStream_1.Close();
         this.fileStream_1.Close();
         this.method_26(6, Module.a("龭", int_0));
-        if (c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 83 || c.int_2 == 84 || c.int_2 == 85)
+        if (c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 83 || c.ledControllerType == 84 || c.ledControllerType == 85)
         {
             this.fileStream_1 = new FileStream(string_25 + Module.a("\uF2AD肯花骳\uDAB5\uDDB7\uDEB9", int_0), FileMode.Open, FileAccess.Read);
             this.bufferedStream_1 = new BufferedStream((Stream)this.fileStream_1);
             this.bufferedStream_1.Seek(0L, SeekOrigin.Begin);
             this.bufferedStream_1.Read(buffer1, 0, 512);
-            if (c.int_2 == 81)
+            if (c.ledControllerType == 81)
                 buffer1[15] = (byte)12;
-            if (c.int_2 == 82)
+            if (c.ledControllerType == 82)
                 buffer1[15] = (byte)31;
-            if (c.int_2 == 83)
+            if (c.ledControllerType == 83)
                 buffer1[15] = (byte)2;
-            if (c.int_2 == 84)
+            if (c.ledControllerType == 84)
             {
                 buffer1[15] = (byte)8;
                 count1 = c.int_75 * this.int_82 * 2;
             }
-            if (c.int_2 == 85)
+            if (c.ledControllerType == 85)
                 buffer1[15] = (byte)46;
-            if (c.int_2 == 86)
+            if (c.ledControllerType == 86)
                 buffer1[15] = (byte)54;
             int num105 = count1 * num1;
             if (Directory.Exists(string_25 + Module.a("\uF2AD\uEFAFﺱ\uF1B3\uF2B5", int_0)))
@@ -11615,11 +11634,11 @@ public class c : Form
 
     private void toolStripButton_5_Click(object sender, EventArgs e) => this.menuItem_12_Click(sender, e);
 
-    private void toolStripButton_7_Click(object sender, EventArgs e) => this.menuItem_15_Click(sender, e);
+    private void toolStripButton_7_Click(object sender, EventArgs e) => this.AutoLayout_Click(sender, e);
 
-    private void toolStripButton_1_Click(object sender, EventArgs e) => this.menuItem_8_Click(sender, e);
+    private void toolStripButton_1_Click(object sender, EventArgs e) => this.OpenVideo_Click(sender, e);
 
-    private void toolStripButton_2_Click(object sender, EventArgs e) => this.menuItem_9_Click(sender, e);
+    private void toolStripButton_2_Click(object sender, EventArgs e) => this.CloseVideoEffectFile_Click(sender, e);
 
     private void method_42(object sender, EventArgs e) => this.menuItem_113_Click(sender, e);
 
@@ -11633,7 +11652,7 @@ public class c : Form
         string path = this.string_20 + (object)'\\' + this.string_22 + Module.a("\uEEB0\uE1B2킴횶\uDDB8\uF6BA\uD8BC醾뗀믂뇄", 11);
         int num1 = this.int_23 / c.int_75;
         int num2;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 3:
             case 5:
@@ -11693,22 +11712,22 @@ public class c : Form
                     }
                     streamWriter.WriteLine(Module.a("\uDCB0튲춴鞶ힸ캺킼\uDDBE꓀뇂\uE5C4\uA8C6꿈\uEBCAꇌꛎ뛐믒ꇔꓖ律뷚닜귞쇠蛢蓤蓦臨쯪鷬胮菰蟲쿴", int_0) + num2.ToString());
                     streamWriter.WriteLine("");
-                    if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
+                    if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
                         streamWriter.WriteLine(Module.a("\uE5B0\uDBB2\uDCB4쒶馸\uEBBA쾼킾ꯀꛂꛄ돆\uE9C8뻊뻌\uAACEꋐ\uF3D2", int_0) + num1.ToString() + Module.a("튰\uDCB2\uDBB4쎶쮸풺톼펾꓀뇂뛄\uEBC6鷈ꏊ\uA8CC\uEFCE鷐닒곔룖곘꿚\uFDDC냞蟠쏢釤迦賨쯪鷬胮菰蟲蛴ퟶ飸裺\uDDFC駾渀漂椄栆縈砊㜌", int_0));
                     int num5 = 0;
-                    for (int index = 0; index < this.arrayList_3.Count; ++index)
+                    for (int index = 0; index < this.portArrayList.Count; ++index)
                     {
-                        if (((GClass8)this.arrayList_3[index]).method_4() > num5)
-                            num5 = ((GClass8)this.arrayList_3[index]).method_4();
+                        if (((PixelArray)this.portArrayList[index]).GetPortNum() > num5)
+                            num5 = ((PixelArray)this.portArrayList[index]).GetPortNum();
                     }
                     int num6 = num5 + 1;
-                    if (num6 > this.arrayList_3.Count)
+                    if (num6 > this.portArrayList.Count)
                         streamWriter.WriteLine(Module.a("\uE5B0\uDBB2킴鞶캸튺쾼\uDABE닀\uE3C2뛄꿆ꛈ뻊ꇌꯎ\uF1D0뇒냔\uF7D6뫘듚돜뇞蓠胢釤苦跨쯪賬賮鋰鳲蟴鏶郸闺髼\uDFFE甀氂┄猆愈渊ⴌ簎琐戒怔爖眘砚砜㼞丠䔢Ԥ圦ᠨܪബ弮̰ᴲ᬴ᤶ䤸唺ᴼ䬾⹀捂㙄♆㽈\u2E4A浌㭎㥐㙒畔\u2456⥘㩚㹜㩞你", int_0));
                     int index1 = 0;
                     for (int index2 = 1; index2 <= num1; ++index2)
                     {
                         streamWriter.WriteLine("");
-                        if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
+                        if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
                             streamWriter.WriteLine(Module.a("\uF2B0\uDCB2\uDBB4쎶쮸풺톼펾꓀뇂\uE5C4视ꛈ\uE5CA", int_0) + index2.ToString());
                         for (int index3 = 1; index3 <= 8; ++index3)
                         {
@@ -11716,9 +11735,9 @@ public class c : Form
                             if (num7 <= num6)
                             {
                                 bool flag = false;
-                                for (int index4 = 0; index4 < this.arrayList_3.Count; ++index4)
+                                for (int index4 = 0; index4 < this.portArrayList.Count; ++index4)
                                 {
-                                    if (((GClass8)this.arrayList_3[index4]).method_4() == num7 - 1)
+                                    if (((PixelArray)this.portArrayList[index4]).GetPortNum() == num7 - 1)
                                     {
                                         flag = true;
                                         index1 = index4;
@@ -11727,12 +11746,12 @@ public class c : Form
                                 }
                                 if (flag)
                                 {
-                                    if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
-                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸\uEBBA튼춾뗀", int_0) + index3.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((GClass8)this.arrayList_3[index1]).method_0().ToString());
-                                    else if (c.int_2 == 32 && c.byte_20 > (byte)60)
-                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸\uEBBA튼춾뗀", int_0) + index3.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((GClass8)this.arrayList_3[index1]).method_0().ToString());
+                                    if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
+                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸\uEBBA튼춾뗀", int_0) + index3.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((PixelArray)this.portArrayList[index1]).GetPixelIndex().ToString());
+                                    else if (c.ledControllerType == 32 && c.byte_20 > (byte)60)
+                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸\uEBBA튼춾뗀", int_0) + index3.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((PixelArray)this.portArrayList[index1]).GetPixelIndex().ToString());
                                     else
-                                        streamWriter.WriteLine(Module.a("\uF2B0\uDCB2\uDBB4쎶쮸풺톼펾꓀뇂\uE5C4视ꛈ\uE5CA", int_0) + num7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((GClass8)this.arrayList_3[index1]).method_0().ToString());
+                                        streamWriter.WriteLine(Module.a("\uF2B0\uDCB2\uDBB4쎶쮸풺톼펾꓀뇂\uE5C4视ꛈ\uE5CA", int_0) + num7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA鷌ꃎꏐ\uA7D2\uF5D4\uA7D6", int_0) + num7.ToString() + Module.a("醰\uDAB2\uDBB4鞶\uDDB8쎺\uDBBC邾ꋀ믂\uA7C4쟶蟈뻊ꃌ귎듐ꇒ\uF5D4룖뿘ﯚ뇜뛞蛠询釤铦짨裪苬臮\u9FF0雲雴菶鳸\u9FFA\uDDFC课渀⌂焄漆怈砊ⴌ缎縐愒愔ⴖ", int_0) + ((PixelArray)this.portArrayList[index1]).GetPixelIndex().ToString());
                                 }
                                 else
                                     streamWriter.WriteLine(Module.a("醰鎲閴鞶馸\uEBBA튼춾뗀", int_0) + index3.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA菌ꃎ뿐뛒", int_0));
@@ -11742,7 +11761,7 @@ public class c : Form
                         }
                     }
                     streamWriter.WriteLine("");
-                    streamWriter.WriteLine(Module.a("醰鎲\uE1B4\uD8B6춸\uDABA톼龾꿀뛂꣄ꗆ곈맊\uEDCCꃎ럐\uF3D2맔뻖뻘돚\uA9DC곞쇠離雤苦跨퇪", int_0) + this.int_41.ToString());
+                    streamWriter.WriteLine(Module.a("醰鎲\uE1B4\uD8B6춸\uDABA톼龾꿀뛂꣄ꗆ곈맊\uEDCCꃎ럐\uF3D2맔뻖뻘돚\uA9DC곞쇠離雤苦跨퇪", int_0) + this.totalLeds.ToString());
                     streamWriter.WriteLine(Module.a("醰鎲\uF3B4\uD8B6쮸鮺즼ힾ꓀\uE3C2뛄럆곈\uA8CA\uA4CC\uA9CE룐냒\uF5D4믖룘ꋚ닜꫞闠쿢엤韦藨軪賬鳮铰폲蟴鋶\u9FF8黺迼\uDFFE甀氂┄挆焈洊∌氎椐焒㔔焖瀘眚砜氞ᬠ̢", int_0) + this.method_29(3));
                 }
                 else
@@ -11766,22 +11785,22 @@ public class c : Form
                     }
                     streamWriter.WriteLine(Module.a("绛駼嫎哥囫᳄\uE93C㯈솧\uD99Bꪴ랣\uF386\uF1CA", int_0) + num2.ToString());
                     streamWriter.WriteLine("");
-                    if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
+                    if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
                         streamWriter.WriteLine(Module.a("鷗囯뻎웧웷鏏㯲龾", int_0) + num1.ToString() + Module.a("鯾ᓑ菦\uDFE0閸᳙诮ퟨ䖶Ⲹ⚗솔葙䦓욂\uF5CE", int_0));
                     int num8 = 0;
-                    for (int index = 0; index < this.arrayList_3.Count; ++index)
+                    for (int index = 0; index < this.portArrayList.Count; ++index)
                     {
-                        if (((GClass8)this.arrayList_3[index]).method_4() > num8)
-                            num8 = ((GClass8)this.arrayList_3[index]).method_4();
+                        if (((PixelArray)this.portArrayList[index]).GetPortNum() > num8)
+                            num8 = ((PixelArray)this.portArrayList[index]).GetPortNum();
                     }
                     int num9 = num8 + 1;
-                    if (num9 > this.arrayList_3.Count)
+                    if (num9 > this.portArrayList.Count)
                         streamWriter.WriteLine(Module.a("醰寞뫕趶丳닙춼躾\uEDC0\uE3C2뗄\uF5C6\uE7C8\uE5CA\uE3CC뿎뿐ꥊ媊품暦휥ﮈ욌ﮯ規\uDC69뾽䆸醐\u1979\uEE11", int_0));
                     int index5 = 0;
                     for (int index6 = 1; index6 <= num1; ++index6)
                     {
                         streamWriter.WriteLine("");
-                        if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
+                        if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
                             streamWriter.WriteLine(Module.a("鷋", int_0) + index6.ToString() + Module.a("䛣ᓑ菦\uDFE0莸", int_0));
                         for (int index7 = 1; index7 <= 8; ++index7)
                         {
@@ -11789,9 +11808,9 @@ public class c : Form
                             if (num10 <= num9)
                             {
                                 bool flag = false;
-                                for (int index8 = 0; index8 < this.arrayList_3.Count; ++index8)
+                                for (int index8 = 0; index8 < this.portArrayList.Count; ++index8)
                                 {
-                                    if (((GClass8)this.arrayList_3[index8]).method_4() == num10 - 1)
+                                    if (((PixelArray)this.portArrayList[index8]).GetPortNum() == num10 - 1)
                                     {
                                         flag = true;
                                         index5 = index8;
@@ -11800,12 +11819,12 @@ public class c : Form
                                 }
                                 if (flag)
                                 {
-                                    if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16)
-                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸哀廯", int_0) + index7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA꧌럎럐ﳒ뛔꿖믘\uF694\uFDDC꿞", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((GClass8)this.arrayList_3[index5]).method_0().ToString());
-                                    else if (c.int_2 == 32 && c.byte_20 > (byte)60)
-                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸哀廯", int_0) + index7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA꧌럎럐ﳒ뛔꿖믘\uF694\uFDDC꿞", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((GClass8)this.arrayList_3[index5]).method_0().ToString());
+                                    if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16)
+                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸哀廯", int_0) + index7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA꧌럎럐ﳒ뛔꿖믘\uF694\uFDDC꿞", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((PixelArray)this.portArrayList[index5]).GetPixelIndex().ToString());
+                                    else if (c.ledControllerType == 32 && c.byte_20 > (byte)60)
+                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸哀廯", int_0) + index7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA꧌럎럐ﳒ뛔꿖믘\uF694\uFDDC꿞", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((PixelArray)this.portArrayList[index5]).GetPixelIndex().ToString());
                                     else
-                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸韁", int_0) + num10.ToString() + Module.a("醰䓡\u12D7臤퇮膺鶼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA\uE0CC\uE2CEﳐﻒ\uF8D4돖ꇘ뷚\uF2DC볞駠臢좪쟦駨", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((GClass8)this.arrayList_3[index5]).method_0().ToString());
+                                        streamWriter.WriteLine(Module.a("醰鎲閴鞶馸韁", int_0) + num10.ToString() + Module.a("醰䓡\u12D7臤퇮膺鶼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA\uE0CC\uE2CEﳐﻒ\uF8D4돖ꇘ뷚\uF2DC볞駠臢좪쟦駨", int_0) + num10.ToString() + Module.a("醰䓡嫎哥릈뮊붌\uDBD5⺺ₑᭋ报\u4DBE꒺붩_ﺶ\uE9D2", int_0) + ((PixelArray)this.portArrayList[index5]).GetPixelIndex().ToString());
                                 }
                                 else
                                     streamWriter.WriteLine(Module.a("醰鎲閴鞶馸哀廯", int_0) + index7.ToString() + Module.a("记鎲颴骶钸隺邼銾\uECC0\uEEC2\uE8C4\uEAC6\uE4C8\uE6CA꧌럎럐ﳒ뛔꿖믘\uF694\uFDDC纲\uE887螉ઞҵ", int_0));
@@ -11815,7 +11834,7 @@ public class c : Form
                         }
                     }
                     streamWriter.WriteLine("");
-                    streamWriter.WriteLine(Module.a("醰鎲駓勫닂쓵闉탎䖶뎧\u0A55\uE8A0\uF3C8", int_0) + this.int_41.ToString());
+                    streamWriter.WriteLine(Module.a("醰鎲駓勫닂쓵闉탎䖶뎧\u0A55\uE8A0\uF3C8", int_0) + this.totalLeds.ToString());
                     streamWriter.WriteLine(Module.a("醰鎲싥\uE4F9뫦ﯦ䏪䠵Γ쁂ꇄ뿆꿈\uE4CA껌럎돐咷⎚\uEDD6律", int_0) + this.method_29(3));
                 }
             }
@@ -11874,10 +11893,12 @@ public class c : Form
         this.d_0.axShockwaveFlash_0.GotoFrame(0);
         if (this.bool_19)
             this.d_0.axShockwaveFlash_0.Play();
-        if (this.bool_13)
+        if (this.IsTOLFileOpen)
             this.int_15 = 0;
         this.menuItem_20_Click(sender, e);
-        this.method_26(6, Module.a("鲫", int_0));
+        this.method_26(6, "0");
+
+//        this.method_26(6, Module.a("鲫", dataEntryPoint));
     }
 
     private void toolStripButton_12_Click(object sender, EventArgs e) => this.menuItem_5_Click(sender, e);
@@ -12004,9 +12025,9 @@ public class c : Form
 
     private void toolStripButton_9_Click(object sender, EventArgs e) => this.menuItem_14_Click(sender, e);
 
-    private void method_43(object sender, EventArgs e) => this.method_24(sender, e);
+    private void method_43(object sender, EventArgs e) => this.PlaySWF(sender, e);
 
-    private void method_44(object sender, EventArgs e) => this.method_23(sender, e);
+    private void method_44(object sender, EventArgs e) => this.PlaySWF(sender, e);
 
     private void toolStripButton_10_Click(object sender, EventArgs e) => this.menuItem_1_Click(sender, e);
 
@@ -12445,7 +12466,7 @@ public class c : Form
                 for (int index = 0; index < this.int_32; ++index)
                     this.int_30[index] = 0;
                 this.int_33 = this.int_39;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 102:
                         this.int_33 = this.int_32 * c.int_75 * this.int_82 * 2;
@@ -12519,19 +12540,19 @@ public class c : Form
                 for (int index = 430; index < 511; ++index)
                     num3 += (byte)((uint)buffer1[index] ^ 90U);
                 this.byte_43 = (byte)((uint)num3 ^ 165U);
-                if (c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 83 || c.int_2 == 84 || c.int_2 == 85)
+                if (c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 83 || c.ledControllerType == 84 || c.ledControllerType == 85)
                 {
-                    if (c.int_2 == 81)
+                    if (c.ledControllerType == 81)
                         buffer1[15] = (byte)12;
-                    if (c.int_2 == 82)
+                    if (c.ledControllerType == 82)
                         buffer1[15] = (byte)31;
-                    if (c.int_2 == 83)
+                    if (c.ledControllerType == 83)
                         buffer1[15] = (byte)2;
-                    if (c.int_2 == 84)
+                    if (c.ledControllerType == 84)
                         buffer1[15] = (byte)8;
-                    if (c.int_2 == 85)
+                    if (c.ledControllerType == 85)
                         buffer1[15] = (byte)46;
-                    if (c.int_2 == 86)
+                    if (c.ledControllerType == 86)
                         buffer1[15] = (byte)54;
                 }
                 if (buffer1[36] == (byte)17)
@@ -13041,7 +13062,7 @@ public class c : Form
                 this.class2_1.method_1();
         }
         this.byte_31[0] = (byte)170;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.byte_31[1] = (byte)17;
@@ -13050,7 +13071,7 @@ public class c : Form
                 this.byte_31[1] = (byte)34;
                 break;
         }
-        this.byte_31[2] = (byte)c.int_2;
+        this.byte_31[2] = (byte)c.ledControllerType;
         this.byte_31[3] = c.byte_20;
         for (int index = 0; index < this.int_32; ++index)
         {
@@ -13092,13 +13113,13 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             for (int index = 0; index < this.int_32; ++index)
             {
                 this.byte_31[0] = (byte)170;
                 this.byte_31[1] = (byte)index;
-                this.byte_31[2] = (byte)c.int_2;
+                this.byte_31[2] = (byte)c.ledControllerType;
                 this.byte_31[3] = c.byte_20;
                 try
                 {
@@ -13152,13 +13173,13 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             for (int index = 0; index < this.int_32; ++index)
             {
                 this.byte_31[0] = (byte)170;
                 this.byte_31[1] = (byte)((uint)this.byte_29 | 160U);
-                this.byte_31[2] = (byte)c.int_2;
+                this.byte_31[2] = (byte)c.ledControllerType;
                 this.byte_31[3] = c.byte_20;
                 try
                 {
@@ -13214,11 +13235,11 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             this.byte_31[0] = (byte)170;
             this.byte_31[1] = c.byte_19;
-            this.byte_31[2] = (byte)c.int_2;
+            this.byte_31[2] = (byte)c.ledControllerType;
             this.byte_31[3] = c.byte_20;
             this.byte_31[4] = c.bool_17 ? (byte)85 : (byte)0;
             this.byte_31[5] = c.byte_2;
@@ -13278,7 +13299,7 @@ public class c : Form
         }
         this.byte_31[0] = (byte)170;
         this.byte_31[1] = (byte)0;
-        this.byte_31[2] = (byte)c.int_2;
+        this.byte_31[2] = (byte)c.ledControllerType;
         this.byte_31[3] = c.byte_20;
         try
         {
@@ -13314,7 +13335,7 @@ public class c : Form
                 this.class2_1.method_1();
         }
         this.byte_31[0] = (byte)170;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.byte_31[1] = (byte)17;
@@ -13323,7 +13344,7 @@ public class c : Form
                 this.byte_31[1] = (byte)34;
                 break;
         }
-        this.byte_31[2] = (byte)c.int_2;
+        this.byte_31[2] = (byte)c.ledControllerType;
         this.byte_31[3] = c.byte_20;
         for (int index = 0; index < this.int_32; ++index)
         {
@@ -13361,13 +13382,13 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             for (int index = 0; index < this.int_32; ++index)
             {
                 this.byte_31[0] = (byte)170;
                 this.byte_31[1] = (byte)index;
-                this.byte_31[2] = (byte)c.int_2;
+                this.byte_31[2] = (byte)c.ledControllerType;
                 this.byte_31[3] = c.byte_20;
                 try
                 {
@@ -13419,11 +13440,11 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             this.byte_31[0] = (byte)170;
             this.byte_31[1] = c.byte_19;
-            this.byte_31[2] = (byte)c.int_2;
+            this.byte_31[2] = (byte)c.ledControllerType;
             this.byte_31[3] = c.byte_20;
             this.byte_31[4] = c.bool_17 ? (byte)85 : (byte)0;
             this.byte_31[5] = c.byte_2;
@@ -13480,13 +13501,13 @@ public class c : Form
             while (this.class2_1.method_2() < 0.0015)
                 this.class2_1.method_1();
         }
-        if (c.int_2 > 100)
+        if (c.ledControllerType > 100)
         {
             for (int index = 0; index < this.int_32; ++index)
             {
                 this.byte_31[0] = (byte)170;
                 this.byte_31[1] = (byte)((uint)this.byte_29 | 160U);
-                this.byte_31[2] = (byte)c.int_2;
+                this.byte_31[2] = (byte)c.ledControllerType;
                 this.byte_31[3] = c.byte_20;
                 try
                 {
@@ -13536,7 +13557,7 @@ public class c : Form
                 this.class2_1.method_1();
         }
         this.byte_31[0] = (byte)170;
-        switch (c.int_2)
+        switch (c.ledControllerType)
         {
             case 101:
                 this.byte_31[1] = (byte)17;
@@ -13548,7 +13569,7 @@ public class c : Form
                 this.byte_31[1] = (byte)((uint)this.byte_29 | 160U);
                 break;
         }
-        this.byte_31[2] = (byte)c.int_2;
+        this.byte_31[2] = (byte)c.ledControllerType;
         this.byte_31[3] = c.byte_20;
         for (int index = 0; index < this.int_32; ++index)
         {
@@ -13585,7 +13606,7 @@ public class c : Form
         }
         this.byte_31[0] = (byte)170;
         this.byte_31[1] = (byte)0;
-        this.byte_31[2] = (byte)c.int_2;
+        this.byte_31[2] = (byte)c.ledControllerType;
         this.byte_31[3] = c.byte_20;
         try
         {
@@ -14263,7 +14284,7 @@ public class c : Form
     private void method_70()
     {
         byte[] numArray = new byte[3];
-        if (c.int_2 != 3 && c.int_2 != 101)
+        if (c.ledControllerType != 3 && c.ledControllerType != 101)
             return;
         switch (c.int_81)
         {
@@ -14354,7 +14375,7 @@ public class c : Form
     private void method_71()
     {
         byte[] numArray = new byte[3];
-        if (c.int_2 != 103)
+        if (c.ledControllerType != 103)
             return;
         switch (c.int_81)
         {
@@ -14461,13 +14482,13 @@ public class c : Form
             this.gclass4_0[index, 6] = new GClass4();
             this.gclass4_0[index, 7] = new GClass4();
         }
-        for (int index1 = 0; index1 < this.arrayList_3.Count; ++index1)
+        for (int index1 = 0; index1 < this.portArrayList.Count; ++index1)
         {
-            int num = ((GClass8)this.arrayList_3[index1]).method_4();
+            int num = ((PixelArray)this.portArrayList[index1]).GetPortNum();
             int index2 = num / 8;
             int index3 = num % 8;
             this.gclass4_0[index2, index3].bool_0 = true;
-            this.gclass4_0[index2, index3].int_0 = ((GClass8)this.arrayList_3[index1]).method_0();
+            this.gclass4_0[index2, index3].int_0 = ((PixelArray)this.portArrayList[index1]).GetPixelIndex();
         }
         this.int_30 = new int[this.int_32];
         for (int index = 0; index < this.int_32; ++index)
@@ -14478,7 +14499,7 @@ public class c : Form
             int num = 50 + index;
             this.string_9[index] = Module.a("鞥醧颩芫龭蚯誱骳肵袷钹", int_0) + num.ToString();
         }
-        if (c.int_2 == 180)
+        if (c.ledControllerType == 180)
         {
             this.byte_39 = new byte[10];
             new Random().NextBytes(this.byte_39);
@@ -14557,7 +14578,7 @@ public class c : Form
         this.timer_1.Interval = 1000 / c.smethod_0();
         if (this.bool_39)
             this.d_0.Hide();
-        if (c.int_2 == 101 || c.int_2 == 102 || c.int_2 == 120 || c.int_2 == 201 || c.int_2 == 110 || c.int_2 == 150)
+        if (c.ledControllerType == 101 || c.ledControllerType == 102 || c.ledControllerType == 120 || c.ledControllerType == 201 || c.ledControllerType == 110 || c.ledControllerType == 150)
         {
             switch (c.int_81)
             {
@@ -14587,7 +14608,7 @@ public class c : Form
         if (this.bool_39)
             this.d_0.Show();
         this.int_32 = this.int_23 / c.int_75;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_32 = 1;
         this.int_30 = new int[this.int_32];
         for (int index = 0; index < this.int_32; ++index)
@@ -14654,7 +14675,7 @@ public class c : Form
         this.int_31 = (int)byte.MaxValue;
         if (this.bool_39)
             this.d_0.Hide();
-        if (c.int_2 == 101 || c.int_2 == 102 || c.int_2 == 120 || c.int_2 == 201 || c.int_2 == 110 || c.int_2 == 150)
+        if (c.ledControllerType == 101 || c.ledControllerType == 102 || c.ledControllerType == 120 || c.ledControllerType == 201 || c.ledControllerType == 110 || c.ledControllerType == 150)
         {
             switch (c.int_81)
             {
@@ -14684,7 +14705,7 @@ public class c : Form
         if (this.bool_39)
             this.d_0.Show();
         this.int_32 = this.int_23 / c.int_75;
-        if (c.int_2 == 201)
+        if (c.ledControllerType == 201)
             this.int_32 = 1;
         this.int_30 = new int[this.int_32];
         for (int index = 0; index < this.int_32; ++index)
@@ -14755,7 +14776,7 @@ public class c : Form
         if (this.bool_39)
         {
             this.menuItem_9.Enabled = true;
-            this.menuItem_9_Click(sender, e);
+            this.CloseVideoEffectFile_Click(sender, e);
         }
         else
             this.menuItem_7.Enabled = true;
@@ -15050,7 +15071,7 @@ public class c : Form
 
     private void menuItem_42_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.bool_50 = false;
         this.bool_37 = true;
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -15070,7 +15091,7 @@ public class c : Form
 
     private void menuItem_43_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.bool_50 = false;
         this.bool_37 = true;
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -15090,7 +15111,7 @@ public class c : Form
 
     private void menuItem_44_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.bool_50 = false;
         this.bool_37 = true;
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -15110,7 +15131,7 @@ public class c : Form
 
     private void menuItem_45_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.bool_50 = false;
         this.bool_37 = true;
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -15130,7 +15151,7 @@ public class c : Form
 
     private void menuItem_46_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.bool_50 = false;
         this.bool_37 = true;
         this.timer_1.Interval = 1000 / c.smethod_0();
@@ -15153,7 +15174,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uF1AC\uEAAEힰ햲킴풶춸\uE4BA\uD8BC톾鷀賂도ꋆ믈韊飌뿎\uFFD0ꃒꋔ뇖", int_0) : Application.StartupPath + Module.a("\uF1AC\uEAAEힰ햲킴풶춸\uE4BA\uD8BC톾鷀賂도ꋆ믈韊飌뿎\uFFD0ꃒꋔ뇖", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_48_Click(object sender, EventArgs e)
@@ -15162,12 +15183,12 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA\uF2BC즾꓀뇂駄菆ꛈ볊ꏌ\uE1CEꋐꓒ돔", int_0) : Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA\uF2BC즾꓀뇂駄菆ꛈ볊ꏌ\uE1CEꋐꓒ돔", int_0);
         if (this.bool_20)
         {
-            this.d_0.method_2();
+            this.d_0.CloseVideo();
             this.bool_20 = false;
         }
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_49_Click(object sender, EventArgs e)
@@ -15176,16 +15197,17 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uE9B4\uF2B6\uDFB8\uDDBA\uD8BC\uDCBE뗀鳂ꃄ꧆闈蓊믌\uAACEꏐ迒駔닖뿘꿚\uF3DC곞雠藢", int_0) : Application.StartupPath + Module.a("\uE9B4\uF2B6\uDFB8\uDDBA\uD8BC\uDCBE뗀鳂ꃄ꧆闈蓊믌\uAACEꏐ迒駔닖뿘꿚\uF3DC곞雠藢", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_50_Click(object sender, EventArgs e)
     {
-        int int_0 = 0;
-        string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("瘟\uEDA7첩쪫쮭펯욱\uEBB3펵횷\uE6B9\uF3BB좽ꖿ냁飃铅ꇇ귉\uA4CB뫍ﻏꇑꏓ냕", int_0) : Application.StartupPath + Module.a("瘟\uEDA7첩쪫쮭펯욱\uEBB3펵횷\uE6B9\uF3BB좽ꖿ냁飃铅ꇇ귉\uA4CB뫍ﻏꇑꏓ냕", int_0);
+ //       int dataEntryPoint = 0;
+        string str = c.useEnglishLanguage ? Application.StartupPath + "\\Effect_en\\Over\\Right.swf" : Application.StartupPath + "\\Effect_en\\Over\\Right.swf";
+//        string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("瘟\uEDA7첩쪫쮭펯욱\uEBB3펵횷\uE6B9\uF3BB좽ꖿ냁飃铅ꇇ귉\uA4CB뫍ﻏꇑꏓ냕", dataEntryPoint) : Application.StartupPath + Module.a("瘟\uEDA7첩쪫쮭펯욱\uEBB3펵횷\uE6B9\uF3BB좽ꖿ냁飃铅ꇇ귉\uA4CB뫍ﻏꇑꏓ냕", dataEntryPoint);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_51_Click(object sender, EventArgs e)
@@ -15194,7 +15216,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆駈맊ꋌꏎ룐뗒냔ꗖ룘꿚드냞迠뿢뇤迦賨쯪鷬鷮黰\u9FF2鳴釶鳸觺鳼课栀氂欄✆昈洊ⴌ怎朐爒礔㤖樘氚笜", int_0) : Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆駈맊ꋌꏎ룐뗒냔ꗖ룘꿚드냞迠뿢뇤迦賨쯪鷬鷮黰\u9FF2鳴釶鳸觺鳼课栀氂欄✆昈洊ⴌ怎朐爒礔㤖樘氚笜", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_52_Click(object sender, EventArgs e)
@@ -15203,7 +15225,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uECAF\uF7B1튳킵\uDDB7\uD9B9좻\uE1BDꖿ곁飃雅뫇ꗉꃋ\uA7CD뛏럑ꛓ럕곗동돛냝볟\uA7E1裣諥臧髩飫蟭鏯鏱飳훵鯷闹鋻諽狿持會爅愇攉戋\u200D挏攑爓", int_0) : Application.StartupPath + Module.a("\uECAF\uF7B1튳킵\uDDB7\uD9B9좻\uE1BDꖿ곁飃雅뫇ꗉꃋ\uA7CD뛏럑ꛓ럕곗동돛냝볟\uA7E1裣諥臧髩飫蟭鏯鏱飳훵鯷闹鋻諽狿持會爅愇攉戋\u200D挏攑爓", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_53_Click(object sender, EventArgs e)
@@ -15212,7 +15234,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆駈맊ꋌꏎ룐뗒냔ꗖ룘꿚드냞迠뿢ꇤ軦裨蛪苬臮闰\uDEF2藴藶雸韺铼駾搀焂搄猆怈搊挌ℎ成搒猔", int_0) : Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆駈맊ꋌꏎ룐뗒냔ꗖ룘꿚드냞迠뿢ꇤ軦裨蛪苬臮闰\uDEF2藴藶雸韺铼駾搀焂搄猆怈搊挌ℎ成搒猔", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_54_Click(object sender, EventArgs e)
@@ -15221,7 +15243,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uF3AE\uF4B0햲펴튶\uDAB8쾺\uE2BC\uDABE꿀鿂闄뗆ꛈ\uA7CA\uA4CC\uA9CE듐ꇒ듔ꏖ냘듚돜菞ꗠ諢蓤諦蛨藪觬싮苰鯲铴蟶鳸\u9FFA\uDDFC賾砀瀂焄栆攈戊渌ℎ成搒猔", int_0) : Application.StartupPath + Module.a("\uF3AE\uF4B0햲펴튶\uDAB8쾺\uE2BC\uDABE꿀鿂闄뗆ꛈ\uA7CA\uA4CC\uA9CE듐ꇒ듔ꏖ냘듚돜菞ꗠ諢蓤諦蛨藪觬싮苰鯲铴蟶鳸\u9FFA\uDDFC賾砀瀂焄栆攈戊渌ℎ成搒猔", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_55_Click(object sender, EventArgs e)
@@ -15230,7 +15252,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uF7AA\uE8AC즮ힰ횲횴쎶\uE6B8\uDEBA펼\uE3BE鋀뫂꣄\uAAC6곈뿊뿌ꛎ닐닒맔诖鷘껚볜돞쳠苢诤胦藨軪췬賮鷰鳲蛴苶诸黺폼賾瘀攂", int_0) : Application.StartupPath + Module.a("\uF7AA\uE8AC즮ힰ횲횴쎶\uE6B8\uDEBA펼\uE3BE鋀뫂꣄\uAAC6곈뿊뿌ꛎ닐닒맔诖鷘껚볜돞쳠苢诤胦藨軪췬賮鷰鳲蛴苶诸黺폼賾瘀攂", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_56_Click(object sender, EventArgs e)
@@ -15239,7 +15261,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uF1AC\uEAAEힰ햲킴풶춸\uE4BA\uD8BC톾鷀郂별\uAAC6\uA4C8껊만뷎룐냒듔믖藘\u9FDA닜꫞菠迢胤쟦裨藪諬菮铰폲髴釶\u9FF8헺軼裾最", int_0) : Application.StartupPath + Module.a("\uF1AC\uEAAEힰ햲킴풶춸\uE4BA\uD8BC톾鷀郂별\uAAC6\uA4C8껊만뷎룐냒듔믖藘\u9FDA닜꫞菠迢胤쟦裨藪諬菮铰폲髴釶\u9FF8헺軼裾最", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_57_Click(object sender, EventArgs e)
@@ -15330,10 +15352,10 @@ public class c : Form
             {
                 if (c.useEnglishLanguage)
                 {
-                    this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "no recording!"); //Module.a("솮\uDEB0鎲잴튶\uDAB8풺쾼\uDBBEꣀ귂ꋄ\uE6C6", int_0)); // ;
+                    this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "no recording!"); //Module.a("솮\uDEB0鎲잴튶\uDAB8풺쾼\uDBBEꣀ귂ꋄ\uE6C6", dataEntryPoint)); // ;
                     return;
                 }
-                this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "无录制内容!"); // Module.a("俋\uE4EF藠ュ\u0EED颸", int_0));
+                this.ShowMessage(((GClass5)c.arrayList_4[index]).string_0 + "无录制内容!"); // Module.a("俋\uE4EF藠ュ\u0EED颸", dataEntryPoint));
                 return;
             }
         }
@@ -15343,12 +15365,12 @@ public class c : Form
             return;
         this.int_32 = this.int_23 >= 8 ? this.int_23 / c.int_75 : 1;
         this.bool_5 = false;
-        if (c.int_2 != 81 && c.int_2 != 86 && c.int_2 != 82 && c.int_2 != 83 && c.int_2 != 84 && c.int_2 != 85 && c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16 && c.int_2 != 55)
+        if (c.ledControllerType != 81 && c.ledControllerType != 86 && c.ledControllerType != 82 && c.ledControllerType != 83 && c.ledControllerType != 84 && c.ledControllerType != 85 && c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16 && c.ledControllerType != 55)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
                 return;
-            string path = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", int_0);
+            string path = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", dataEntryPoint);
             if (Directory.Exists(path))
                 Directory.Delete(path, true);
             Directory.CreateDirectory(path);
@@ -15363,9 +15385,9 @@ public class c : Form
                     this.method_40(str1, string_25);
                     ((GClass5)c.arrayList_4[c.int_38]).bool_3 = true;
                 }
-                string sourceFileName = string_25 + "\00.led"; // Module.a("\uF3AE膰莲鮴\uDBB6\uDCB8\uDFBA", int_0);
+                string sourceFileName = string_25 + "\00.led"; // Module.a("\uF3AE膰莲鮴\uDBB6\uDCB8\uDFBA", dataEntryPoint);
                 string str2 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
-                string destFileName = path + (object)'\\' + str2 + "_" /*Module.a("\uF0AE", int_0)*/ + ((GClass5)c.arrayList_4[index]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", int_0);
+                string destFileName = path + (object)'\\' + str2 + "_" /*Module.a("\uF0AE", dataEntryPoint)*/ + ((GClass5)c.arrayList_4[index]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", dataEntryPoint);
                 System.IO.File.Copy(sourceFileName, destFileName, true);
             }
         }
@@ -15374,12 +15396,12 @@ public class c : Form
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
                 return;
-            string path1 = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", int_0);
+            string path1 = folderBrowserDialog.SelectedPath + "\\Led"; // Module.a("\uF3AEﶰ횲톴", dataEntryPoint);
             if (Directory.Exists(path1))
                 Directory.Delete(path1, true);
             Directory.CreateDirectory(path1);
-            string str3 = !c.useEnglishLanguage ? "控制器-" /*Module.a("\u08CD蟢\uDBE4颴", int_0)*/ : "Controller-" /*Module.a("\uECAE\uDEB0\uDDB2솴얶횸ힺ톼\uDABE돀\uEEC2", int_0)*/;
-            if (c.int_2 != 13 && c.int_2 != 32 && c.int_2 != 47 && c.int_2 != 52 && c.int_2 != 9 && c.int_2 != 16 && c.int_2 != 55)
+            string str3 = !c.useEnglishLanguage ? "控制器-" /*Module.a("\u08CD蟢\uDBE4颴", dataEntryPoint)*/ : "Controller-" /*Module.a("\uECAE\uDEB0\uDDB2솴얶횸ힺ톼\uDABE돀\uEEC2", dataEntryPoint)*/;
+            if (c.ledControllerType != 13 && c.ledControllerType != 32 && c.ledControllerType != 47 && c.ledControllerType != 52 && c.ledControllerType != 9 && c.ledControllerType != 16 && c.ledControllerType != 55)
             {
                 for (int index = 0; index < this.int_32; ++index)
                 {
@@ -15405,10 +15427,10 @@ public class c : Form
                         object[] objArray1 = new object[7]
                         {
               (object) string_25,
-              (object) "\\_LED", /*Module.a("\uF3AE\uEEB0ﾲ\uF0B4\uF3B6", int_0),*/
+              (object) "\\_LED", /*Module.a("\uF3AE\uEEB0ﾲ\uF0B4\uF3B6", dataEntryPoint),*/
               (object) '\\',
               (object) c.string_3,
-              (object) "_",/*Module.a("\uF0AE", int_0),*/
+              (object) "_",/*Module.a("\uF0AE", dataEntryPoint),*/
               null,
               null
                         };
@@ -15416,7 +15438,7 @@ public class c : Form
                         num1 = index2 + 1;
                         string str5 = num1.ToString();
                         objArray2[5] = (object)str5;
-                        objArray1[6] = ".led"; // (object)Module.a("膮\uDDB0횲톴", int_0);
+                        objArray1[6] = ".led"; // (object)Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         string sourceFileName = string.Concat(objArray1);
                         string str6 = index1 >= 10 ? index1.ToString() : '0'.ToString() + index1.ToString();
                         object[] objArray3 = new object[9];
@@ -15429,14 +15451,14 @@ public class c : Form
                         objArray4[3] = (object)str7;
                         objArray3[4] = (object)'\\';
                         objArray3[5] = (object)str6;
-                        objArray3[6] = (object)"_"; // Module.a("\uF0AE", int_0);
+                        objArray3[6] = (object)"_"; // Module.a("\uF0AE", dataEntryPoint);
                         objArray3[7] = (object)((GClass5)c.arrayList_4[index1]).string_0;
-                        objArray3[8] = (object)".led"; // Module.a("膮\uDDB0횲톴", int_0);
+                        objArray3[8] = (object)".led"; // Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         string destFileName = string.Concat(objArray3);
                         System.IO.File.Copy(sourceFileName, destFileName, true);
                     }
                 }
-                if (c.int_2 != 82 || c.byte_20 != (byte)22)
+                if (c.ledControllerType != 82 || c.byte_20 != (byte)22)
                     return;
                 int[] numArray = new int[33];
                 numArray[0] = c.arrayList_4.Count;
@@ -15457,7 +15479,7 @@ public class c : Form
                     string str8 = num1.ToString();
                     objArray6[3] = (object)str8;
                     objArray5[4] = (object)'\\';
-                    objArray5[5] = (object)"K-8000.led"; // Module.a("\uE4AE鲰讲薴螶覸閺톼\uDABEꗀ", int_0);
+                    objArray5[5] = (object)"K-8000.led"; // Module.a("\uE4AE鲰讲薴螶覸閺톼\uDABEꗀ", dataEntryPoint);
                     string path3 = string.Concat(objArray5);
                     if (System.IO.File.Exists(path3))
                         System.IO.File.Delete(path3);
@@ -15488,9 +15510,9 @@ public class c : Form
                         objArray8[3] = (object)str10;
                         objArray7[4] = (object)'\\';
                         objArray7[5] = (object)str9;
-                        objArray7[6] = (object)"_"; //Module.a("\uF0AE", int_0);
+                        objArray7[6] = (object)"_"; //Module.a("\uF0AE", dataEntryPoint);
                         objArray7[7] = (object)((GClass5)c.arrayList_4[index4]).string_0;
-                        objArray7[8] = (object)".led"; //Module.a("膮\uDDB0횲톴", int_0);
+                        objArray7[8] = (object)".led"; //Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         FileInfo fileInfo = new FileInfo(string.Concat(objArray7));
                         int num2 = (int)(fileInfo.Length / 512L);
                         if ((int)(fileInfo.Length % 512L) <= 0)
@@ -15501,7 +15523,7 @@ public class c : Form
                         {
                             if (c.useEnglishLanguage)
                             {
-                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0)*/);
+                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", dataEntryPoint)*/);
                                 return;
                             }
                             this.ShowMessage(Module.a("⣋䟾䧣갡隶", int_0));
@@ -15530,9 +15552,9 @@ public class c : Form
                         objArray10[3] = (object)str12;
                         objArray9[4] = (object)'\\';
                         objArray9[5] = (object)str11;
-                        objArray9[6] = (object)"_";/*Module.a("\uF0AE", int_0);*/
+                        objArray9[6] = (object)"_";/*Module.a("\uF0AE", dataEntryPoint);*/
                         objArray9[7] = (object)((GClass5)c.arrayList_4[index6]).string_0;
-                        objArray9[8] = (object)".led"; //"Module.a("膮\uDDB0횲톴", int_0);
+                        objArray9[8] = (object)".led"; //"Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         string str13 = string.Concat(objArray9);
                         FileStream fileStream2 = new FileStream(str13, FileMode.Open, FileAccess.Read);
                         BufferedStream bufferedStream2 = new BufferedStream((Stream)fileStream2);
@@ -15558,7 +15580,7 @@ public class c : Form
                     fileStream1.Close();
                 }
             }
-            else if (c.int_2 == 32 && c.byte_20 > (byte)60)
+            else if (c.ledControllerType == 32 && c.byte_20 > (byte)60)
             {
                 for (int index = 0; index < c.arrayList_4.Count; ++index)
                 {
@@ -15568,17 +15590,17 @@ public class c : Form
                     this.textBox_4.Text = this.listBox_0.Items[c.int_38].ToString();
                     if (System.IO.File.Exists(str14))
                         this.method_40(str14, string_25);
-                    string sourceFileName = string_25 + "\\_T_1000_AC\\" /*+ Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0)*/ + c.string_3 + "_1.led" /*Module.a("\uF0AE肰鶲\uD9B4튶\uDDB8", int_0)*/;
+                    string sourceFileName = string_25 + "\\_T_1000_AC\\" /*+ Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", dataEntryPoint)*/ + c.string_3 + "_1.led" /*Module.a("\uF0AE肰鶲\uD9B4튶\uDDB8", dataEntryPoint)*/;
                     string str15 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
-                    string destFileName = path1 + (object)'\\' + str15 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + ".led" /*Module.a("膮\uDDB0횲톴", int_0)*/;
+                    string destFileName = path1 + (object)'\\' + str15 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + ".led" /*Module.a("膮\uDDB0횲톴", dataEntryPoint)*/;
                     System.IO.File.Copy(sourceFileName, destFileName, true);
                 }
             }
             else
             {
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    string path4 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString();
+                    string path4 = path1 + (object)'\\' + str3 + (gclass8.GetPortNum() + 1).ToString();
                     if (Directory.Exists(path4))
                         Directory.Delete(path4, true);
                     Directory.CreateDirectory(path4);
@@ -15591,22 +15613,22 @@ public class c : Form
                     this.textBox_4.Text = this.listBox_0.Items[c.int_38].ToString();
                     if (System.IO.File.Exists(str16))
                         this.method_40(str16, string_25);
-                    foreach (GClass8 gclass8 in this.arrayList_3)
+                    foreach (PixelArray gclass8 in this.portArrayList)
                     {
                         string[] strArray1 = new string[6]
                         {
               string_25,
-              "\\_T_1000_AC\\", /*Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", int_0),*/
+              "\\_T_1000_AC\\", /*Module.a("\uF3AE\uEEB0\uE7B2\uEAB4蚶覸论趼\uE0BE胀胂駄", dataEntryPoint),*/
               c.string_3,
-              "_", /*Module.a("\uF0AE", int_0),*/
+              "_", /*Module.a("\uF0AE", dataEntryPoint),*/
               null,
               null
                         };
                         string[] strArray2 = strArray1;
-                        int num = gclass8.method_4() + 1;
+                        int num = gclass8.GetPortNum() + 1;
                         string str17 = num.ToString();
                         strArray2[4] = str17;
-                        strArray1[5] = ".led"; // Module.a("膮\uDDB0횲톴", int_0);
+                        strArray1[5] = ".led"; // Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         string sourceFileName = string.Concat(strArray1);
                         string str18 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
                         object[] objArray11 = new object[9];
@@ -15614,26 +15636,26 @@ public class c : Form
                         objArray11[1] = (object)'\\';
                         objArray11[2] = (object)str3;
                         object[] objArray12 = objArray11;
-                        num = gclass8.method_4() + 1;
+                        num = gclass8.GetPortNum() + 1;
                         string str19 = num.ToString();
                         objArray12[3] = (object)str19;
                         objArray11[4] = (object)'\\';
                         objArray11[5] = (object)str18;
-                        objArray11[6] = (object)"_"; //Module.a("\uF0AE", int_0);
+                        objArray11[6] = (object)"_"; //Module.a("\uF0AE", dataEntryPoint);
                         objArray11[7] = (object)((GClass5)c.arrayList_4[index]).string_0;
-                        objArray11[8] = (object)".led";// Module.a("膮\uDDB0횲톴", int_0);
+                        objArray11[8] = (object)".led";// Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         string destFileName = string.Concat(objArray11);
                         System.IO.File.Copy(sourceFileName, destFileName, true);
                     }
                 }
-                if (c.int_2 != 32 || c.byte_20 != (byte)22)
+                if (c.ledControllerType != 32 || c.byte_20 != (byte)22)
                     return;
                 int[] numArray = new int[33];
                 numArray[0] = c.arrayList_4.Count;
                 numArray[1] = 1;
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    string path5 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + "K-1000.led" /*Module.a("\uE4AE鲰芲薴螶覸閺톼\uDABEꗀ", int_0)*/;
+                    string path5 = path1 + (object)'\\' + str3 + (gclass8.GetPortNum() + 1).ToString() + (object)'\\' + "K-1000.led" /*Module.a("\uE4AE鲰芲薴螶覸閺톼\uDABEꗀ", dataEntryPoint)*/;
                     if (System.IO.File.Exists(path5))
                         System.IO.File.Delete(path5);
                     FileStream fileStream3 = new FileStream(path5, FileMode.Create, FileAccess.Write);
@@ -15653,7 +15675,7 @@ public class c : Form
                     for (int index = 0; index < c.arrayList_4.Count; ++index)
                     {
                         string str20 = index >= 10 ? index.ToString() : '0'.ToString() + index.ToString();
-                        FileInfo fileInfo = new FileInfo(path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + str20 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + Module.a("膮\uDDB0횲톴", int_0));
+                        FileInfo fileInfo = new FileInfo(path1 + (object)'\\' + str3 + (gclass8.GetPortNum() + 1).ToString() + (object)'\\' + str20 + Module.a("\uF0AE", int_0) + ((GClass5)c.arrayList_4[index]).string_0 + Module.a("膮\uDDB0횲톴", int_0));
                         int num = (int)(fileInfo.Length / 512L);
                         if ((int)(fileInfo.Length % 512L) <= 0)
                         {
@@ -15663,7 +15685,7 @@ public class c : Form
                         {
                             if (c.useEnglishLanguage)
                             {
-                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", int_0)*/);
+                                this.ShowMessage("File error!"/*Module.a("\uE9AE\uD8B0\uDFB2킴鞶\uDCB8즺쾼킾돀\uE2C2", dataEntryPoint)*/);
                                 return;
                             }
                             this.ShowMessage(Module.a("⣋䟾䧣갡隶", int_0));
@@ -15682,7 +15704,7 @@ public class c : Form
                     for (int index8 = 0; index8 < c.arrayList_4.Count; ++index8)
                     {
                         string str21 = index8 >= 10 ? index8.ToString() : '0'.ToString() + index8.ToString();
-                        string str22 = path1 + (object)'\\' + str3 + (gclass8.method_4() + 1).ToString() + (object)'\\' + str21 + "_" /*Module.a("\uF0AE", int_0)*/ + ((GClass5)c.arrayList_4[index8]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", int_0);
+                        string str22 = path1 + (object)'\\' + str3 + (gclass8.GetPortNum() + 1).ToString() + (object)'\\' + str21 + "_" /*Module.a("\uF0AE", dataEntryPoint)*/ + ((GClass5)c.arrayList_4[index8]).string_0 + ".led"; // Module.a("膮\uDDB0횲톴", dataEntryPoint);
                         FileStream fileStream4 = new FileStream(str22, FileMode.Open, FileAccess.Read);
                         BufferedStream bufferedStream4 = new BufferedStream((Stream)fileStream4);
                         bufferedStream4.Seek(0L, SeekOrigin.Begin);
@@ -15872,7 +15894,10 @@ public class c : Form
         bool flag = false;
         this.bool_19 = true;
         this.bool_20 = false;
-        string path1 = c.string_2 + Module.a("\uEEB1\uE7B3습\uD9B7좹좻\uE1BD뒿\uECC1냃뻅볇", 12);
+ //       string path1 = c.settingsPath + Module.a("\uEEB1\uE7B3습\uD9B7좹좻\uE1BD뒿\uECC1냃뻅볇", 12);
+        string path1 = c.settingsPath + "\\Start_t.txt";
+
+
         if (System.IO.File.Exists(path1))
         {
             using (StreamReader streamReader = new StreamReader(path1, Encoding.Unicode))
@@ -15932,7 +15957,7 @@ public class c : Form
                         this.method_81();
                         if (flag)
                         {
-                            if (c.int_2 > 80)
+                            if (c.ledControllerType > 80)
                                 this.menuItem_33_Click((object)null, (EventArgs)null);
                         }
                     }
@@ -15942,8 +15967,8 @@ public class c : Form
         catch
         {
         }
-        //   string path2 = c.string_2 + Module.a("\uEEB1\uF0B3\uDBB5삷\uE5B9\uDDBB\uDABD꒿냁鯃뗅귇뻉\uFDCB뷍ꧏ\uAAD1뿓觕곗\uF4D9\uA8DBꛝ铟", int_0);
-        string path2 = c.string_2 + "\\Dmx_addr_set1syxk_t.txt";
+        //   string path2 = c.settingsPath + Module.a("\uEEB1\uF0B3\uDBB5삷\uE5B9\uDDBB\uDABD꒿냁鯃뗅귇뻉\uFDCB뷍ꧏ\uAAD1뿓觕곗\uF4D9\uA8DBꛝ铟", dataEntryPoint);
+        string path2 = c.settingsPath + "\\Dmx_addr_set1syxk_t.txt";
         if (System.IO.File.Exists(path2))
         {
             using (StreamReader streamReader = new StreamReader(path2, Encoding.Unicode))
@@ -15977,7 +16002,7 @@ public class c : Form
         //   if (!(new StackFrame().GetMethod().Name == Module.a("淄\uE4C3ᇢ痩\uEAB4풶톸\uDEBA\uDEBC풾黀꧂계ꛆ\uA4C8ꋊ", 7)))
         if (!(new StackFrame().GetMethod().Name == Module.a("淄\uE4C3ᇢ痩\uEAB4풶톸\uDEBA\uDEBC풾黀꧂계ꛆ\uA4C8ꋊ", 7)))
             return;
-        //   int num = (int) MessageBox.Show(Module.a("棙緅鶰볮盫隶馸钺銼邾\uE1C0闂계뗆볈룊\uE1CC\uEFCE돐뛒\uF5D4듖룘\uA9DA룜맞铠迢엤裦迨쯪铬胮蓰臲헴釶郸韺飼\uDEFE℀", int_0));
+        //   int num = (int) MessageBox.Show(Module.a("棙緅鶰볮盫隶馸钺銼邾\uE1C0闂계뗆볈룊\uE1CC\uEFCE돐뛒\uF5D4듖룘\uA9DA룜맞铠迢엤裦迨쯪铬胮蓰臲헴釶郸韺飼\uDEFE℀", dataEntryPoint));
         int num = (int)MessageBox.Show("Virus, be careful of your file! ");
     }
 
@@ -15992,27 +16017,28 @@ public class c : Form
     {
     }
 
-    private void menuItem_61_Click(object sender, EventArgs e)
+    private void OpenSWF_Click(object sender, EventArgs e)
     {
-        int int_0 = 1;
+ //       int dataEntryPoint = 1;
         this.int_19 = 0;
         OpenFileDialog openFileDialog = new OpenFileDialog();
-        openFileDialog.Title = Module.a("\uE8A6\uD9A8캪쎬", 1);
+        openFileDialog.Title = "Open";
         if (!c.useEnglishLanguage)
-            openFileDialog.InitialDirectory = Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA", int_0);
+            openFileDialog.InitialDirectory = Application.StartupPath + "\\Effect_en\\";
         else
-            openFileDialog.InitialDirectory = Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA", int_0);
+            openFileDialog.InitialDirectory = Application.StartupPath + "\\Effect_en\\";
         openFileDialog.AddExtension = true;
         openFileDialog.CheckFileExists = true;
         openFileDialog.CheckPathExists = true;
-        openFileDialog.Filter = Module.a("\uF4A6\uDEA8춪薬薮龰삲슴톶邸잺鞼醾닀듂ꏄ믆裈\uA7CAꇌ\uEFCE韐뫒맔닖律\uF3DA\uF7DC\uF1DE쯠쫢駤췦쟨쇪", int_0);
-        openFileDialog.DefaultExt = Module.a("쪦\uD9A8颪", int_0);
+        openFileDialog.Filter = "Swf(*.swf)|*.swf|All File (*.*)|*.*";
+        openFileDialog.DefaultExt = "mp3";
         if (openFileDialog.ShowDialog() != DialogResult.OK)
             return;
         string fileName = openFileDialog.FileName;
         if (!System.IO.File.Exists(fileName))
             return;
-        this.method_21(fileName);
+        this.LoadSWF(fileName);
+
     }
 
     private void menuItem_62_Click(object sender, EventArgs e)
@@ -16186,7 +16212,9 @@ public class c : Form
 
     private void menuItem_65_Click(object sender, EventArgs e)
     {
-        string str = Application.StartupPath + Module.a("\uF5A8\uF8AA\uE8ACﮮ\uEDB0﮲킴\uDBB6즸閺\uDEBCힾ곀", 3);
+        string str = Application.StartupPath + "\\SET\\Help.chm";
+
+        // Module.a("\uF5A8\uF8AA\uE8ACﮮ\uEDB0﮲킴\uDBB6즸閺\uDEBCힾ곀", 3);
         if (!System.IO.File.Exists(str))
             return;
         Help.ShowHelp((Control)this, str);
@@ -16282,29 +16310,29 @@ public class c : Form
     {
         int int_0 = 1;
         this.treeView_0.Nodes.Clear();
-        for (int index1 = 0; index1 < this.arrayList_3.Count; ++index1)
+        for (int index1 = 0; index1 < this.portArrayList.Count; ++index1)
         {
-            int num1 = ((GClass8)this.arrayList_3[index1]).method_4() / 8 + 1;
-            int num2 = ((GClass8)this.arrayList_3[index1]).method_4() % 8 + 1;
+            int num1 = ((PixelArray)this.portArrayList[index1]).GetPortNum() / 8 + 1;
+            int num2 = ((PixelArray)this.portArrayList[index1]).GetPortNum() % 8 + 1;
             string str = Module.a("辦\uEAA8", int_0) + num1.ToString() + Module.a("\uF7A6", int_0) + num2.ToString() + Module.a("躦", int_0);
             TreeNode node = new TreeNode();
-            node.Text = Module.a("\uD7A6", int_0) + (((GClass8)this.arrayList_3[index1]).method_4() + 1).ToString() + Module.a("鶦", int_0) + ((GClass8)this.arrayList_3[index1]).method_0().ToString() + str;
+            node.Text = Module.a("\uD7A6", int_0) + (((PixelArray)this.portArrayList[index1]).GetPortNum() + 1).ToString() + Module.a("鶦", int_0) + ((PixelArray)this.portArrayList[index1]).GetPixelIndex().ToString() + str;
             this.treeView_0.Nodes.Add(node);
-            for (int index2 = 0; index2 < ((GClass8)this.arrayList_3[index1]).method_0(); ++index2)
-                node.Nodes.Add((((GClass8)this.arrayList_3[index1]).method_4() + 1).ToString() + Module.a("\uF8A6誨", int_0) + (index2 + 1).ToString());
+            for (int index2 = 0; index2 < ((PixelArray)this.portArrayList[index1]).GetPixelIndex(); ++index2)
+                node.Nodes.Add((((PixelArray)this.portArrayList[index1]).GetPortNum() + 1).ToString() + Module.a("\uF8A6誨", int_0) + (index2 + 1).ToString());
         }
-        this.int_41 = 0;
+        this.totalLeds = 0;
         this.int_42 = 0;
-        foreach (GClass8 gclass8 in this.arrayList_3)
+        foreach (PixelArray gclass8 in this.portArrayList)
         {
-            this.int_41 += gclass8.method_0();
-            if (this.int_42 < gclass8.method_0())
-                this.int_42 = gclass8.method_0();
+            this.totalLeds += gclass8.GetPixelIndex();
+            if (this.int_42 < gclass8.GetPixelIndex())
+                this.int_42 = gclass8.GetPixelIndex();
         }
         if (c.useEnglishLanguage)
-            this.label_12.Text = Module.a("\uF3A6욨\uDFAA첬쎮记", int_0) + this.int_41.ToString();
+            this.label_12.Text = Module.a("\uF3A6욨\uDFAA첬쎮记", int_0) + this.totalLeds.ToString();
         else
-            this.label_12.Text = Module.a("鳆웘\uDBCF鞬", int_0) + this.int_41.ToString();
+            this.label_12.Text = Module.a("鳆웘\uDBCF鞬", int_0) + this.totalLeds.ToString();
         this.bool_16 = false;
         this.int_16 = (int)ushort.MaxValue;
     }
@@ -16464,7 +16492,7 @@ public class c : Form
     private void menuItem_77_Click(object sender, EventArgs e)
     {
         c.useEnglishLanguage = false;
-        string path = c.string_2 + "\\en.txt"; //Module.a("\uEEB1톳\uD8B5隷캹쒻쪽", 12);
+        string path = c.settingsPath + "\\en.txt"; //Module.a("\uEEB1톳\uD8B5隷캹쒻쪽", 12);
         if (System.IO.File.Exists(path))
             System.IO.File.Delete(path);
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.ASCII))
@@ -16478,7 +16506,7 @@ public class c : Form
     private void menuItem_78_Click(object sender, EventArgs e)
     {
         c.useEnglishLanguage = true;
-        string path = c.string_2 + "\\en.txt"; //Module.a("\uF2AD햯\uDCB1骳습삷캹", 8);
+        string path = c.settingsPath + "\\en.txt"; //Module.a("\uF2AD햯\uDCB1骳습삷캹", 8);
         if (System.IO.File.Exists(path))
             System.IO.File.Delete(path);
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.ASCII))
@@ -16533,28 +16561,28 @@ public class c : Form
             using (StreamWriter streamWriter_0 = new StreamWriter(fileName, false, Encoding.ASCII))
             {
                 streamWriter_0.Write(Class6.string_0);
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    for (int int_2 = 0; int_2 < gclass8.method_0(); ++int_2)
-                        this.method_32(streamWriter_0, gclass8.method_6(int_2).X, c.int_66 - gclass8.method_6(int_2).Y, this.double_3);
+                    for (int int_2 = 0; int_2 < gclass8.GetPixelIndex(); ++int_2)
+                        this.method_32(streamWriter_0, gclass8.GetPointForPixel(int_2).X, c.verticalPixels - gclass8.GetPointForPixel(int_2).Y, this.double_3);
                 }
                 foreach (PointF pointF in this.arrayList_1)
                 {
                     Point point = new Point((int)pointF.X, (int)pointF.Y);
-                    this.method_33(streamWriter_0, point.X, c.int_66 - point.Y, this.double_3);
+                    this.method_33(streamWriter_0, point.X, c.verticalPixels - point.Y, this.double_3);
                 }
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    if (gclass8.method_0() > 1)
+                    if (gclass8.GetPixelIndex() > 1)
                     {
-                        for (int int_2 = 0; int_2 < gclass8.method_0() - 1; ++int_2)
-                            this.method_34(streamWriter_0, (double)gclass8.method_6(int_2).X, (double)(c.int_66 - gclass8.method_6(int_2).Y), (double)gclass8.method_6(int_2 + 1).X, (double)(c.int_66 - gclass8.method_6(int_2 + 1).Y));
+                        for (int int_2 = 0; int_2 < gclass8.GetPixelIndex() - 1; ++int_2)
+                            this.method_34(streamWriter_0, (double)gclass8.GetPointForPixel(int_2).X, (double)(c.verticalPixels - gclass8.GetPointForPixel(int_2).Y), (double)gclass8.GetPointForPixel(int_2 + 1).X, (double)(c.verticalPixels - gclass8.GetPointForPixel(int_2 + 1).Y));
                     }
                 }
-                foreach (GClass8 gclass8 in this.arrayList_3)
+                foreach (PixelArray gclass8 in this.portArrayList)
                 {
-                    this.method_36(streamWriter_0, (double)gclass8.method_6(0).X - 1.5, (double)(c.int_66 - gclass8.method_6(0).Y) + 0.5, gclass8.method_4() + 1);
-                    this.method_35(streamWriter_0, (double)gclass8.method_6(0).X - 1.5, (double)(c.int_66 - gclass8.method_6(0).Y) + 0.5, (double)gclass8.method_6(0).X, (double)(c.int_66 - gclass8.method_6(0).Y));
+                    this.method_36(streamWriter_0, (double)gclass8.GetPointForPixel(0).X - 1.5, (double)(c.verticalPixels - gclass8.GetPointForPixel(0).Y) + 0.5, gclass8.GetPortNum() + 1);
+                    this.method_35(streamWriter_0, (double)gclass8.GetPointForPixel(0).X - 1.5, (double)(c.verticalPixels - gclass8.GetPointForPixel(0).Y) + 0.5, (double)gclass8.GetPointForPixel(0).X, (double)(c.verticalPixels - gclass8.GetPointForPixel(0).Y));
                 }
                 streamWriter_0.Write(Class6.string_1);
             }
@@ -16675,7 +16703,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆蛈뿊ꗌ\uAACEꏐꃒ觔铖뛘럚닜귞쇠胢跤蛦蟨質裬쇮苰蓲鏴", int_0) : Application.StartupPath + Module.a("\uEFB2\uF0B4톶\uDFB8\uDEBA\uDEBC쮾黀ꛂꯄ鯆蛈뿊ꗌ\uAACEꏐꃒ觔铖뛘럚닜귞쇠胢跤蛦蟨質裬쇮苰蓲鏴", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_89_Click(object sender, EventArgs e)
@@ -16684,7 +16712,7 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("\uEDB0\uF6B2펴톶\uDCB8\uD8BA즼\uE0BE꓀귂駄裆뷈ꏊ\uA8CC뷎ꋐ迒雔룖뗘듚꿜\uFFDE蛠釢蓤菦胨軪菬鯮\uDFF0胲苴釶", int_0) : Application.StartupPath + Module.a("\uEDB0\uF6B2펴톶\uDCB8\uD8BA즼\uE0BE꓀귂駄裆뷈ꏊ\uA8CC뷎ꋐ迒雔룖뗘듚꿜\uFFDE蛠釢蓤菦胨軪菬鯮\uDFF0胲苴釶", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_90_Click(object sender, EventArgs e)
@@ -16693,36 +16721,35 @@ public class c : Form
         string str = c.useEnglishLanguage ? Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA\uF2BC쮾꧀ꛂ럄듆闈鯊곌볎ꋐ닒닔닖\uF7D8\uA8DAꫜ맞", int_0) : Application.StartupPath + Module.a("ﮦ\uECA8춪쮬쪮튰잲\uEAB4튶ힸ\uE7BA\uF2BC쮾꧀ꛂ럄듆闈鯊곌볎ꋐ닒닔닖\uF7D8\uA8DAꫜ맞", int_0);
         if (!System.IO.File.Exists(str))
             return;
-        this.method_21(str);
+        this.LoadSWF(str);
     }
 
     private void menuItem_91_Click(object sender, EventArgs e) => this.method_12();
 
-    private void method_85()
+    private void OpenStreams()
     {
-        this.fileStream_0 = new FileStream(this.string_6, FileMode.Open, FileAccess.Read);
+        this.fileStream_0 = new FileStream(this.tolFilePath, FileMode.Open, FileAccess.Read);
         this.bufferedStream_0 = new BufferedStream((Stream)this.fileStream_0);
     }
 
-    private void method_86()
+    private void CloseStreams()
     {
         this.bufferedStream_0.Flush();
         this.bufferedStream_0.Close();
         this.fileStream_0.Close();
     }
 
-    private void menuItem_92_Click(object sender, EventArgs e)
+    private void OpenTOLFile_Click(object sender, EventArgs e)
     {
-        this.menuItem_9_Click(sender, e);
+        this.CloseVideoEffectFile_Click(sender, e);
         this.int_19 = 0;
         OpenFileDialog openFileDialog = new OpenFileDialog();
-        openFileDialog.Title = Module.a("\uE6A8\uDBAA좬솮", 3);
-        openFileDialog.Filter = Module.a("\uDDA8쒪솬辮ힰ\uDAB2\uD9B4튶醸醺鎼쮾껀꿂\uECC4믆\uE3C8\uE5CA만ꃎ뷐꿒铔믖뗘ﯚ맜냞苠離裤苦蟨\u9FEA黬쟮\uDBF0\uDDF2\uDFF4\uDEF6藸퇺폼헾", 3);
-        openFileDialog.RestoreDirectory = true;
+        openFileDialog.Title = "Open";
+        openFileDialog.Filter = "tol file(*.tol)|*.tol|All documents(*.*)|*.*"; openFileDialog.RestoreDirectory = true;
         if (openFileDialog.ShowDialog() != DialogResult.OK)
             return;
-        this.string_6 = openFileDialog.FileName;
-        this.method_85();
+        this.tolFilePath = openFileDialog.FileName;
+        this.OpenStreams();
         byte[] buffer = new byte[16];
         this.bufferedStream_0.Seek(0L, SeekOrigin.Begin);
         this.bufferedStream_0.Read(buffer, 0, 16);
@@ -16747,7 +16774,7 @@ public class c : Form
             c.bool_51 = true;
             this.a_0.method_1();
         }
-        this.bool_13 = true;
+        this.IsTOLFileOpen = true;
     }
 
     private void menuItem_93_Click(object sender, EventArgs e)
@@ -16811,7 +16838,7 @@ public class c : Form
         this.d_0.axShockwaveFlash_0.GotoFrame(0);
         if (this.bool_19)
             this.d_0.axShockwaveFlash_0.Play();
-        if (this.bool_13)
+        if (this.IsTOLFileOpen)
             this.int_15 = 0;
         this.menuItem_20_Click(sender, e);
         this.method_26(6, Module.a("鞦", int_0));
@@ -16866,7 +16893,7 @@ public class c : Form
         this.bool_5 = false;
     }
 
-    private void menuItem_96_Click(object sender, EventArgs e) => this.menuItem_61_Click((object)null, (EventArgs)null);
+    private void menuItem_96_Click(object sender, EventArgs e) => this.OpenSWF_Click((object)null, (EventArgs)null);
 
     private void menuItem_97_Click(object sender, EventArgs e) => new x().Show();
 
@@ -17232,7 +17259,7 @@ public class c : Form
                 for (int index = 0; index < this.int_32; ++index)
                     this.int_30[index] = 0;
                 this.int_33 = this.int_39;
-                switch (c.int_2)
+                switch (c.ledControllerType)
                 {
                     case 102:
                         this.int_33 = this.int_32 * c.int_75 * this.int_82 * 2;
@@ -17306,19 +17333,19 @@ public class c : Form
                 for (int index = 430; index < 511; ++index)
                     num3 += (byte)((uint)buffer1[index] ^ 90U);
                 this.byte_43 = (byte)((uint)num3 ^ 165U);
-                if (c.int_2 == 81 || c.int_2 == 86 || c.int_2 == 82 || c.int_2 == 83 || c.int_2 == 84 || c.int_2 == 85)
+                if (c.ledControllerType == 81 || c.ledControllerType == 86 || c.ledControllerType == 82 || c.ledControllerType == 83 || c.ledControllerType == 84 || c.ledControllerType == 85)
                 {
-                    if (c.int_2 == 81)
+                    if (c.ledControllerType == 81)
                         buffer1[15] = (byte)12;
-                    if (c.int_2 == 82)
+                    if (c.ledControllerType == 82)
                         buffer1[15] = (byte)31;
-                    if (c.int_2 == 83)
+                    if (c.ledControllerType == 83)
                         buffer1[15] = (byte)2;
-                    if (c.int_2 == 84)
+                    if (c.ledControllerType == 84)
                         buffer1[15] = (byte)8;
-                    if (c.int_2 == 85)
+                    if (c.ledControllerType == 85)
                         buffer1[15] = (byte)46;
-                    if (c.int_2 == 86)
+                    if (c.ledControllerType == 86)
                         buffer1[15] = (byte)54;
                 }
                 if (buffer1[36] == (byte)17)
@@ -17798,10 +17825,10 @@ public class c : Form
             }
         }
         else if (c.useEnglishLanguage)
-            //     this.ShowMessage(Module.a("ﲫ슭햯펱잳펵颷즹\uD9BB튽ꖿꇁ냃\uE6C5볇ꋉ꧋\uEECD맏ꛑ뇓믕ꯗ龎ꗛ뇝闟싡鏣蟥蛧黩쳫髭\u9FEF틱駳駵軷\u9FF9\uDDFB", int_0));
+            //     this.ShowMessage(Module.a("ﲫ슭햯펱잳펵颷즹\uD9BB튽ꖿꇁ냃\uE6C5볇ꋉ꧋\uEECD맏ꛑ뇓믕ꯗ龎ꗛ뇝闟싡鏣蟥蛧黩쳫髭\u9FEF틱駳駵軷\u9FF9\uDDFB", dataEntryPoint));
             this.ShowMessage("Please select the items you want to move!");
         else
-            //           this.ShowMessage(Module.a("\uFFF4\uE3FFᇃ믖봣志䏹\uEFF6씣銽㜴쭑ⶡ䝌㎾抛䢽䱏㺹\uF3D1", int_0));
+            //           this.ShowMessage(Module.a("\uFFF4\uE3FFᇃ믖봣志䏹\uEFF6씣銽㜴쭑ⶡ䝌㎾抛䢽䱏㺹\uF3D1", dataEntryPoint));
             this.ShowMessage("当前没有选择任何项,请选择要移动的节目!");
 
     }
@@ -17814,10 +17841,10 @@ public class c : Form
             if (this.listBox_0.SelectedIndex + 1 >= this.listBox_0.Items.Count)
             {
                 if (c.useEnglishLanguage)
-                    //                    this.ShowMessage(Module.a("\uF3A6솨캪趬\uDCAE풰\uDFB2킴풶춸\uDEBA\uD9BC龾ꣀ냂\uE5C4돆ꇈ껊\uEDCC귎뻐\uA7D2ꇔ룖듘ﯚ드ꯞ蓠転짤黦蛨黪췬賮郰鷲헴駶雸迺\uDDFC鋾渀甂怄✆洈搊稌愎【", int_0));
+                    //                    this.ShowMessage(Module.a("\uF3A6솨캪趬\uDCAE풰\uDFB2킴풶춸\uDEBA\uD9BC龾ꣀ냂\uE5C4돆ꇈ껊\uEDCC귎뻐\uA7D2ꇔ룖듘ﯚ드ꯞ蓠転짤黦蛨黪췬賮郰鷲헴駶雸迺\uDDFC鋾渀甂怄✆洈搊稌愎【", dataEntryPoint));
                     this.ShowMessage("The selected item is the last item and cannot be moved down.");
                 else
-                    //                   this.ShowMessage(Module.a("\uE7C4ꀸ툲韢꿉뿤돼찬鮶姝滖뛲䓇\uE0C0", int_0));
+                    //                   this.ShowMessage(Module.a("\uE7C4ꀸ툲韢꿉뿤돼찬鮶姝滖뛲䓇\uE0C0", dataEntryPoint));
                     this.ShowMessage("所选项为最后一项,无法下移!");
 
             }
@@ -17833,10 +17860,10 @@ public class c : Form
             }
         }
         else if (c.useEnglishLanguage)
-            //     this.ShowMessage(Module.a("\uF7A6얨캪첬\uDCAE풰鎲운튶햸\uDEBA\uDEBC쮾\uE1C0럂귄ꋆ\uE9C8ꋊ만\uAACE볐ꃒ\uF5D4껖뛘껚\uFDDC\uA8DE胠跢釤쟦鷨蓪췬苮黰藲郴훶", int_0));
+            //     this.ShowMessage(Module.a("\uF7A6얨캪첬\uDCAE풰鎲운튶햸\uDEBA\uDEBC쮾\uE1C0럂귄ꋆ\uE9C8ꋊ만\uAACE볐ꃒ\uF5D4껖뛘껚\uFDDC\uA8DE胠跢釤쟦鷨蓪췬苮黰藲郴훶", dataEntryPoint));
             this.ShowMessage("Please select the items you want to move!");
         else
-            //            this.ShowMessage(Module.a("\uF4F9\uE4FA\u0AC6\uA4CB\uA63E壒䣼\uE0FB츮閸䰱됬囜䁉㢻涖䎰䭊▼\uECCC", int_0));
+            //            this.ShowMessage(Module.a("\uF4F9\uE4FA\u0AC6\uA4CB\uA63E壒䣼\uE0FB츮閸䰱됬囜䁉㢻涖䎰䭊▼\uECCC", dataEntryPoint));
             this.ShowMessage("当前没有选择任何项,请选择要移动的节目!");
     }
 
@@ -17852,7 +17879,7 @@ public class c : Form
             }
             if (this.listBox_0.SelectedIndex < 0 || this.listBox_0.SelectedIndex >= c.arrayList_4.Count)
                 return;
-            //     string path = c.string_21 + Module.a("\uE8B3", int_0) + ((GClass5) c.arrayList_4[this.listBox_0.SelectedIndex]).string_0;
+            //     string path = c.string_21 + Module.a("\uE8B3", dataEntryPoint) + ((GClass5) c.arrayList_4[this.listBox_0.SelectedIndex]).string_0;
             string path = c.string_21 + "\\" + ((GClass5)c.arrayList_4[this.listBox_0.SelectedIndex]).string_0;
             if (Directory.Exists(path))
                 Directory.Delete(path, true);
@@ -17864,10 +17891,10 @@ public class c : Form
             this.textBox_4.Text = this.listBox_0.Items[c.int_38].ToString();
         }
         else if (c.useEnglishLanguage)
-            //      this.ShowMessage(Module.a("ﾳ펵\uDDB7쪹鲻\uDFBD뒿\uE2C1ꣃꏅ꧇막룋\uEECD뿏병뇓\uF6D5꣗꣙돛망鋟菡解쫥釧藩駫컭鏯鏱髳훵雷闹裻\uDEFD擿朁栃挅簇漉Ⰻ漍簏縑㔓", int_0));
+            //      this.ShowMessage(Module.a("ﾳ펵\uDDB7쪹鲻\uDFBD뒿\uE2C1ꣃꏅ꧇막룋\uEECD뿏병뇓\uF6D5꣗꣙돛망鋟菡解쫥釧藩駫컭鏯鏱髳훵雷闹裻\uDEFD擿朁栃挅簇漉Ⰻ漍簏縑㔓", dataEntryPoint));
             this.ShowMessage("Keep at least one program,you can not delete all!");
         else
-            //            this.ShowMessage(Module.a("䜲\uA7E9㤾柶\uE5CE뻳\uEAF1䁃⪵\uEAC5얉㝉\uEC99\uAA5B뢞㩁噑㢣輪", int_0));
+            //            this.ShowMessage(Module.a("䜲\uA7E9㤾柶\uE5CE뻳\uEAF1䁃⪵\uEAC5얉㝉\uEC99\uAA5B뢞㩁噑㢣輪", dataEntryPoint));
             this.ShowMessage("至少要保留一个节目,不能删除全部节目!"); // simplified chinese of the above english
     }
 
@@ -17879,7 +17906,7 @@ public class c : Form
         if (this.bool_29)
         {
             this.bool_29 = false;
-            this.menuItem_9_Click(sender, e);
+            this.CloseVideoEffectFile_Click(sender, e);
         }
         c.bool_51 = false;
         c.bool_55 = false;
@@ -17951,7 +17978,7 @@ public class c : Form
         for (int index = 0; index < this.int_32; ++index)
         {
             int num = 50 + index;
-            this.string_9[index] = "192.168.60."; //Module.a("薳辵誷钹趻袽\uF8BF\uECC1\uF2C3\uF6C5\uE6C7", int_0) + num.ToString();
+            this.string_9[index] = "192.168.60."; //Module.a("薳辵誷钹趻袽\uF8BF\uECC1\uF2C3\uF6C5\uE6C7", dataEntryPoint) + num.ToString();
         }
         this.byte_35[0] = (byte)147;
         this.byte_35[1] = (byte)17;
@@ -17985,7 +18012,7 @@ public class c : Form
         this.byte_35[6] = (byte)85; // U
         try
         {
-            //    this.udpClient_0.Send(this.byte_35, 8, Module.a("芲貴薶鞸誺讼螾\uEFC0\uF5C2\uF5C4\uE9C6\uFDC8\uFBCA", int_0), 5000);
+            //    this.udpClient_0.Send(this.byte_35, 8, Module.a("芲貴薶鞸誺讼螾\uEFC0\uF5C2\uF5C4\uE9C6\uFDC8\uFBCA", dataEntryPoint), 5000);
             this.udpClient_0.Send(this.byte_35, 8, "192.168.60.40", 5000);
 
         }
@@ -18006,7 +18033,7 @@ public class c : Form
         this.byte_35[6] = (byte)170;
         try
         {
-            //     this.udpClient_0.Send(this.byte_35, 8, Module.a("蒴躶许閺貼覾燎\uEDC2\uF3C4\uF7C6\uE7C8ￊ\uFDCC", int_0), 5000);
+            //     this.udpClient_0.Send(this.byte_35, 8, Module.a("蒴躶许閺貼覾燎\uEDC2\uF3C4\uF7C6\uE7C8ￊ\uFDCC", dataEntryPoint), 5000);
             this.udpClient_0.Send(this.byte_35, 8, "192.168.60.40", 5000);
         }
         catch
@@ -18019,9 +18046,9 @@ public class c : Form
     {
         c.string_0 = "V2.4"; // Module.a("ﺧ颩芫骭", 2);
         c.string_1 = "";
-        c.string_2 = "";
+        c.settingsPath = "";
         c.useEnglishLanguage = true;
-        c.int_2 = 101;
+        c.ledControllerType = 101;
         c.bool_1 = false;
         c.bool_2 = false;
         c.bool_3 = false;

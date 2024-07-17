@@ -25,11 +25,11 @@ public class MessageDialog : Form
 
   private void aa_Load(object sender, EventArgs e)
   {
-    //int int_0 = 11;
+    //int dataEntryPoint = 11;
         if (c.useEnglishLanguage)
-            this.button_0.Text = "Ok"; //Module.a("ﺰ\uF8B2", int_0);
+            this.button_0.Text = "Ok"; //Module.a("ﺰ\uF8B2", dataEntryPoint);
         else
-            this.button_0.Text = "确定"; // Module.a("\uDFC8⧩", int_0);
+            this.button_0.Text = "确定"; // Module.a("\uDFC8⧩", dataEntryPoint);
     MessageDialog.MessageBeep(uint.MaxValue);
   }
 

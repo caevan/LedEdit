@@ -70,6 +70,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\LedControllerType.cs" />
     <Compile Include="Helpers\AFSLogger.cs" />
     <Compile Include="_003CModule_003E.cs" />
     <Compile Include="DotfuscatorAttribute.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="c.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="y.cs">
+    <Compile Include="AutoLayoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="b.cs">
@@ -176,13 +177,13 @@
     <Compile Include="af.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="f.cs">
+    <Compile Include="NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GClass5.cs" />
     <Compile Include="GClass6.cs" />
     <Compile Include="Class5.cs" />
-    <Compile Include="h.cs">
+    <Compile Include="LanguageSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GEnum1.cs" />
@@ -190,7 +191,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GClass7.cs" />
-    <Compile Include="GClass8.cs" />
+    <Compile Include="PixelArray.cs" />
     <Compile Include="p.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="a.resx" />
+    <EmbeddedResource Include="AutoLayoutForm.resx">
+      <DependentUpon>AutoLayoutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MessageDialog.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -240,8 +244,8 @@
     <EmbeddedResource Include="LedEdit\Bitmap2.bmp" />
     <EmbeddedResource Include="m.resx" />
     <EmbeddedResource Include="n.resx" />
-    <EmbeddedResource Include="f.resx">
-      <DependentUpon>f.cs</DependentUpon>
+    <EmbeddedResource Include="NewProjectForm.resx">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="p.resx" />
     <EmbeddedResource Include="q.resx" />

@@ -40,18 +40,18 @@ public class d : Form
 
     public void method_0(string string_0, int int_5, int int_6)
   {
-    int int_0 = 7;
+ //   int dataEntryPoint = 7;
     if (string_0.Length == 0)
       return;
     bool flag = false;
-    if (string_0.EndsWith(Module.a("莬캮잰\uDAB2", int_0)))
-      flag = true;
-    if (string_0.EndsWith(Module.a("莬\uD8AE\uDCB0얲", int_0)))
-      flag = true;
-    if (string_0.EndsWith(Module.a("莬슮솰횲튴", int_0)))
-      flag = true;
-    if (string_0.EndsWith(Module.a("莬슮솰풲", int_0)))
-      flag = true;
+    if (string_0.EndsWith(".avi"))
+        flag = true;
+    if (string_0.EndsWith(".wmv"))
+        flag = true;
+    if (string_0.EndsWith(".mpeg"))
+        flag = true;
+    if (string_0.EndsWith(".mpg"))
+        flag = true;
     this.int_3 = int_5;
     this.int_4 = int_6;
     if (this.int_3 < 1 || this.int_4 < 1)
@@ -66,11 +66,13 @@ public class d : Form
 
   private void method_1(string string_0)
   {
-    int int_0 = 10;
+ //   int dataEntryPoint = 10;
     if (this.video_0 != null)
-      this.method_2();
+      this.CloseVideo();
     string str1 = string_0;
-    int num1 = str1.LastIndexOf(Module.a("\uECAF", int_0));
+    //int num1 = str1.LastIndexOf(Module.a("\uECAF", dataEntryPoint));
+    int num1 = str1.LastIndexOf("\\");
+    
     string str2 = str1.Substring(num1 + 1, str1.Length - num1 - 1);
     try
     {
@@ -78,8 +80,9 @@ public class d : Form
     }
     catch
     {
-      int num2 = (int) MessageBox.Show(Module.a("\uE5AF\uDCB1햳풵풷\uDFB9鲻쪽꾿\uE2C1듃\uAAC5꧇돉\uECCB", int_0) + str2);
-      return;
+            //      int num2 = (int) MessageBox.Show(Module.a("\uE5AF\uDCB1햳풵풷\uDFB9鲻쪽꾿\uE2C1듃\uAAC5꧇돉\uECCB", dataEntryPoint) + str2);
+        int num2 = (int)MessageBox.Show("Unable to play " + str2);
+        return;
     }
     this.video_0.Owner = (Control) this;
     this.video_0.Owner.Size = new Size(this.int_3, this.int_4);
@@ -94,7 +97,7 @@ public class d : Form
     this.video_0.CurrentPosition = 0.0;
   }
 
-  public void method_2()
+  public void CloseVideo()
   {
     if (this.video_0 == null)
       return;
@@ -107,7 +110,7 @@ public class d : Form
   {
     if (this.video_0 == null)
       return;
-    this.method_2();
+    this.CloseVideo();
   }
 
   private void method_4()
@@ -121,16 +124,20 @@ public class d : Form
     this.panel_0.Controls.Add((Control) this.axShockwaveFlash_0);
     this.panel_0.Cursor = Cursors.SizeAll;
     this.panel_0.Dock = DockStyle.Fill;
-    this.panel_0.Font = new Font(Module.a("\uE5B5톷ힹ\uEFBB쮽꺿", 16), 5.25f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
+    this.panel_0.Font = new Font("SimSun", 5.25f, FontStyle.Regular, GraphicsUnit.Point, (byte)134);
     this.panel_0.Location = new Point(0, 0);
-    this.panel_0.Name = Module.a("욵\uD9B7풹\uD9BB튽\uF1BF", 16);
+    this.panel_0.Name = "panel1";
+
     this.panel_0.Size = new Size(480, 360);
     this.panel_0.TabIndex = 0;
     this.axShockwaveFlash_0.Dock = DockStyle.Fill;
     this.axShockwaveFlash_0.Enabled = true;
     this.axShockwaveFlash_0.Location = new Point(0, 0);
-    this.axShockwaveFlash_0.Name = Module.a("ힵ삷\uE9B9풻톽ꎿ꧁돃\uA7C5뻇꿉請ꋍ뇏ꇑ볓\uE7D5", 16);
-    this.axShockwaveFlash_0.OcxState = (AxHost.State) componentResourceManager.GetObject(Module.a("ힵ삷\uE9B9풻톽ꎿ꧁돃\uA7C5뻇꿉請ꋍ뇏ꇑ볓\uE7D5\uF6D7闙뿛ꛝ돟雡藣鋥跧", 16));
+        //this.axShockwaveFlash_0.Name = Module.a("ힵ삷\uE9B9풻톽ꎿ꧁돃\uA7C5뻇꿉請ꋍ뇏ꇑ볓\uE7D5", 16);
+        //this.axShockwaveFlash_0.OcxState = (AxHost.State) componentResourceManager.GetObject(Module.a("ힵ삷\uE9B9풻톽ꎿ꧁돃\uA7C5뻇꿉請ꋍ뇏ꇑ볓\uE7D5\uF6D7闙뿛ꛝ돟雡藣鋥跧", 16));
+    this.axShockwaveFlash_0.Name = "axShockwaveFlash1";
+    this.axShockwaveFlash_0.OcxState = (AxHost.State)componentResourceManager.GetObject("axShockwaveFlash1.OcxState");
+
     this.axShockwaveFlash_0.Size = new Size(480, 360);
     this.axShockwaveFlash_0.TabIndex = 0;
     this.AutoScaleBaseSize = new Size(4, 8);
@@ -138,16 +145,17 @@ public class d : Form
     this.ControlBox = false;
     this.Controls.Add((Control) this.panel_0);
     this.Cursor = Cursors.SizeAll;
-    this.Font = new Font(Module.a("\uE5B5톷ힹ\uEFBB쮽꺿", 16), 5.25f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
-    this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-    this.Location = new Point(500, 400);
-    this.MaximizeBox = false;
-    this.MinimizeBox = false;
-    this.Name = Module.a("\uE6B5풷\uDBB9얻\uDBBD늿", 16);
-    this.ShowInTaskbar = false;
-    this.StartPosition = FormStartPosition.CenterParent;
-    this.Text = Module.a("\uE6B5풷\uDBB9얻\uDBBD늿", 16);
-    this.TopMost = true;
+        this.Font = new Font("SimSun", 5.25f, FontStyle.Regular, GraphicsUnit.Point, (byte)134);
+        this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+        this.Location = new Point(500, 400);
+        this.MaximizeBox = false;
+        this.MinimizeBox = false;
+        this.Name = "Player";
+        this.ShowInTaskbar = false;
+        this.StartPosition = FormStartPosition.CenterParent;
+        this.Text = "Player";
+
+        this.TopMost = true;
     this.MouseEnter += new EventHandler(this.d_MouseEnter);
     this.MouseDown += new MouseEventHandler(this.d_MouseDown);
     this.MouseLeave += new EventHandler(this.d_MouseLeave);

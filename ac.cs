@@ -626,7 +626,7 @@ public class ac : Form
   {
     this.method_0();
     this.comboBox_0.SelectedIndex = c.int_81;
-    switch (c.int_2)
+    switch (c.ledControllerType)
     {
       case 1:
       case 9:

@@ -31,7 +31,7 @@ public sealed class DotfuscatorAttribute : Attribute
 
   public bool get_B() => this.bool_0;
 
-  //public int C => this.int_0;
+  //public int C => this.dataEntryPoint;
 
   public int get_C() => this.int_0;
 }

@@ -29,11 +29,11 @@ internal class e
     // ISSUE: reference to a compiler-generated field
     if (object.ReferenceEquals((object) e.resourceManager_0, (object) null))
     {
-      // ISSUE: reference to a compiler-generated field
-      e.resourceManager_0 = new ResourceManager(Module.a("﮶\uDCB8\uDFBA\uF8BC\uDBBEꣀ럂\uEBC4韆믈\uA4CA뷌\uAACEꏐ\uA7D2볔닖\uAAD8\uF5DA远뫞鋠賢郤闦諨軪黬", int_0), typeof (e).Assembly);
-    }
-    // ISSUE: reference to a compiler-generated field
-    return e.resourceManager_0;
+            // ISSUE: reference to a compiler-generated field
+            e.resourceManager_0 = new ResourceManager("LedEdit.Properties.Resources", typeof(e).Assembly);
+        }
+        // ISSUE: reference to a compiler-generated field
+        return e.resourceManager_0;
   }
 
   [SpecialName]

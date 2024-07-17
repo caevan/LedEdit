@@ -41,7 +41,7 @@ public class ae : Form
  //   base.\u002Ector();
     this.method_3();
     this.checkBox_3.Checked = false;
-    string path1 = c.string_2 + Module.a("\uF4A7囹\uD8AB쾭슯욱\uEBB3습隷캹쒻쪽", 2);
+    string path1 = c.settingsPath + Module.a("\uF4A7囹\uD8AB쾭슯욱\uEBB3습隷캹쒻쪽", 2);
     if (File.Exists(path1))
     {
       using (StreamReader streamReader = new StreamReader(path1, Encoding.Unicode))
@@ -80,7 +80,7 @@ public class ae : Form
     }
     this.checkBox_3.Enabled = this.checkBox_0.Checked;
     this.checkBox_2.Checked = false;
-    string path2 = c.string_2 + Module.a("\uF4A7囹\uF3AB청\uDFAF\uDDB1삳\uE9B5쮷钹좻욽뒿", int_0);
+    string path2 = c.settingsPath + Module.a("\uF4A7囹\uF3AB청\uDFAF\uDDB1삳\uE9B5쮷钹좻욽뒿", int_0);
     if (File.Exists(path2))
     {
       using (StreamReader streamReader = new StreamReader(path2, Encoding.Unicode))
@@ -164,7 +164,7 @@ public class ae : Form
   private void button_1_Click(object sender, EventArgs e)
   {
     int int_0 = 3;
-    string path1 = c.string_2 + Module.a("\uF5A8\uF8AA\uD9AC캮쎰잲\uEAB4쎶鞸쾺얼쮾", 3);
+    string path1 = c.settingsPath + Module.a("\uF5A8\uF8AA\uD9AC캮쎰잲\uEAB4쎶鞸쾺얼쮾", 3);
     if (File.Exists(path1))
       File.Delete(path1);
     if (this.checkBox_0.Checked)
@@ -186,7 +186,7 @@ public class ae : Form
         streamWriter.WriteLine(this.dateTimePicker_0.Value.Ticks);
       }
     }
-    string path2 = c.string_2 + Module.a("\uF5A8\uF8AA\uF2AC춮\uDEB0\uDCB2솴\uE8B6쪸閺즼잾뗀", int_0);
+    string path2 = c.settingsPath + Module.a("\uF5A8\uF8AA\uF2AC춮\uDEB0\uDCB2솴\uE8B6쪸閺즼잾뗀", int_0);
     if (File.Exists(path2))
       File.Delete(path2);
     if (this.checkBox_2.Checked)

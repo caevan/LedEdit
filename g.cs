@@ -207,7 +207,7 @@ public class g : Form
               c.int_5 = int32_1;
               c.int_6 = int32_2;
               c.int_7 = int32_3;
-              string path = c.string_2 + Module.a("\uF0AB\uEAAD\uDDAF쪱\uEBB3ힵ\uDCB7\uDEB9캻\uE1BD뎿\uA7C1냃\uF7C5믇돉듋ꗍ迏ꛑ䀘ꋕꃗ껙", int_0);
+              string path = c.settingsPath + Module.a("\uF0AB\uEAAD\uDDAF쪱\uEBB3ힵ\uDCB7\uDEB9캻\uE1BD뎿\uA7C1냃\uF7C5믇돉듋ꗍ迏ꛑ䀘ꋕꃗ껙", int_0);
               if (File.Exists(path))
                 File.Delete(path);
               using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.Unicode))

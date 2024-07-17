@@ -14,8 +14,13 @@ internal class Module
 
     public static string a(string string_0, int int_0, bool debug = false)
   {
-//        LogData.LogInfo($"Module a start \""+ string_0 + $"\", {int_0}");
-    char[] charArray = string_0.ToCharArray();
+        if(debug)
+        {
+            LogData.LogInfo($"Module a start \""+ string_0 + $"\", {int_0}");
+
+        }
+        //        LogData.LogInfo($"Module a start \""+ string_0 + $"\", {dataEntryPoint}");
+        char[] charArray = string_0.ToCharArray();
     int num1 = 1812539813 + int_0;
     for (int index1 = 0; index1 < charArray.Length; ++index1)
     {
@@ -25,7 +30,7 @@ internal class Module
       int num2 = (int) (short) charArray[index2];
         if(debug)
             {
- //               LogData.LogInfo($"Decrypter : num2 {num2.ToString("X2")}");
+                LogData.LogInfo($"Decrypter : num2 {num2.ToString("X2")}");
             }
             int num3 = num2 & (int) byte.MaxValue;
       int num4 = num1;
@@ -38,8 +43,11 @@ internal class Module
       int num10 = (int) (ushort) ((uint) num6 << 8 | (uint) (byte) num9);
       chArray[index3] = (char) num10;
     }
-        Log.Info($"{new string(charArray)}");
-        Log.Info($"{string.Intern(new string(charArray))}");
+        if (debug)
+        {
+            LogData.LogInfo($"{new string(charArray)}");
+            LogData.LogInfo($"{string.Intern(new string(charArray))}");
+        }
 //        LogData.LogInfo($" {string_0} -->> {string.Intern(new string(charArray))}");
         return string.Intern(new string(charArray));
   }
